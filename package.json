@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-wordpress",
-  "description": "Gatsby v2 starter for WordPress",
+  "name": "dns2019",
+  "description": "Website for Det Norske Studentersamfund",
   "version": "0.1.0",
-  "author": "GatsbyCentral.com",
+  "author": "Jonas Braathen & Elise Jakobsen",
   "dependencies": {
     "bulma": "^0.7.0",
     "gatsby": "^2.0.0",
@@ -27,11 +27,6 @@
     "react-helmet": "^5.2.0",
     "uuid": "^3.2.1"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
   "scripts": {
     "start": "npm run develop",
     "clean": "rimraf .cache public",

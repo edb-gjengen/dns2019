@@ -60,6 +60,9 @@ exports.createPages = ({ actions, graphql }) => {
                 id
                 slug
                 status
+                fields {
+                  link
+                }
               }
             }
           }
@@ -86,7 +89,7 @@ exports.createPages = ({ actions, graphql }) => {
       _.each(posts, ({ node: post }) => {
         // Create the Gatsby page for this WordPress post
         createPage({
-          path: `/${post.slug}/`,
+          path: post.fields.link,
           component: postTemplate,
           context: {
             id: post.id,
@@ -217,6 +220,15 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: `slug`,
       node,
       value,
+    })
+  }
+
+  if (node.internal.type === 'wordpress__POST') {
+    const link = new URL(node.link).pathname
+    createNodeField({
+      node,
+      name: `link`,
+      value: link,
     })
   }
 }

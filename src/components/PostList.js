@@ -19,7 +19,7 @@ export default class IndexPage extends React.Component {
               key={post.id}
             >
               <p>
-                <Link className="has-text-primary" to={post.slug}>
+                <Link className="has-text-primary" to={post.fields.link}>
                   {post.title}
                 </Link>
                 <span> &bull; </span>
@@ -36,7 +36,7 @@ export default class IndexPage extends React.Component {
                     __html: post.excerpt.replace(/<p class="link-more.*/, ''),
                   }}
                 />
-                <Link className="button is-small" to={post.slug}>
+                <Link className="button is-small" to={post.fields.link}>
                   Keep Reading →
                 </Link>
               </div>
@@ -66,6 +66,8 @@ export const pageQuery = graphql`
       }
     }
     date(formatString: "MMMM DD, YYYY")
-    slug
+    fields {
+      link
+    }
   }
 `

@@ -19,6 +19,22 @@ module.exports = {
         auth: {},
         // Set to true to debug endpoints on 'gatsby build'
         verboseOutput: true,
+        includedRoutes: [
+          "**/*/*/categories",
+          "**/*/*/events",
+          "**/*/*/posts",
+          "**/*/*/pages",
+          "**/*/*/media",
+          "**/*/*/tags",
+          "**/*/*/taxonomies",
+          "**/*/*/users",
+        ],
+        excludedRoutes: [
+          "/yoast/**",
+          "**/*/*/comments",
+          "**/*/*/settings",
+          "**/*/*/users/me",
+        ],
       },
     },
     'gatsby-plugin-sharp',

@@ -6,7 +6,6 @@ import PostList from '../components/PostList'
 
 const Author = props => {
   const { data } = props
-  console.log(data.wordpressWpUsers)
   const { authored_wordpress__POST, name } = data.wordpressWpUsers
   const totalCount =
     (authored_wordpress__POST && authored_wordpress__POST.length) || 0

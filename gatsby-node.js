@@ -224,7 +224,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 
   if ((node.internal.type === 'wordpress__POST') ||
-      (node.internal.type === 'wordpress__EVENT')) {
+      (node.internal.type === 'wordpress__wp_events')) {
     const link = new URL(node.link).pathname
     createNodeField({
       node,

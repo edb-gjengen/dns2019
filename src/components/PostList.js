@@ -14,8 +14,7 @@ export default class IndexPage extends React.Component {
           </div>
           {posts.map(({ node: post }) => (
             <div
-              className="content"
-              style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
+              className="blog-post"
               key={post.id}
             >
               <p>

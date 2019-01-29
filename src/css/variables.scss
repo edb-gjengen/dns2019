@@ -1,1 +1,14 @@
-$color-background: orange;
+/* DNS PALETTE 2019 */
+
+$color-orange: #F58220;
+$color-red: #CB3626;
+$color-yellow: #FBD36E;
+$color-pink: #FFD5DC;
+$color-green: #92CBA5;
+$color-black: #060606;
+$color-white: #FAFAFA;
+
+$color-background: $color-black;
+$color-text: $color-white;
+$color-links: $color-orange;
+$color-hover: $color-yellow;

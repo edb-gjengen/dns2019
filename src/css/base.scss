@@ -1,8 +1,17 @@
 body {
+  font-family: $sans-serif;
   background: $color-background;
+  color: $color-text;
+}
+
+a {
+  color: $color-links;
+  
+  &:hover {
+    color: $color-hover;
+  }
 }
 
 .blog-post {
-  background: white;
   padding: 0 0 2rem;
 }

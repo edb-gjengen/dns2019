@@ -7,36 +7,33 @@ export default class IndexPage extends React.Component {
     const { posts, title } = this.props
 
     return (
-      <section className="section">
-        <div className="container">
-          <div className="content">
-            <h1 className="has-text-weight-bold is-size-2">{title}</h1>
-          </div>
+      <section>
+        <h1>{title}</h1>
+        <div className="post-list">
           {posts.map(({ node: post }) => (
             <div
-              className="blog-post"
+              className="post"
               key={post.id}
             >
-              <p>
-                <Link className="has-text-primary" to={post.fields.link}>
+              <header className="post-header">
+                <Link className="post-title" to={post.fields.link}>
                   {post.title}
                 </Link>
-                <span> &bull; </span>
-                <small>
+                <div className="post-meta">
                   {post.date} - posted by{' '}
                   <Link to={`/author/${post.author.slug}`}>
                     {post.author.name}
                   </Link>
-                </small>
-              </p>
+                </div>
+              </header>
               <div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: post.excerpt.replace(/<p class="link-more.*/, ''),
                   }}
                 />
-                <Link className="button is-small" to={post.fields.link}>
-                  Keep Reading →
+                <Link className="read-more" to={post.fields.link}>
+                  &rarr;
                 </Link>
               </div>
             </div>

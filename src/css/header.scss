@@ -1,0 +1,25 @@
+.site-header {
+  padding: 1rem 2rem;
+  background: $color-black;
+  display: flex;
+}
+
+.logo {
+  width: 3rem;
+  margin-right: 2rem;
+
+  a {
+    display: block;
+  }
+}
+
+.site-nav {
+  display: block;
+  height: 100%;
+  a {
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
+  }
+}

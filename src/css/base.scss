@@ -13,12 +13,13 @@
 html {
 	font-size: calc(14px + 6 * ((100vw - 320px) / 1200));
   height: 100%;
+  background: $color-background;
 }
 
 body {
   min-height: 100%;
   margin: 0;
-  padding: 0 2rem;
+  padding: 0;
   background: $color-background;
   color: $color-text;
 
@@ -26,8 +27,15 @@ body {
   line-height: 1.6;
 }
 
+main {
+  padding: 2rem 2rem 6rem;
+  background: $color-white;
+  color: $color-black;
+}
+
 a {
   color: $color-link;
+  transition: all .2s ease-in-out;
 
   &:hover {
     color: $color-hover;
@@ -35,9 +43,27 @@ a {
 }
 
 p {
-  max-width: 30rem;
+  max-width: 32rem;
+  margin: 0 auto 2rem;
 }
 
-.blog-post {
-  padding: 0 0 2rem;
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin: 0 auto 1rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+img {
+  max-width: 100%;
 }

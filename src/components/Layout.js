@@ -8,7 +8,7 @@ const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet title="Home | Gatsby + WordPress" />
     <Navbar />
-    <div>{children}</div>
+    <main>{children}</main>
   </div>
 )
 

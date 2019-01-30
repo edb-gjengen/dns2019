@@ -1,0 +1,29 @@
+.section-title {
+  margin-bottom: 1.6rem;
+  font-weight: 900;
+}
+
+.page {
+  &-content {
+    max-width: $width-m;
+    margin: 0 auto;
+
+    img, div {
+      max-width: 100%;
+    }
+
+    ul {
+      max-width: $width-s;
+      margin: 0 auto 1rem;
+    }
+
+    ul, p {
+      margin: 0 auto 1.6rem;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      max-width: $width-s;
+      margin-top: 3.6rem;
+    }
+  }
+}

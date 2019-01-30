@@ -1,5 +1,6 @@
 .blog {
   background: $color-yellow;
+  padding-bottom: 1rem;
 }
 
 .post-list {
@@ -8,7 +9,7 @@
 }
 
 .post {
-  width: 26rem;
+  width: $width-xs;
   padding: 1.2rem;
   margin: 0 1rem 1rem 0;
 
@@ -31,6 +32,29 @@
     font-size: 0.8rem;
     margin-bottom: 1rem;
   }
+
+  &-content {
+    max-width: $width-m;
+    margin: 0 auto;
+
+    img, div {
+      max-width: 100%;
+    }
+
+    ul {
+      max-width: $width-s;
+      margin: 0 auto 1rem;
+    }
+
+    ul, p {
+      margin: 0 auto 1.6rem;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      max-width: $width-s;
+      margin-top: 3.6rem;
+    }
+  }
 }
 
 .read-more {
@@ -46,5 +70,50 @@
   &:hover {
     background: $color-yellow;
     color: $color-black;
+  }
+}
+
+.pagination {
+  text-align: center;
+  background: $color-yellow;
+  padding-bottom: 3rem;
+  a {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background: $color-black;
+    color: $color-orange;
+    text-decoration: none;
+    border-radius: 10rem;
+    margin-right: 0.6rem;
+
+    &:hover {
+      background: $color-orange;
+      color: $color-black;
+    }
+  }
+}
+
+.post-page {
+  .section-title {
+    font-size: 4rem;
+    line-height: 1.14;
+  }
+  .post-meta, .section-title {
+    max-width: $width-l;
+    margin: 0 auto 1rem;
+  }
+  .post-meta {
+    p {
+      margin-left: 0;
+    }
+  }
+}
+
+.wp-caption {
+  max-width: 100%;
+  margin-bottom: 3rem;
+
+  &-text {
+    font-size: 0.8rem;
   }
 }

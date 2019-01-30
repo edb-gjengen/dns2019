@@ -23,7 +23,7 @@ export const BlogPostTemplate = ({
           <Link to={`/author/${author.slug}`}>{author.name}</Link>
         </p>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div className="post-content" dangerouslySetInnerHTML={{ __html: content }} />
         {categories && categories.length ? (
           <div>
             <h4>Categories</h4>

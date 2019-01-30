@@ -6,22 +6,16 @@ const Pagination = ({ pageContext, pathPrefix }) => {
 
   return (
     <nav className="pagination" role="navigation">
-      <div className="navbar navbar-menu">
-        {previousPagePath && (
-          <div className="navbar-item">
-            <Link to={previousPagePath} rel="prev">
-              Previous
-            </Link>
-          </div>
-        )}
-        {nextPagePath && (
-          <div className="navbar-item">
-            <Link to={nextPagePath} rel="next">
-              Next
-            </Link>
-          </div>
-        )}
-      </div>
+      {previousPagePath && (
+        <Link to={previousPagePath} rel="prev">
+          &larr; Forrige
+        </Link>
+      )}
+      {nextPagePath && (
+        <Link to={nextPagePath} rel="next">
+          Neste &rarr;
+        </Link>
+      )}
     </nav>
   )
 }

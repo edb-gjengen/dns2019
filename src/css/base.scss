@@ -2,12 +2,6 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  &:focus {
-    outline: none;
-    padding-bottom: 0.1rem;
-    margin-bottom: 0.1rem;
-    border-bottom: 1px solid $color-link;
-  }
 }
 
 html {

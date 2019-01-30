@@ -20,10 +20,7 @@ export default class IndexPage extends React.Component {
                   {post.title}
                 </Link>
                 <div className="post-meta">
-                  {post.date} - posted by{' '}
-                  <Link to={`/author/${post.author.slug}`}>
-                    {post.author.name}
-                  </Link>
+                  {post.date}
                 </div>
               </header>
               <div>

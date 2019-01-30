@@ -19,8 +19,7 @@ export const BlogPostTemplate = ({
       </h1>
       <div className="post-meta">
         <p>
-          {date} - posted by{' '}
-          <Link to={`/author/${author.slug}`}>{author.name}</Link>
+          {date} av <Link to={`/author/${author.slug}`}>{author.name}</Link>
         </p>
       </div>
       <div className="post-content" dangerouslySetInnerHTML={{ __html: content }} />

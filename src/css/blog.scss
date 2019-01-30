@@ -1,3 +1,7 @@
+.blog {
+  background: $color-yellow;
+}
+
 .post-list {
   display: flex;
   flex-wrap: wrap;
@@ -12,7 +16,6 @@
   color: $color-black;
 
   box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.3);
-  border: 0.16rem solid $color-black;
 
   &-title {
     display: block;

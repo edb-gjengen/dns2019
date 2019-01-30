@@ -28,9 +28,12 @@ body {
 }
 
 main {
-  padding: 2rem 2rem 6rem;
   background: $color-white;
   color: $color-black;
+}
+
+section {
+  padding: 2rem 2rem 6rem;
 }
 
 a {
@@ -66,4 +69,8 @@ h3 {
 
 img {
   max-width: 100%;
+}
+
+.section-title {
+  margin-bottom: 1.6rem;
 }

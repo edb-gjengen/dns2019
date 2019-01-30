@@ -7,8 +7,8 @@ export default class IndexPage extends React.Component {
     const { posts, title } = this.props
 
     return (
-      <section>
-        <h1>{title}</h1>
+      <section class="blog">
+        <h1 class="section-title">{title}</h1>
         <div className="post-list">
           {posts.map(({ node: post }) => (
             <div

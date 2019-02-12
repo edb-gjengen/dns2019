@@ -109,6 +109,58 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
+          allWordpressWpEvents {
+            edges {
+              node {
+                id
+                slug
+                status
+                fields {
+                  link
+                }
+              }
+            }
+          }
+        }
+      `)
+    })
+    .then(result => {
+      if (result.errors) {
+        result.errors.forEach(e => console.error(e.toString()))
+        return Promise.reject(result.errors)
+      }
+
+      const eventTemplate = path.resolve(`./src/templates/event.js`)
+
+      // In production builds, filter for only published events.
+      const allEvents = result.data.allWordpressWpEvents.edges
+      const events =
+        process.env.NODE_ENV === 'production'
+          ? getOnlyPublished(allEvents)
+          : allEvents
+
+      // Iterate over the array of events
+      _.each(events, ({ node: event }) => {
+        // Create the Gatsby page for this WordPress event
+        createPage({
+          path: event.fields.link,
+          component: eventTemplate,
+          context: {
+            id: event.id,
+          },
+        })
+      })
+
+      // Create the event program
+      const programTemplate = path.resolve(`./src/templates/event-program.js`)
+      createPage({
+        path: `/program/`,
+        component: programTemplate,
+      })
+    })
+    .then(() => {
+      return graphql(`
+        {
           allWordpressCategory(filter: { count: { gt: 0 } }) {
             edges {
               node {

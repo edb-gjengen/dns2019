@@ -5,6 +5,17 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Img from 'gatsby-image'
 
+const formatPrices = (regular, student) => {
+  let cc = ''
+  if (regular && regular != 0) {
+    cc += regular
+  }
+  if (student && student != 0) {
+    cc += ' / ' + student
+  }
+  return cc == '' ? 'Gratis' : cc
+}
+
 export const EventTemplate = ({
   content,
   title,
@@ -15,7 +26,7 @@ export const EventTemplate = ({
   facebookUrl,
   ticketUrl,
   priceStudent,
-  priceOrdinary
+  priceRegular
 }) => {
   return (
     <section className="event">
@@ -25,25 +36,30 @@ export const EventTemplate = ({
         <div className="featured-image">
           <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
         </div>
-        <div classname="start-time">
+        <div className="start-time">
             Start: {startTime}
         </div>
-        <div className="end-time">
+        {endTime &&
+          <div className="end-time">
             Slutt: {endTime}
-        </div>
+          </div>
+        }
         <div className="venue">
             Lokale: {venue}
         </div>
-        <div className="facebook-url">
+        {facebookUrl &&
+          <div className="facebook-url">
             Facebook: {facebookUrl}
-        </div>
+          </div>
+        }
         <div className="price">
-            Student: {priceStudent}
-            Ordinær: {priceOrdinary}
+            Pris: {formatPrices(priceRegular, priceStudent)}
         </div>
-        <div className="tickets">
+        {ticketUrl &&
+          <div className="tickets">
             Kjøp billett: {ticketUrl}
-        </div>
+          </div>
+        }
         <div dangerouslySetInnerHTML={{ __html: content }} />
     </section>
   )

@@ -111,11 +111,7 @@ export const eventQuery = graphql`
       price_regular
       featured_media {
         localFile {
-          childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+          ...FluidImage
         }
       }
     }

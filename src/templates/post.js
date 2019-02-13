@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
+import Img from 'gatsby-image'
 
 export const BlogPostTemplate = ({
   content,
@@ -11,6 +12,7 @@ export const BlogPostTemplate = ({
   title,
   date,
   author,
+  featuredMedia,
 }) => {
   return (
     <section className="post-page">
@@ -21,6 +23,9 @@ export const BlogPostTemplate = ({
         <p>
           {date} av <Link to={`/author/${author.slug}`}>{author.name}</Link>
         </p>
+      </div>
+      <div className="featured-image">
+          <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
       </div>
       <div className="post-content" dangerouslySetInnerHTML={{ __html: content }} />
         {categories && categories.length ? (
@@ -71,6 +76,7 @@ const BlogPost = ({ data }) => {
         title={post.title}
         date={post.date}
         author={post.author}
+        featuredMedia={post.featured_media}
       />
     </Layout>
   )
@@ -85,6 +91,13 @@ BlogPost.propTypes = {
 export default BlogPost
 
 export const pageQuery = graphql`
+  fragment FluidImage on File {
+    childImageSharp {
+      fluid(maxWidth: 800) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
   fragment PostFields on wordpress__POST {
     id
     slug
@@ -110,6 +123,11 @@ export const pageQuery = graphql`
       author {
         name
         slug
+      }
+      featured_media {
+        localFile {
+          ...FluidImage
+        }
       }
     }
   }

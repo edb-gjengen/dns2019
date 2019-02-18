@@ -31,9 +31,6 @@ export default class IndexPage extends React.Component {
                       __html: post.excerpt.replace(/<p class="link-more.*/, ''),
                     }}
                   />
-                  <Link className="read-more" to={post.fields.link}>
-                    &rarr;
-                  </Link>
                 </div>
               </div>
             </div>

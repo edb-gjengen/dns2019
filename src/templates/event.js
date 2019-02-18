@@ -30,37 +30,41 @@ export const EventTemplate = ({
 }) => {
   return (
     <section className="event-page">
-        <h1 className="section-title">
-            {title}
-        </h1>
-        <div className="featured-image">
+      <div className="event-hero">
+        <div className="event-hero_text">
+          <h1>
+              {title}
+          </h1>
+          <div className="venue">
+            i {venue}
+          </div>
+          <div className="start-time">
+            Start: {startTime}
+          </div>
+          {endTime &&
+            <div className="end-time">
+              Slutt: {endTime}
+            </div>
+          }
+          <div className="price">
+              Pris: {formatPrices(priceRegular, priceStudent)}
+          </div>
+          {ticketUrl &&
+            <div className="tickets">
+              Kjøp billett: {ticketUrl}
+            </div>
+          }
+          {facebookUrl &&
+            <a className="facebook-url" href={facebookUrl}>Se Facebook-event</a>
+          }
+        </div>
+        <div className="event-hero_image">
           <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
         </div>
-        <div className="start-time">
-            Start: {startTime}
-        </div>
-        {endTime &&
-          <div className="end-time">
-            Slutt: {endTime}
-          </div>
-        }
-        <div className="venue">
-            Lokale: {venue}
-        </div>
-        {facebookUrl &&
-          <div className="facebook-url">
-            Facebook: {facebookUrl}
-          </div>
-        }
-        <div className="price">
-            Pris: {formatPrices(priceRegular, priceStudent)}
-        </div>
-        {ticketUrl &&
-          <div className="tickets">
-            Kjøp billett: {ticketUrl}
-          </div>
-        }
+      </div>
+      <div className="event-body">
         <div dangerouslySetInnerHTML={{ __html: content }} />
+      </div>
     </section>
   )
 }

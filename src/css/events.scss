@@ -10,25 +10,62 @@
 
 .event {
   width: $width-xs;
-  margin: 0 1rem 1.3rem 0;
+  margin: 0 2.4rem 1.2rem 0;
   position: relative;
+
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid $color-white;
   
   &-title {
     display: block;
     text-decoration: none;
     color: inherit;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 0.4rem;
   }
 
   &-meta {
-    font-size: $font-sm;
+    font-size: $font-s;
   }
 }
 
 .event-page {
   background: $color-black;
   color: $color-white;
+  padding-top: 0;
+}
+
+.event-hero {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  
+  &_text, &_image {
+    width: 50%;
+  }
+
+
+  @media (max-width: $media-m) {
+    &_text, &_image {
+      width: 100%;
+    }
+  }
+
+  &_image {
+    height: 100%;
+  }
+
+  &_text {
+    padding: 4rem 0 2rem;
+  }
+
+  h1 {
+    font-size: 3.6rem;
+  }
+
+  .venue {
+    margin-bottom: 1rem;
+  }
 }

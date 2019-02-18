@@ -25,7 +25,11 @@
   }
 
   &-text {
-    padding: 0.4rem 1rem 1rem;
+    padding: 0.4rem 1rem 1.4rem;
+
+    p {
+      margin-bottom: 0;
+    }
   }
 
   &-title {
@@ -65,26 +69,6 @@
       margin-top: 3.6rem;
     }
   }
-}
-
-.read-more {
-  display: inline-block;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-
-  /*padding: 0.4rem;
-  border-radius: 50%;
-  line-height: 1;
-  background: $color-orange;*/
-  color: $color-black;
-  text-decoration: none;
-  font-weight: bold;
-
-  /*&:hover {
-    background: $color-yellow;
-    color: $color-black;
-  }*/
 }
 
 .pagination {

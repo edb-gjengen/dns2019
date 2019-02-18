@@ -22,12 +22,15 @@
     text-decoration: none;
     display: inline-block;
     margin-right: 1.6rem;
+    &:last-child {
+      margin-right: 0;
+    }
 
     color: $color-white;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    font-size: $font-sm;
+    font-size: $font-s;
 
     &:hover {
       color: $color-orange;

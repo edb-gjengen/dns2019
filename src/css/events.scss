@@ -11,24 +11,34 @@
 
 .event {
   width: $width-xs;
-  margin: 0 3.2rem 1.2rem 0;
+  margin: 0 3.6rem 1.2rem 0;
   position: relative;
 
   padding-bottom: 1.6rem;
   border-bottom: 1px solid $color-white;
+
+  text-decoration: none;
   
   &-title {
     display: block;
     text-decoration: none;
-    color: inherit;
+    color: $color-orange;
     font-size: 1.3rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 0.4rem;
+    transition: color .12s ease-in-out;
+  }
+
+  &:hover {
+    .event-title {
+      color: $color-white;
+    }
   }
 
   &-meta {
     font-size: $font-s;
+    color: $color-white;
   }
 }
 
@@ -41,7 +51,10 @@
 .event-hero {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  align-items: center;
+
+  max-width: $width-l;
+  margin: 0 auto 4rem;
   
   &_text, &_image {
     width: 50%;
@@ -81,10 +94,15 @@
     letter-spacing: 0.06em;
     font-weight: 500;
 
-    transition: background .2s ease-in-out;
+    box-shadow: -0.4rem 0.4rem 0 -0.1rem $color-orange;
+    border: 0.1rem solid $color-black;
+
+    transition: all .2s ease-in-out;
 
     &:hover {
-      background: $color-orange;
+      background: $color-white;
+      transform: translate(0.2rem, -0.2rem);
+      box-shadow: -0.6rem 0.6rem 0 -0.13rem $color-orange;
     }
   }
 

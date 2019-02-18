@@ -11,19 +11,21 @@ export default class EventList extends React.Component {
         <h1 className="section-title">{title}</h1>
         <div className="event-list">
           {events.map(({ node: event }) => (
-            <div
+            <Link 
+              className="event-title" 
+              to={event.fields.link}
               className="event"
               key={event.id}
             >
               <header className="event-header">
-                <Link className="event-title" to={event.fields.link}>
+                <h2 className="event-title">
                   {event.title}
-                </Link>
+                </h2>
                 <div className="event-meta">
                   {event.start_time}&mdash;{event.end_time}
                 </div>
               </header>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

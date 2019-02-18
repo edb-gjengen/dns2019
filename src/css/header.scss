@@ -15,7 +15,9 @@
 }
 
 .site-nav {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   a {
     text-decoration: none;
     display: inline-block;
@@ -23,6 +25,9 @@
 
     color: $color-white;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: $font-sm;
 
     &:hover {
       color: $color-orange;

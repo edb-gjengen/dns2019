@@ -1,0 +1,34 @@
+.events {
+  background: $color-black;
+  color: $color-white;
+}
+
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.event {
+  width: $width-xs;
+  margin: 0 1rem 1.3rem 0;
+  position: relative;
+  
+  &-title {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+
+  &-meta {
+    font-size: $font-sm;
+  }
+}
+
+.event-page {
+  background: $color-black;
+  color: $color-white;
+}

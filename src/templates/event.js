@@ -29,8 +29,8 @@ export const EventTemplate = ({
   priceRegular
 }) => {
   return (
-    <section className="event">
-        <h1 className="title">
+    <section className="event-page">
+        <h1 className="section-title">
             {title}
         </h1>
         <div className="featured-image">

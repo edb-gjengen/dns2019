@@ -50,9 +50,7 @@ export const EventTemplate = ({
               Pris: {formatPrices(priceRegular, priceStudent)}
           </div>
           {ticketUrl &&
-            <div className="tickets">
-              Kjøp billett: {ticketUrl}
-            </div>
+            <a className="ticket-url" href={ticketUrl}>Kjøp billetter</a>
           }
           {facebookUrl &&
             <a className="facebook-url" href={facebookUrl}>Se Facebook-event</a>

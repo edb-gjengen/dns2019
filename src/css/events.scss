@@ -6,11 +6,12 @@
 .event-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .event {
   width: $width-xs;
-  margin: 0 2.4rem 1.2rem 0;
+  margin: 0 3.2rem 1.2rem 0;
   position: relative;
 
   padding-bottom: 1.6rem;
@@ -58,7 +59,7 @@
   }
 
   &_text {
-    padding: 4rem 0 2rem;
+    padding: 4rem 2rem 2rem 0;
   }
 
   h1 {
@@ -67,5 +68,27 @@
 
   .venue {
     margin-bottom: 1rem;
+  }
+
+  .ticket-url {
+    display: inline-block;
+    background: $color-yellow;
+    color: $color-black;
+    margin: 1rem 0;
+    padding: 0.6rem 1.4rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+
+    transition: background .2s ease-in-out;
+
+    &:hover {
+      background: $color-orange;
+    }
+  }
+
+  .facebook-url {
+    display: block;
   }
 }

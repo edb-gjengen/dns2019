@@ -15,23 +15,26 @@ export default class IndexPage extends React.Component {
               className="post"
               key={post.id}
             >
-              <header className="post-header">
-                <Link className="post-title" to={post.fields.link}>
-                  {post.title}
-                </Link>
-                <div className="post-meta">
-                  {post.date}
+              <img className="post-image" src="https://studentersamfundet.no/wp-content/uploads/2018/10/Fjor%C3%A5rets-festival_Fotograf-Karin-Kaczykowski-i-Studentenes-Fotoklubb-1280x720.jpg" />
+              <div className="post-text">
+                <header className="post-header">
+                  <Link className="post-title" to={post.fields.link}>
+                    {post.title}
+                  </Link>
+                  <div className="post-meta">
+                    {post.date}
+                  </div>
+                </header>
+                <div className="post-body">
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: post.excerpt.replace(/<p class="link-more.*/, ''),
+                    }}
+                  />
+                  <Link className="read-more" to={post.fields.link}>
+                    &rarr;
+                  </Link>
                 </div>
-              </header>
-              <div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.excerpt.replace(/<p class="link-more.*/, ''),
-                  }}
-                />
-                <Link className="read-more" to={post.fields.link}>
-                  &rarr;
-                </Link>
               </div>
             </div>
           ))}

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 export default class EventList extends React.Component {
   render() {
@@ -21,6 +22,10 @@ export default class EventList extends React.Component {
                 <h2 className="event-title">
                   {event.title}
                 </h2>
+                <div className="event-image">
+                  {event.featured_media && event.featured_media.localFile &&
+                    <Img fluid={event.featured_media.localFile.childImageSharp.fluid} />}
+                </div>
                 <div className="event-meta">
                   <span class="event-start">18:00</span>
                   {event.start_time}&mdash;{event.end_time}
@@ -45,6 +50,11 @@ export const pageQuery = graphql`
     title
     start_time(formatString: "MMMM DD, YYYY")
     end_time(formatString: "MMMM DD, YYYY")
+    featured_media {
+      localFile {
+        ...FluidImage
+      }
+    }
     fields {
       link
     }

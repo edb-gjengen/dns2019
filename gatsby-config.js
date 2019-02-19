@@ -1,3 +1,5 @@
+const { neufNormalizer } = require('./src/wordpress')
+
 module.exports = {
   siteMetadata: {
     title: 'Det Norske Studentersamfund',
@@ -35,6 +37,7 @@ module.exports = {
           "**/*/*/settings",
           "**/*/*/users/me",
         ],
+        normalizer: neufNormalizer,
       },
     },
     'gatsby-plugin-sharp',

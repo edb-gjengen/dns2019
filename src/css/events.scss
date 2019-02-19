@@ -18,6 +18,12 @@
   border-bottom: 1px solid $color-white;
 
   text-decoration: none;
+
+  &-image {
+    width: 5rem;
+    margin: 0 1rem 1rem 0;
+    float: right;
+  }
   
   &-title {
     display: block;

@@ -12,20 +12,19 @@ export default class EventList extends React.Component {
         <h1 className="section-title">{title}</h1>
         <div className="event-list">
           {events.map(({ node: event }) => (
-            <Link 
-              className="event-title" 
+            <Link
               to={event.fields.link}
               className="event"
               key={event.id}
             >
+              <div className="event-image">
+                {event.featured_media && event.featured_media.localFile &&
+                  <Img fluid={event.featured_media.localFile.childImageSharp.fluid} />}
+              </div>
               <header className="event-header">
                 <h2 className="event-title">
                   {event.title}
                 </h2>
-                <div className="event-image">
-                  {event.featured_media && event.featured_media.localFile &&
-                    <Img fluid={event.featured_media.localFile.childImageSharp.fluid} />}
-                </div>
                 <div className="event-meta">
                   <span class="event-start">18:00</span>
                   {event.start_time}&mdash;{event.end_time}

@@ -12,10 +12,11 @@ export const BlogPostTemplate = ({
   title,
   date,
   author,
+  hasFeaturedMedia,
   featuredMedia,
 }) => {
   return (
-    <section className="post-page">
+    <section className={`post-page ${hasFeaturedMedia ? 'has-featured-media' : 'no-featured-media'}`}>
       <div className="post-hero">
         <div className="post-hero_text">
           <h1>
@@ -27,9 +28,9 @@ export const BlogPostTemplate = ({
             </p>
           </div>
         </div>
-        <div className="post-hero_image">
+        {hasFeaturedMedia && <div className="post-hero_image">
           <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
-        </div>
+        </div>}
       </div>
       <div className="post-content" dangerouslySetInnerHTML={{ __html: content }} />
         {categories && categories.length ? (
@@ -80,6 +81,7 @@ const BlogPost = ({ data }) => {
         title={post.title}
         date={post.date}
         author={post.author}
+        hasFeaturedMedia={!!post.featured_media.localFile}
         featuredMedia={post.featured_media}
       />
     </Layout>

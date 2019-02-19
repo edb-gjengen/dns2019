@@ -44,8 +44,12 @@
   }
 
   &-meta {
-    font-size: 0.8rem;
+    font-size: $font-s;;
     margin-bottom: 1rem;
+  }
+
+  &-body {
+    font-size: $font-s;
   }
 
   &-content {
@@ -69,6 +73,40 @@
       max-width: $width-s;
       margin-top: 3.6rem;
     }
+  }
+}
+
+.post-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+
+  max-width: $width-xl;
+  margin: 0 auto 4rem;
+  
+  &_text, &_image {
+    width: 50%;
+  }
+
+
+  @media (max-width: $media-m) {
+    &_text, &_image {
+      width: 100%;
+    }
+  }
+
+  &_image {
+    position: relative;
+  }
+
+  &_text {
+    padding: 4rem 2rem 2rem 0;
+    z-index: 666;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+    text-shadow: -0.1rem 1.6rem 0 $color-white;
   }
 }
 

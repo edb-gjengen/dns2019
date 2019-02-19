@@ -35,26 +35,28 @@ export const EventTemplate = ({
           <h1>
               {title}
           </h1>
-          <div className="venue">
-            i {venue}
-          </div>
-          <div className="start-time">
-            Start: {startTime}
-          </div>
-          {endTime &&
-            <div className="end-time">
-              Slutt: {endTime}
+          <div className="event-meta">
+            <div className="venue">
+              i {venue}
             </div>
-          }
-          <div className="price">
-              Pris: {formatPrices(priceRegular, priceStudent)}
+            <div className="start-time">
+              Start: {startTime}
+            </div>
+            {endTime &&
+              <div className="end-time">
+                Slutt: {endTime}
+              </div>
+            }
+            <div className="price">
+                Pris: {formatPrices(priceRegular, priceStudent)}
+            </div>
+            {ticketUrl &&
+              <a className="ticket-url" href={ticketUrl}>Kjøp billetter</a>
+            }
+            {facebookUrl &&
+              <a className="facebook-url" href={facebookUrl}>Se Facebook-event</a>
+            }
           </div>
-          {ticketUrl &&
-            <a className="ticket-url" href={ticketUrl}>Kjøp billetter</a>
-          }
-          {facebookUrl &&
-            <a className="facebook-url" href={facebookUrl}>Se Facebook-event</a>
-          }
         </div>
         <div className="event-hero_image">
           <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />

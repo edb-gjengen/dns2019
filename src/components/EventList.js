@@ -22,6 +22,7 @@ export default class EventList extends React.Component {
                   {event.title}
                 </h2>
                 <div className="event-meta">
+                  <span class="event-start">18:00</span>
                   {event.start_time}&mdash;{event.end_time}
                 </div>
               </header>

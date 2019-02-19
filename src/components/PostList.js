@@ -21,9 +21,7 @@ export default class IndexPage extends React.Component {
                   <Link className="post-title" to={post.fields.link}>
                     {post.title}
                   </Link>
-                  <div className="post-meta">
-                    {post.date}
-                  </div>
+                  {/*<div className="post-meta">{post.date}</div>*/}
                 </header>
                 <div className="post-body">
                   <div

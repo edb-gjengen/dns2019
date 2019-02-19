@@ -16,16 +16,20 @@ export const BlogPostTemplate = ({
 }) => {
   return (
     <section className="post-page">
-      <h1 className="section-title">
-        {title}
-      </h1>
-      <div className="post-meta">
-        <p>
-          {date} av <Link to={`/author/${author.slug}`}>{author.name}</Link>
-        </p>
-      </div>
-      <div className="featured-image">
+      <div className="post-hero">
+        <div className="post-hero_text">
+          <h1>
+              {title}
+          </h1>
+          <div className="post-meta">
+            <p>
+              {date} av <Link to={`/author/${author.slug}`}>{author.name}</Link>
+            </p>
+          </div>
+        </div>
+        <div className="post-hero_image">
           <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+        </div>
       </div>
       <div className="post-content" dangerouslySetInnerHTML={{ __html: content }} />
         {categories && categories.length ? (

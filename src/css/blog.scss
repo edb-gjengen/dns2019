@@ -14,15 +14,20 @@
   width: $width-xs;
   margin: 0 1rem 1.3rem 0;
   position: relative;
+  text-decoration: none;
 
-  background: $color-white;
+  background: $color-yellow;
   color: $color-black;
+  box-shadow: 
+    0 0 0 0.3rem $color-black,
+    0 0 0 0.35rem $color-black;
+  transition: box-shadow .1s ease-in-out;
 
-  &:nth-child(2n+1) {
-    background: $color-pink;
-  }
-  &:nth-child(3n+1) {
-    background: $color-yellow;
+  &:hover {
+    color: $color-black;
+    box-shadow: 
+      0 0 0 0.3rem $color-black,
+      0 0 0 0.35rem $color-yellow;
   }
 
   &-text {

@@ -33,6 +33,7 @@ const Navbar = () => (
               {edge.node.title}
             </Link>
           ))}
+          <div class="site-nav_toggle">=</div>
         </nav>
       </header>
     )}

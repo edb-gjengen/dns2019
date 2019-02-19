@@ -36,4 +36,39 @@
       color: $color-orange;
     }
   }
+  &_toggle {
+    position: fixed;
+    top: 1rem;
+    right: 2rem;
+    font-size: 3rem;
+    transform: translateX(3em);
+    transition: transform .3s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-orange;
+    }
+  }
+}
+
+@media (max-width: $media-s) {
+  .site-header {
+    display: block;
+  }
+  .logo {
+    margin: 1rem auto;
+  }
+  .site-nav {
+    display: block;
+    text-align: center;
+    margin-top: 3rem;
+    a {
+      display: block;
+      margin: 1.2rem 0;
+      font-size: 1rem;
+    }
+    &_toggle {
+      transform: translateX(0);
+    }
+  }
 }

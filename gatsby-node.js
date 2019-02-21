@@ -3,25 +3,6 @@ const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { paginate } = require('gatsby-awesome-pagination')
 
-const neufNormalizer = ({ entities }) => {
-  entities = decodeTitles(entities)
-  return entities
-}
-
-exports.neufNormalizer = neufNormalizer
-
-const Entities = require('html-entities').AllHtmlEntities;
-const htmlEntities = new Entities();
-
-const decodeTitles = entities => {
-  return entities.map(e => {
-    if (e.title) {
-      e.title = htmlEntities.decode(e.title)
-    }
-    return e
-  })
-}
-
 const getOnlyPublished = edges =>
   _.filter(edges, ({ node }) => node.status === 'publish')
 

@@ -3,7 +3,26 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
+import moment from 'moment';
+import 'moment/locale/nb'
+moment.locale('nb')
+
 export default class EventList extends React.Component {
+  formatDate(dt) {
+    return moment(dt).format('D. MMMM')
+  }
+
+  formatTime(dt) {
+    return moment(dt).format('HH:mm')
+  }
+
+  formatTimes(start, end, sep) {
+    if (!end) {
+      return this.formatTime(start)
+    }
+    return this.formatTime(start) + sep + this.formatTime(end)
+  }
+
   render() {
     const { events, title } = this.props
 
@@ -26,8 +45,8 @@ export default class EventList extends React.Component {
                   {event.title}
                 </h2>
                 <div className="event-meta">
-                  <span class="event-start">18:00</span>
-                  {event.start_time}&mdash;{event.end_time}
+                  <span class="event-start">{this.formatTime(event.start_time)}</span>
+                  <span class="event-date">{this.formatDate(event.start_time)}</span>
                 </div>
               </header>
             </Link>
@@ -47,8 +66,8 @@ export const pageQuery = graphql`
   fragment EventListFields on wordpress__wp_events {
     id
     title
-    start_time(formatString: "MMMM DD, YYYY")
-    end_time(formatString: "MMMM DD, YYYY")
+    start_time
+    end_time
     featured_media {
       localFile {
         ...FluidImage

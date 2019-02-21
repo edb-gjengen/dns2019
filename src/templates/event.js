@@ -5,6 +5,10 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Img from 'gatsby-image'
 
+import moment from 'moment'
+import 'moment/locale/nb'
+moment.locale('nb')
+
 const formatPrices = (regular, student) => {
   let cc = ''
   if (regular && regular != 0) {
@@ -39,12 +43,23 @@ export const EventTemplate = ({
             <div className="venue">
               i {venue}
             </div>
-            <div className="start-time">
-              Start: {startTime}
+            <div className="event-date">
+              Dag:{' '}
+              <span className="event-date-weekday">{moment(startTime).format('dddd')} </span>
+              <span className="event-date-day">{moment(startTime).format('D.')} </span>
+              <span className="event-date-month">{moment(startTime).format('MMMM')} </span>
+              {/* Only specify year if different. */}
+              {!moment(startTime).isSame(new Date(), 'year') &&
+                <span className="event-date-year">{moment(startTime).format('YYYY')} </span>
+              }
             </div>
+            <div className="end-time">
+                Start: {moment(startTime).format('HH:mm')}
+            </div>
+            {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
             {endTime &&
               <div className="end-time">
-                Slutt: {endTime}
+                Slutt: {moment(endTime).format('HH:mm')}
               </div>
             }
             <div className="price">
@@ -86,7 +101,7 @@ const Event = ({ data }) => {
         content={event.content}
         featuredMedia={event.featured_media}
         startTime={event.start_time}
-        endTime={event.start_time}
+        endTime={event.end_time}
         venue={event.venue}
         facebookUrl={event.facebook_url}
         ticketUrl={event.ticket_url}

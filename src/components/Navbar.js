@@ -25,15 +25,20 @@ const Navbar = () => (
           </Link>
         </div>
         <nav className="site-nav">
-          {data.allWordpressPage.edges.map(edge => (
+          {/*data.allWordpressPage.edges.map(edge => (
             <Link
               to={edge.node.slug}
               key={edge.node.slug}
             >
               {edge.node.title}
             </Link>
-          ))}
-          <div class="site-nav_toggle">=</div>
+          ))*/}
+          <Link to="/program/">Program</Link>
+          <Link to="/foreningene/">Foreningene</Link>
+          <Link to="/om-dns/">Om oss</Link>
+          <Link to="/booking/">Utleie</Link>
+          <Link to="/kontakt/">Kontakt</Link>
+          <div className="site-nav_toggle">=</div>
         </nav>
       </header>
     )}

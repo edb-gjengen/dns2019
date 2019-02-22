@@ -8,19 +8,50 @@ import 'moment/locale/nb'
 moment.locale('nb')
 
 export default class EventList extends React.Component {
-  formatDate(dt) {
-    return moment(dt).format('D. MMMM')
-  }
-
-  formatTime(dt) {
-    return moment(dt).format('HH:mm')
-  }
-
-  formatTimes(start, end, sep) {
-    if (!end) {
-      return this.formatTime(start)
-    }
-    return this.formatTime(start) + sep + this.formatTime(end)
+  render_event(event) {
+    console.log(event)
+    return (
+      <Link
+        to={event.fields.link}
+        className="event"
+        key={event.id}
+      >
+        <div className="event-image">
+          {event.featured_media && event.featured_media.localFile &&
+            <Img fluid={event.featured_media.localFile.childImageSharp.fluid} />}
+        </div>
+        <header className="event-header">
+          <h2 className="event-title">
+            {event.title}
+          </h2>
+          <div className="event-meta">
+            <span className="event-start">{moment(event.start_time).format('HH:mm')}</span>
+            <span className="event-date">
+              <span className="event-date-weekday">{moment(event.start_time).format('dddd')} </span>
+              <span className="event-date-day">{moment(event.start_time).format('D.')} </span>
+              <span className="event-date-month">{moment(event.start_time).format('MMMM')} </span>
+              {/* Only specify year if different. */}
+              {!moment(event.start_time).isSame(new Date(), 'year') &&
+                <span className="event-date-year">{moment(event.start_time).format('YYYY')} </span>
+              }
+            </span>
+            {event.event_type && event.event_type.length &&
+              <div className="event-types">
+                <ul className="event-types-list">
+                  {event.event_type.map(type => (
+                    <li key={`${type.slug}`}>
+                      <Link to={type.fields.link}>
+                        {type.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            }
+          </div>
+        </header>
+      </Link>
+    )
   }
 
   render() {
@@ -31,25 +62,7 @@ export default class EventList extends React.Component {
         <h1 className="section-title">{title}</h1>
         <div className="event-list">
           {events.map(({ node: event }) => (
-            <Link
-              to={event.fields.link}
-              className="event"
-              key={event.id}
-            >
-              <div className="event-image">
-                {event.featured_media && event.featured_media.localFile &&
-                  <Img fluid={event.featured_media.localFile.childImageSharp.fluid} />}
-              </div>
-              <header className="event-header">
-                <h2 className="event-title">
-                  {event.title}
-                </h2>
-                <div className="event-meta">
-                  <span class="event-start">{this.formatTime(event.start_time)}</span>
-                  <span class="event-date">{this.formatDate(event.start_time)}</span>
-                </div>
-              </header>
-            </Link>
+            this.render_event(event)
           ))}
         </div>
       </section>
@@ -63,6 +76,15 @@ EventList.propTypes = {
 }
 
 export const pageQuery = graphql`
+  fragment EventTypeFields on wordpress__wp_events {
+    event_type {
+      name
+      slug
+      fields {
+        link
+      }
+    }
+  }
   fragment EventListFields on wordpress__wp_events {
     id
     title
@@ -75,6 +97,13 @@ export const pageQuery = graphql`
     }
     fields {
       link
+    }
+    event_type {
+      name
+      slug
+      fields {
+        link
+      }
     }
   }
 `

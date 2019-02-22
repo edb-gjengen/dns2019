@@ -30,7 +30,8 @@ export const EventTemplate = ({
   facebookUrl,
   ticketUrl,
   priceStudent,
-  priceRegular
+  priceRegular,
+  eventTypes
 }) => {
   return (
     <section className="event-page">
@@ -53,12 +54,12 @@ export const EventTemplate = ({
                 <span className="event-date-year">{moment(startTime).format('YYYY')} </span>
               }
             </div>
-            <div className="end-time">
+            <div className="event-time-start">
                 Start: {moment(startTime).format('HH:mm')}
             </div>
             {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
             {endTime &&
-              <div className="end-time">
+              <div className="event-time-end">
                 Slutt: {moment(endTime).format('HH:mm')}
               </div>
             }
@@ -70,6 +71,20 @@ export const EventTemplate = ({
             }
             {facebookUrl &&
               <a className="facebook-url" href={facebookUrl}>Se Facebook-event</a>
+            }
+            {eventTypes && eventTypes.length &&
+              <div>
+                <h4>Konsept</h4>
+                <ul className="event-types">
+                  {eventTypes.map(type => (
+                    <li key={`${type.slug}`}>
+                      <Link to={type.fields.link}>
+                        {type.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             }
           </div>
         </div>
@@ -107,10 +122,7 @@ const Event = ({ data }) => {
         ticketUrl={event.ticket_url}
         priceStudent={event.price_member}
         priceRegular={event.price_regular}
-        // categories={post.categories}
-        // tags={post.tags}
-        // date={post.date}
-        // author={post.author}
+        eventTypes={event.event_type}
       />
     </Layout>
   )
@@ -125,12 +137,6 @@ Event.propTypes = {
 export default Event
 
 export const eventQuery = graphql`
-  fragment EventFields on wordpress__wp_events {
-    id
-    slug
-    content
-    title
-  }
   query EventByID($id: String!) {
     wordpressWpEvents(id: { eq: $id }) {
       id
@@ -149,6 +155,7 @@ export const eventQuery = graphql`
           ...FluidImage
         }
       }
+      ...EventTypeFields
     }
   }
 `

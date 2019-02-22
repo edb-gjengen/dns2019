@@ -161,6 +161,43 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
+          allWordpressWpEventType(filter: { count: { gt: 0 } }) {
+            edges {
+              node {
+                id
+                name
+                slug
+                fields {
+                  link
+                }
+              }
+            }
+          }
+        }
+      `)
+    })
+    .then(result => {
+      if (result.errors) {
+        result.errors.forEach(e => console.error(e.toString()))
+        return Promise.reject(result.errors)
+      }
+
+      const eventTypeTemplate = path.resolve(`./src/templates/event-type.js`)
+
+      _.each(result.data.allWordpressWpEventType.edges, ({ node: event_type }) => {
+        createPage({
+          path: event_type.fields.link,
+          component: eventTypeTemplate,
+          context: {
+            name: event_type.name,
+            slug: event_type.slug,
+          },
+        })
+      })
+    })
+    .then(() => {
+      return graphql(`
+        {
           allWordpressCategory(filter: { count: { gt: 0 } }) {
             edges {
               node {
@@ -276,7 +313,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 
   if ((node.internal.type === 'wordpress__POST') ||
-      (node.internal.type === 'wordpress__wp_events')) {
+      (node.internal.type === 'wordpress__wp_events') ||
+      (node.internal.type === 'wordpress__wp_event_type')) {
     const link = new URL(node.link).pathname
     createNodeField({
       node,

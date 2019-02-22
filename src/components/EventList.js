@@ -9,7 +9,6 @@ moment.locale('nb')
 
 export default class EventList extends React.Component {
   render_event(event) {
-    console.log(event)
     return (
       <Link
         to={event.fields.link}
@@ -40,9 +39,12 @@ export default class EventList extends React.Component {
                 <ul className="event-types-list">
                   {event.event_type.map(type => (
                     <li key={`${type.slug}`}>
+                      {type.name}
+                      {/* TODO: We're already inside a link. Maybe we don't link to the event concept from here
                       <Link to={type.fields.link}>
                         {type.name}
                       </Link>
+                      */}
                     </li>
                   ))}
                 </ul>

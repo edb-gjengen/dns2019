@@ -24,7 +24,7 @@ module.exports = {
         includedRoutes: [
           "**/*/*/categories",
           "**/*/*/events",
-          "**/*/*/event_type",
+          "**/*/*/event_types",
           "**/*/*/posts",
           "**/*/*/pages",
           "**/*/*/media",

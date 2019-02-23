@@ -34,10 +34,10 @@ export default class EventList extends React.Component {
                 <span className="event-date-year">{moment(event.start_time).format('YYYY')} </span>
               }
             </span>
-            {event.event_type && event.event_type.length &&
+            {event.event_types && event.event_types.length &&
               <div className="event-types">
                 <ul className="event-types-list">
-                  {event.event_type.map(type => (
+                  {event.event_types.map(type => (
                     <li key={`${type.slug}`}>
                       {type.name}
                       {/* TODO: We're already inside a link. Maybe we don't link to the event concept from here
@@ -79,7 +79,7 @@ EventList.propTypes = {
 
 export const pageQuery = graphql`
   fragment EventTypeFields on wordpress__wp_events {
-    event_type {
+    event_types {
       name
       slug
       fields {
@@ -100,12 +100,6 @@ export const pageQuery = graphql`
     fields {
       link
     }
-    event_type {
-      name
-      slug
-      fields {
-        link
-      }
-    }
+    ...EventTypeFields
   }
 `

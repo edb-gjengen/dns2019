@@ -20,7 +20,7 @@ export default class EventTypeProgram extends React.Component {
 
 EventTypeProgram.propTypes = {
   data: PropTypes.shape({
-    allWordpressWpEventType: PropTypes.shape({
+    allWordpressWpEventTypes: PropTypes.shape({
       edges: PropTypes.array,
     }),
   }),
@@ -34,7 +34,7 @@ export const pageQuery = graphql`
       }
     }
     allWordpressWpEvents(
-      filter: { event_type: { elemMatch: { slug: { eq: $slug } } } },
+      filter: { event_types: { elemMatch: { slug: { eq: $slug } } } },
       sort: { fields: date, order: DESC }
     ) {
       totalCount

@@ -122,7 +122,7 @@ const Event = ({ data }) => {
         ticketUrl={event.ticket_url}
         priceStudent={event.price_member}
         priceRegular={event.price_regular}
-        eventTypes={event.event_type}
+        eventTypes={event.event_types}
       />
     </Layout>
   )

@@ -11,17 +11,14 @@ export default class IndexPage extends React.Component {
         <h1 className="section-title">{title}</h1>
         <div className="post-list">
           {posts.map(({ node: post }) => (
-            <Link 
-              to={post.fields.link}
-              className="post"
-              key={post.id}
-            >
-              <img className="post-image" src="https://studentersamfundet.no/wp-content/uploads/2018/10/Fjor%C3%A5rets-festival_Fotograf-Karin-Kaczykowski-i-Studentenes-Fotoklubb-1280x720.jpg" />
+            <Link to={post.fields.link} className="post" key={post.id}>
+              <img
+                className="post-image"
+                src="https://studentersamfundet.no/wp-content/uploads/2018/10/Fjor%C3%A5rets-festival_Fotograf-Karin-Kaczykowski-i-Studentenes-Fotoklubb-1280x720.jpg"
+              />
               <div className="post-text">
                 <header className="post-header">
-                  <h2 className="post-title">
-                    {post.title}
-                  </h2>
+                  <h2 className="post-title">{post.title}</h2>
                   {/*<div className="post-meta">{post.date}</div>*/}
                 </header>
                 <div className="post-body">

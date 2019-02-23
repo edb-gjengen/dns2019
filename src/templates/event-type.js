@@ -34,7 +34,7 @@ export const pageQuery = graphql`
       }
     }
     allWordpressWpEvents(
-      filter: { event_types: { elemMatch: { slug: { eq: $slug } } } },
+      filter: { event_types: { elemMatch: { slug: { eq: $slug } } } }
       sort: { fields: date, order: DESC }
     ) {
       totalCount

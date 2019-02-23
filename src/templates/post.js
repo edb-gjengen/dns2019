@@ -16,49 +16,56 @@ export const BlogPostTemplate = ({
   featuredMedia,
 }) => {
   return (
-    <section className={`post-page ${hasFeaturedMedia ? 'has-featured-media' : 'no-featured-media'}`}>
+    <section
+      className={`post-page ${
+        hasFeaturedMedia ? 'has-featured-media' : 'no-featured-media'
+      }`}
+    >
       <div className="post-hero">
         <div className="post-hero_text">
-          <h1>
-              {title}
-          </h1>
+          <h1>{title}</h1>
           <div className="post-meta">
             <p>
               {date} av <Link to={`/author/${author.slug}`}>{author.name}</Link>
             </p>
           </div>
         </div>
-        {hasFeaturedMedia && <div className="post-hero_image">
-          <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
-        </div>}
+        {hasFeaturedMedia && (
+          <div className="post-hero_image">
+            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+          </div>
+        )}
       </div>
-      <div className="post-content" dangerouslySetInnerHTML={{ __html: content }} />
-        {categories && categories.length ? (
-          <div>
-            <h4>Categories</h4>
-            <ul className="taglist">
-              {categories.map(category => (
-                <li key={`${category.slug}cat`}>
-                  <Link to={`/categories/${category.slug}/`}>
-                    {category.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-        {tags && tags.length ? (
-          <div>
-            <h4>Tags</h4>
-            <ul className="taglist">
-              {tags.map(tag => (
-                <li key={`${tag.slug}tag`}>
-                  <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
+      <div
+        className="post-content"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+      {categories && categories.length ? (
+        <div>
+          <h4>Categories</h4>
+          <ul className="taglist">
+            {categories.map(category => (
+              <li key={`${category.slug}cat`}>
+                <Link to={`/categories/${category.slug}/`}>
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {tags && tags.length ? (
+        <div>
+          <h4>Tags</h4>
+          <ul className="taglist">
+            {tags.map(tag => (
+              <li key={`${tag.slug}tag`}>
+                <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </section>
   )
 }

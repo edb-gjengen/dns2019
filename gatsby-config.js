@@ -1,4 +1,4 @@
-const { neufNormalizer } = require('./src/wordpress')
+const { neufNormalizer } = require('./src/wordpress')
 
 module.exports = {
   siteMetadata: {
@@ -22,21 +22,21 @@ module.exports = {
         // Set to true to debug endpoints on 'gatsby build'
         verboseOutput: true,
         includedRoutes: [
-          "**/*/*/categories",
-          "**/*/*/events",
-          "**/*/*/event_types",
-          "**/*/*/posts",
-          "**/*/*/pages",
-          "**/*/*/media",
-          "**/*/*/tags",
-          "**/*/*/taxonomies",
-          "**/*/*/users",
+          '**/*/*/categories',
+          '**/*/*/events',
+          '**/*/*/event_types',
+          '**/*/*/posts',
+          '**/*/*/pages',
+          '**/*/*/media',
+          '**/*/*/tags',
+          '**/*/*/taxonomies',
+          '**/*/*/users',
         ],
         excludedRoutes: [
-          "/yoast/**",
-          "**/*/*/comments",
-          "**/*/*/settings",
-          "**/*/*/users/me",
+          '/yoast/**',
+          '**/*/*/comments',
+          '**/*/*/settings',
+          '**/*/*/users/me',
         ],
         normalizer: neufNormalizer,
       },

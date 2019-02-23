@@ -3,38 +3,43 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-import moment from 'moment';
+import moment from 'moment'
 import 'moment/locale/nb'
 moment.locale('nb')
 
 export default class EventList extends React.Component {
   render_event(event) {
     return (
-      <Link
-        to={event.fields.link}
-        className="event"
-        key={event.id}
-      >
+      <Link to={event.fields.link} className="event" key={event.id}>
         <div className="event-image">
-          {event.featured_media && event.featured_media.localFile &&
-            <Img fluid={event.featured_media.localFile.childImageSharp.fluid} />}
+          {event.featured_media && event.featured_media.localFile && (
+            <Img fluid={event.featured_media.localFile.childImageSharp.fluid} />
+          )}
         </div>
         <header className="event-header">
-          <h2 className="event-title">
-            {event.title}
-          </h2>
+          <h2 className="event-title">{event.title}</h2>
           <div className="event-meta">
-            <span className="event-start">{moment(event.start_time).format('HH:mm')}</span>
-            <span className="event-date">
-              <span className="event-date-weekday">{moment(event.start_time).format('dddd')} </span>
-              <span className="event-date-day">{moment(event.start_time).format('D.')} </span>
-              <span className="event-date-month">{moment(event.start_time).format('MMMM')} </span>
-              {/* Only specify year if different. */}
-              {!moment(event.start_time).isSame(new Date(), 'year') &&
-                <span className="event-date-year">{moment(event.start_time).format('YYYY')} </span>
-              }
+            <span className="event-start">
+              {moment(event.start_time).format('HH:mm')}
             </span>
-            {event.event_types && event.event_types.length &&
+            <span className="event-date">
+              <span className="event-date-weekday">
+                {moment(event.start_time).format('dddd')}{' '}
+              </span>
+              <span className="event-date-day">
+                {moment(event.start_time).format('D.')}{' '}
+              </span>
+              <span className="event-date-month">
+                {moment(event.start_time).format('MMMM')}{' '}
+              </span>
+              {/* Only specify year if different. */}
+              {!moment(event.start_time).isSame(new Date(), 'year') && (
+                <span className="event-date-year">
+                  {moment(event.start_time).format('YYYY')}{' '}
+                </span>
+              )}
+            </span>
+            {event.event_types && event.event_types.length && (
               <div className="event-types">
                 <ul className="event-types-list">
                   {event.event_types.map(type => (
@@ -49,7 +54,7 @@ export default class EventList extends React.Component {
                   ))}
                 </ul>
               </div>
-            }
+            )}
           </div>
         </header>
       </Link>
@@ -63,9 +68,7 @@ export default class EventList extends React.Component {
       <section className="events">
         <h1 className="section-title">{title}</h1>
         <div className="event-list">
-          {events.map(({ node: event }) => (
-            this.render_event(event)
-          ))}
+          {events.map(({ node: event }) => this.render_event(event))}
         </div>
       </section>
     )

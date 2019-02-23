@@ -14,9 +14,12 @@ const Author = props => {
 
   // The `authored_wordpress__POST` returns a simple array instead of an array
   // of edges / nodes. We therefore need to convert the array here.
-  const posts = (totalCount === 0) ? [] : authored_wordpress__POST.map(post => ({
-    node: post,
-  }))
+  const posts =
+    totalCount === 0
+      ? []
+      : authored_wordpress__POST.map(post => ({
+          node: post,
+        }))
 
   return (
     <Layout>

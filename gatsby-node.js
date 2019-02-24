@@ -201,6 +201,60 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
+          allWordpressWpAssociations {
+            edges {
+              node {
+                id
+                slug
+                status
+                fields {
+                  link
+                }
+              }
+            }
+          }
+        }
+      `)
+    })
+    .then(result => {
+      if (result.errors) {
+        result.errors.forEach(e => console.error(e.toString()))
+        return Promise.reject(result.errors)
+      }
+
+      const associationTemplate = path.resolve(`./src/templates/association.js`)
+
+      // In production builds, filter for only published associations.
+      const allAssociations = result.data.allWordpressWpAssociations.edges
+      const associations =
+        process.env.NODE_ENV === 'production'
+          ? getOnlyPublished(allAssociations)
+          : allAssociations
+
+      // Iterate over the array of associations
+      _.each(associations, ({ node: association }) => {
+        // Create the Gatsby page for this WordPress event
+        createPage({
+          path: association.fields.link,
+          component: associationTemplate,
+          context: {
+            id: association.id,
+          },
+        })
+      })
+
+      // Create the list of associations
+      const associationListTemplate = path.resolve(
+        `./src/templates/association-list.js`
+      )
+      createPage({
+        path: `/foreningene/`,
+        component: associationListTemplate,
+      })
+    })
+    .then(() => {
+      return graphql(`
+        {
           allWordpressCategory(filter: { count: { gt: 0 } }) {
             edges {
               node {
@@ -315,11 +369,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 
-  if (
-    node.internal.type === 'wordpress__POST' ||
-    node.internal.type === 'wordpress__wp_events' ||
-    node.internal.type === 'wordpress__wp_event_types'
-  ) {
+  relativeLinksFor = [
+    'wordpress__POST',
+    'wordpress__wp_associations',
+    'wordpress__wp_events',
+    'wordpress__wp_event_types',
+  ]
+  if (relativeLinksFor.includes(node.internal.type)) {
     const link = new URL(node.link).pathname
     createNodeField({
       node,

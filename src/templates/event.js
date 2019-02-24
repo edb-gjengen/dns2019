@@ -94,9 +94,11 @@ export const EventTemplate = ({
             )}
           </div>
         </div>
-        <div className="event-hero_image">
-          <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
-        </div>
+        {hasFeaturedMedia && (
+          <div className="event-hero_image">
+            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+          </div>
+        )}
       </div>
       <div className="event-body">
         <div dangerouslySetInnerHTML={{ __html: content }} />

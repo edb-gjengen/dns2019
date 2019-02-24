@@ -1,16 +1,17 @@
 .site-header {
   padding: 1rem 2rem;
   background: $color-black;
+  color: $color-white;
   display: flex;
   justify-content: center;
-}
 
-.logo {
-  width: 3rem;
-  margin: 0 3rem;
-
-  a {
-    display: block;
+  .logo {
+    width: 3rem;
+    margin: 0 3rem;
+  
+    a {
+      display: block;
+    }
   }
 }
 

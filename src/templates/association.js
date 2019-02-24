@@ -14,7 +14,7 @@ export const AssociationTemplate = data => {
     homepage,
   } = data
   return (
-    <section className="association">
+    <section className="association-page">
       <h1 className="section-title">{title}</h1>
       {hasFeaturedMedia && (
         <div className="assocation-logo">

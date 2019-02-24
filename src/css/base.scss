@@ -5,7 +5,7 @@
 }
 
 html {
-	font-size: calc(14px + 6 * ((100vw - 320px) / 1200));
+	font-size: calc(13px + 6 * ((100vw - 320px) / 1200));
   height: 100%;
   background: $color-background;
 }
@@ -16,6 +16,9 @@ body {
   padding: 0;
   background: $color-background;
   color: $color-text;
+
+  border-left: 2rem solid $color-black;
+  border-right: 2rem solid $color-black;
 
   font-family: $sans-serif;
   line-height: 1.6;
@@ -40,7 +43,7 @@ a {
 }
 
 p {
-  max-width: $width-s;
+  max-width: $width-m;
   margin: 0 auto 2rem;
 }
 

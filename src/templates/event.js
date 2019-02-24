@@ -42,7 +42,6 @@ export const EventTemplate = ({
           <div className="event-meta">
             <div className="venue">i {venue}</div>
             <div className="event-date">
-              Dag:{' '}
               <span className="event-date-weekday">
                 {moment(startTime).format('dddd')}{' '}
               </span>
@@ -59,15 +58,12 @@ export const EventTemplate = ({
                 </span>
               )}
             </div>
-            <div className="event-time-start">
-              Start: {moment(startTime).format('HH:mm')}
+            <div className="event-time">
+              {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
+              {moment(startTime).format('HH:mm')}
+              &mdash;
+              {endTime && moment(endTime).format('HH:mm')}
             </div>
-            {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
-            {endTime && (
-              <div className="event-time-end">
-                Slutt: {moment(endTime).format('HH:mm')}
-              </div>
-            )}
             <div className="price">
               Pris: {formatPrices(priceRegular, priceStudent)}
             </div>
@@ -82,9 +78,8 @@ export const EventTemplate = ({
               </a>
             )}
             {eventTypes && eventTypes.length && (
-              <div>
-                <h4>Konsept</h4>
-                <ul className="event-types">
+              <div className="event-types">
+                <ul>
                   {eventTypes.map(type => (
                     <li key={`${type.slug}`}>
                       <Link to={type.fields.link}>{type.name}</Link>

@@ -6,28 +6,29 @@ import Img from 'gatsby-image'
 export default class AssociationList extends React.Component {
   render_association(association) {
     return (
-      <div>
-        <Link
-          to={association.fields.link}
-          className="association"
-          key={association.id}
-        >
-          {association.featured_media && association.featured_media.localFile && (
-            <div className="association-image">
-              <Img
-                fluid={
-                  association.featured_media.localFile.childImageSharp.fluid
-                }
-              />
-            </div>
-          )}
-          <h2 className="association-title">{association.title}</h2>
-        </Link>
+      <div className="association">
+        {association.featured_media && association.featured_media.localFile && (
+          <div className="association-image">
+            <Img
+              fluid={
+                association.featured_media.localFile.childImageSharp.fluid
+              }
+            />
+          </div>
+        )}
+        <div className="association-text">
+          <Link
+            to={association.fields.link}
+            key={association.id}
+          >
+            <h2 className="association-title">{association.title}</h2>
+          </Link>
 
-        <div
-          className="association-description"
-          dangerouslySetInnerHTML={{ __html: association.excerpt }}
-        />
+          <div
+            className="association-description"
+            dangerouslySetInnerHTML={{ __html: association.excerpt }}
+          />
+        </div>
       </div>
     )
   }

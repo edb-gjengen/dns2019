@@ -1,0 +1,33 @@
+.site-footer {
+  padding: 3rem 2rem;
+  background: $color-black;
+  color: $color-white;
+  font-size: $font-s;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .logo {
+    width: $width-m;
+    padding-right: 3rem;
+  }
+
+  p {
+    margin: 0 0 3rem;
+  }
+}
+
+.social-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  a {
+    display: inline-block;
+    margin-right: 1.6rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

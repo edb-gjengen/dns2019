@@ -41,15 +41,10 @@ export default class EventList extends React.Component {
             </span>
             {event.event_types && event.event_types.length && (
               <div className="event-types">
-                <ul className="event-types-list">
+                <ul>
                   {event.event_types.map(type => (
                     <li key={`${type.slug}`}>
                       {type.name}
-                      {/* TODO: We're already inside a link. Maybe we don't link to the event concept from here
-                      <Link to={type.fields.link}>
-                        {type.name}
-                      </Link>
-                      */}
                     </li>
                   ))}
                 </ul>

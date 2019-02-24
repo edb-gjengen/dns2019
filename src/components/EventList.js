@@ -8,7 +8,34 @@ import 'moment/locale/nb'
 moment.locale('nb')
 
 export default class EventList extends React.Component {
-  render_event(event) {
+  render() {
+    const { events, title, onlyUpcoming, numDays } = this.props
+
+    const displayEvents = events.filter(({ node: event }) => {
+      const startTime = moment(event.start_time)
+      if (onlyUpcoming && !startTime.isSameOrAfter(new Date(), 'day')) {
+        return false
+      }
+      if (numDays) {
+        const lastDay = moment().add(numDays - 1, 'days')
+        if (!startTime.isSameOrBefore(lastDay, 'day')) {
+          return false
+        }
+      }
+      return true
+    })
+
+    return (
+      <section className="events">
+        {title && <h1 className="section-title">{title}</h1>}
+        <div className="event-list">
+          {displayEvents.map(({ node: event }) => this.renderEvent(event))}
+        </div>
+      </section>
+    )
+  }
+
+  renderEvent(event) {
     return (
       <Link to={event.fields.link} className="event" key={event.id}>
         <div className="event-image">
@@ -55,24 +82,18 @@ export default class EventList extends React.Component {
       </Link>
     )
   }
-
-  render() {
-    const { events, title } = this.props
-
-    return (
-      <section className="events">
-        <h1 className="section-title">{title}</h1>
-        <div className="event-list">
-          {events.map(({ node: event }) => this.render_event(event))}
-        </div>
-      </section>
-    )
-  }
 }
 
 EventList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
+  onlyUpcoming: PropTypes.bool,
+  numDays: PropTypes.number,
+}
+
+EventList.defaultProps = {
+  onlyUpcoming: true,
+  numDays: 0,
 }
 
 export const pageQuery = graphql`

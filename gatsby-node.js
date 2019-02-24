@@ -102,7 +102,8 @@ exports.createPages = ({ actions, graphql }) => {
         createPage,
         items: posts,
         itemsPerPage: 10,
-        pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? `/` : `/page`),
+        pathPrefix: ({ pageNumber }) =>
+          pageNumber === 0 ? `/nyheter/` : `/nyheter/page`,
         component: blogTemplate,
       })
     })
@@ -156,6 +157,14 @@ exports.createPages = ({ actions, graphql }) => {
       createPage({
         path: `/program/`,
         component: programTemplate,
+      })
+    })
+    .then(() => {
+      const indexTemplate = path.resolve(`./src/templates/front-page.js`)
+
+      createPage({
+        path: `/`,
+        component: indexTemplate,
       })
     })
     .then(() => {

@@ -21,7 +21,7 @@ const Navbar = () => (
       <header className="site-header">
         <nav className="site-nav">
           <Link to="/program/">Program</Link>
-          <Link to="/">Nyheter</Link>
+          <Link to="/nyheter/">Nyheter</Link>
           <Link to="/om-dns/">Praktisk</Link>
         </nav>
         <div className="logo">

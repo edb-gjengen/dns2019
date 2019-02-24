@@ -12,13 +12,23 @@ html {
 
 body {
   min-height: 100%;
-  margin: 0;
+  margin: 3rem 0 0;
   padding: 0;
   background: $color-background;
   color: $color-text;
 
   border-left: 2rem solid $color-black;
   border-right: 2rem solid $color-black;
+  &:after {
+    content: " ";
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: $color-black;
+    height: 2rem;
+  }
 
   font-family: $sans-serif;
   line-height: 1.6;

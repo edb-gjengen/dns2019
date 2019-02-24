@@ -30,11 +30,9 @@ export default class EventList extends React.Component {
     return (
       <section className="events">
         {title && <h1 className="section-title">{title}</h1>}
-        <div className="event-list">
-          {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
-          {!groupBy &&
-            filteredEvents.map(({ node: event }) => this.renderEvent(event))}
-        </div>
+        {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
+        {!groupBy &&
+          filteredEvents.map(({ node: event }) => this.renderEvent(event))}
       </section>
     )
   }
@@ -58,9 +56,11 @@ export default class EventList extends React.Component {
             {groupBy === 'day' && moment(date).format('dddd D. MMMM')}
             {groupBy === 'month' && moment(date).format('MMMM')}
           </div>
-          {theseEvents.map(({ node: event }) => {
-            return <div>{this.renderEvent(event)}</div>
-          })}
+          <div className="event-list">
+            {theseEvents.map(({ node: event }) => {
+              return this.renderEvent(event)
+            })}
+          </div>
         </div>
       )
     })

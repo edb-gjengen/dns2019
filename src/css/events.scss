@@ -3,6 +3,12 @@
   color: $color-white;
 }
 
+.event-group {
+}
+.event-grouped-by-day {
+  width: $width-m;
+}
+
 .event-list {
   display: flex;
   flex-wrap: wrap;
@@ -45,6 +51,9 @@
     .event-types li {
       background: $color-orange;
     }
+    .event-image {
+      filter: sepia(100%) hue-rotate(340deg) saturate(360%);
+    }
   }
 
   &-meta {
@@ -70,8 +79,13 @@
       margin: 0 auto 1rem;
     }
 
-    ul, p {
+    ul, p, span{
       margin: 0 auto 1.6rem;
+
+      /* overwrite styles from wordpress */
+      text-align: left !important;
+      color: inherit !important;
+      font-family: inherit !important;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -127,7 +141,7 @@
   align-items: flex-end;
 
   max-width: $width-l;
-  margin: 0 auto 4rem;
+  margin: 8rem auto;
   
   &_text, &_image {
     width: 50%;
@@ -152,8 +166,8 @@
   }
 
   &_text {
-    padding: 4rem 0 2rem 0;
-    z-index: 666;
+    padding: 1.6rem 0 2rem 0;
+    z-index: 8;
   }
 
   h1 {

@@ -70,8 +70,13 @@
       margin: 0 auto 1rem;
     }
 
-    ul, p {
+    ul, p, span {
       margin: 0 auto 1.6rem;
+
+      /* overwrite styles from wordpress */
+      text-align: left !important;
+      color: inherit !important;
+      font-family: inherit !important;
     }
 
     h1, h2, h3, h4, h5, h6 {

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 export default class PostList extends React.Component {
   render() {
@@ -12,10 +13,13 @@ export default class PostList extends React.Component {
         <div className="post-list">
           {posts.map(({ node: post }) => (
             <Link to={post.fields.link} className="post" key={post.id}>
-              <img
-                className="post-image"
-                src="https://studentersamfundet.no/wp-content/uploads/2018/10/Fjor%C3%A5rets-festival_Fotograf-Karin-Kaczykowski-i-Studentenes-Fotoklubb-1280x720.jpg"
-              />
+              {post.featured_media && post.featured_media.localFile && (
+                <div className="post-image">
+                  <Img
+                    fluid={post.featured_media.localFile.childImageSharp.fluid}
+                  />
+                </div>
+              )}
               <div className="post-text">
                 <header className="post-header">
                   <h2 className="post-title">{post.title}</h2>
@@ -57,6 +61,11 @@ export const pageQuery = graphql`
     date(formatString: "MMMM DD, YYYY")
     fields {
       link
+    }
+    featured_media {
+      localFile {
+        ...FluidImage
+      }
     }
   }
 `

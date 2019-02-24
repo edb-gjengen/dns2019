@@ -2,16 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import _ from 'lodash'
 
 import moment from 'moment'
 import 'moment/locale/nb'
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable'
 moment.locale('nb')
 
 export default class EventList extends React.Component {
   render() {
-    const { events, title, onlyUpcoming, numDays } = this.props
+    const { events, title, onlyUpcoming, numDays, groupBy } = this.props
 
-    const displayEvents = events.filter(({ node: event }) => {
+    const filteredEvents = events.filter(({ node: event }) => {
       const startTime = moment(event.start_time)
       if (onlyUpcoming && !startTime.isSameOrAfter(new Date(), 'day')) {
         return false
@@ -29,10 +31,39 @@ export default class EventList extends React.Component {
       <section className="events">
         {title && <h1 className="section-title">{title}</h1>}
         <div className="event-list">
-          {displayEvents.map(({ node: event }) => this.renderEvent(event))}
+          {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
+          {!groupBy &&
+            filteredEvents.map(({ node: event }) => this.renderEvent(event))}
         </div>
       </section>
     )
+  }
+
+  renderEventsByDate(filteredEvents, groupBy) {
+    let groupByFormat = null
+    if (groupBy === 'day') {
+      groupByFormat = 'YYYY-MM-DD'
+    }
+    if (groupBy === 'month') {
+      groupByFormat = 'YYYY-MM'
+    }
+    const grouper = ({ node: event }) => {
+      return moment(event.start_time).format(groupByFormat)
+    }
+    const groupedEvents = _.groupBy(filteredEvents, grouper)
+    return _.map(groupedEvents, (theseEvents, date) => {
+      return (
+        <div className={`event-group event-grouped-by-${groupBy}`}>
+          <div className="event-group-header">
+            {groupBy === 'day' && moment(date).format('dddd D. MMMM')}
+            {groupBy === 'month' && moment(date).format('MMMM')}
+          </div>
+          {theseEvents.map(({ node: event }) => {
+            return <div>{this.renderEvent(event)}</div>
+          })}
+        </div>
+      )
+    })
   }
 
   renderEvent(event) {
@@ -70,9 +101,7 @@ export default class EventList extends React.Component {
               <div className="event-types">
                 <ul>
                   {event.event_types.map(type => (
-                    <li key={`${type.slug}`}>
-                      {type.name}
-                    </li>
+                    <li key={`${type.slug}`}>{type.name}</li>
                   ))}
                 </ul>
               </div>
@@ -89,11 +118,13 @@ EventList.propTypes = {
   title: PropTypes.string,
   onlyUpcoming: PropTypes.bool,
   numDays: PropTypes.number,
+  groupBy: PropTypes.string,
 }
 
 EventList.defaultProps = {
   onlyUpcoming: true,
   numDays: 0,
+  groupBy: null,
 }
 
 export const pageQuery = graphql`

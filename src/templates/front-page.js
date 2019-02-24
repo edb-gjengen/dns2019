@@ -13,7 +13,7 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <EventList events={events} numDays={7} />
+        <EventList events={events} numDays={7} groupBy="day" />
         <PostList posts={posts} title="Aktuelt" />
       </Layout>
     )

@@ -19,6 +19,11 @@ const Navbar = () => (
     `}
     render={data => (
       <header className="site-header">
+        <nav className="site-nav">
+          <Link to="/program/">Program</Link>
+          <Link to="/">Nyheter</Link>
+          <Link to="/om-dns/">Praktisk</Link>
+        </nav>
         <div className="logo">
           <Link to="/">
             <img src={logo} alt="Det Norske Studentersamfund" />
@@ -33,11 +38,9 @@ const Navbar = () => (
               {edge.node.title}
             </Link>
           ))*/}
-          <Link to="/program/">Program</Link>
-          <Link to="/foreningene/">Foreningene</Link>
           <Link to="/om-dns/">Om oss</Link>
+          <Link to="/foreningene/">Foreningene</Link>
           <Link to="/booking/">Utleie</Link>
-          <Link to="/kontakt/">Kontakt</Link>
           <div className="site-nav_toggle">=</div>
         </nav>
       </header>

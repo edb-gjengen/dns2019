@@ -14,6 +14,9 @@ const Footer = () => (
       Chateau Neuf – Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo |
       Ansvarlig redaktør: Stein-Olav Moe Fause | <a href="#">Logg inn</a>
     </p>
+    <nav className="footer-nav">
+      <Link to="/kontakt/">Kontakt</Link>
+    </nav>
   </footer>
 )
 

@@ -2,12 +2,12 @@
   padding: 1rem 2rem;
   background: $color-black;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .logo {
   width: 3rem;
-  margin-right: 2rem;
+  margin: 0 3rem;
 
   a {
     display: block;
@@ -15,9 +15,14 @@
 }
 
 .site-nav {
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
+  &:last-of-type {
+    justify-content: flex-start;
+  }
   a {
     text-decoration: none;
     display: inline-block;
@@ -32,8 +37,9 @@
     letter-spacing: 0.08em;
     font-size: $font-s;
 
+    transition: box-shadow 0.2s ease-in-out;
     &:hover {
-      color: $color-orange;
+      box-shadow: 0 1px 0 0 $color-white;
     }
   }
   &_toggle {

@@ -60,7 +60,7 @@ export const EventTemplate = ({
             </div>
             <div className="event-time">
               {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
-              {moment(startTime).format('HH:mm')}
+              kl. {moment(startTime).format('HH:mm')}
               &mdash;
               {endTime && moment(endTime).format('HH:mm')}
             </div>
@@ -96,9 +96,10 @@ export const EventTemplate = ({
           </div>
         )}
       </div>
-      <div className="event-body">
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </div>
+      <div 
+        className="event-content"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </section>
   )
 }

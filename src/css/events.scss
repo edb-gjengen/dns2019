@@ -14,8 +14,8 @@
   margin: 0 2rem 1.2rem;
   position: relative;
 
-  padding-bottom: 1.6rem;
-  border-bottom: 1px solid $color-white;
+  padding-top: 2rem;
+  border-top: 1px solid $color-white;
 
   text-decoration: none;
 
@@ -28,17 +28,22 @@
   &-title {
     display: block;
     text-decoration: none;
-    color: $color-orange;
+    color: $color-white;
     font-size: 1.3rem;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 0;
-    transition: color .12s ease-in-out;
   }
 
   &:hover {
-    .event-title {
-      color: $color-white;
+    color: $color-orange;
+    border-color: $color-orange;
+    
+    .event-title, .event-meta {
+      color: $color-orange;
+    }
+    .event-types li {
+      background: $color-orange;
     }
   }
 
@@ -51,10 +56,34 @@
     display: block;
     font-size: 1.3rem;
   }
+
+  &-content {
+    max-width: $width-m;
+    margin: 0 auto;
+
+    img, div {
+      max-width: 100%;
+    }
+
+    ul {
+      max-width: $width-m;
+      margin: 0 auto 1rem;
+    }
+
+    ul, p {
+      margin: 0 auto 1.6rem;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      max-width: $width-m;
+      margin-top: 3.6rem;
+    }
+  }
 }
 
 .event-types {
-  margin-top: 1rem;
+  position: absolute;
+  top: 0;
   ul {
     list-style: none;
     margin: 0;
@@ -62,19 +91,21 @@
   }
   li {
     display: inline-block;
-    margin-right: 0.5rem;
+    vertical-align: top;
+    margin: 0;
+    margin-right: 0.2rem;
     &:last-child {
       margin-right: 0;
     }
 
     color: $color-black;
-    background: $color-orange;
+    background: $color-white;
     padding: 0.2rem 0.3rem;
     line-height: 1;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 0.05rem;
-    font-size: $font-s;
+    font-size: $font-xs;
     
   }
   a {
@@ -90,6 +121,7 @@
 }
 
 .event-hero {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -153,14 +185,10 @@
     letter-spacing: 0.06em;
     font-weight: 500;
 
-    box-shadow: -0.4rem 0.4rem 0 -0.1rem $color-orange;
-
-    transition: all .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
 
     &:hover {
       background: $color-white;
-      transform: translate(0.2rem, -0.2rem);
-      box-shadow: -0.6rem 0.6rem 0 -0.1rem $color-orange;
     }
   }
 

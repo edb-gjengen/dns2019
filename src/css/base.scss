@@ -72,13 +72,26 @@ img {
 .table-wrap {
   max-width: 100%;
   overflow: scroll;
-
+}
+table, td, th {
   line-height: 1.3;
+  border: 1px solid black;
+}
+td, th {
+  padding: 0.6rem 0.8rem;
+}
 
-  table, td, th {
-    border: 1px solid black;
-  }
-  td, th {
-    padding: 0.6rem 0.8rem;
+.iframe-wrap {
+  width: 100%;
+  position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }

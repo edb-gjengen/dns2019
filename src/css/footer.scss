@@ -1,9 +1,8 @@
 .site-footer {
-  padding: 3rem 2rem;
   background: $color-black;
   color: $color-white;
   font-size: $font-s;
-
+  padding: 3rem 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -18,11 +17,17 @@
   }
 }
 
-.social-nav {
+.info {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+}
 
+.social-nav {
+  width: 100%;
+  text-align: center;
+  padding: 3rem 0;
   a {
     display: inline-block;
     margin-right: 1.6rem;
@@ -30,4 +35,12 @@
       margin-right: 0;
     }
   }
+}
+
+.hours {
+  font-size: 2rem;
+}
+
+.meta {
+  font-size: $font-xs;
 }

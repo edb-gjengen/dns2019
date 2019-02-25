@@ -6,7 +6,6 @@ import _ from 'lodash'
 
 import moment from 'moment'
 import 'moment/locale/nb'
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable'
 moment.locale('nb')
 
 export default class EventList extends React.Component {

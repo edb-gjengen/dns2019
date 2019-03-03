@@ -67,7 +67,7 @@ export default class EventList extends React.Component {
 
   renderEvent(event) {
     return (
-      <Link to={event.fields.link} className="event" key={event.id}>
+      <Link to={event.path} className="event" key={event.id}>
         <div className="event-image">
           {event.featured_media && event.featured_media.localFile && (
             <Img fluid={event.featured_media.localFile.childImageSharp.fluid} />
@@ -131,13 +131,12 @@ export const pageQuery = graphql`
     event_types {
       name
       slug
-      fields {
-        link
-      }
+      path
     }
   }
   fragment EventListFields on wordpress__wp_events {
     id
+    path
     title
     start_time
     end_time
@@ -145,9 +144,6 @@ export const pageQuery = graphql`
       localFile {
         ...FluidImage
       }
-    }
-    fields {
-      link
     }
     ...EventTypeFields
   }

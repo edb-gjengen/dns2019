@@ -12,7 +12,7 @@ export default class PostList extends React.Component {
         <h1 className="section-title">{title}</h1>
         <div className="post-list">
           {posts.map(({ node: post }) => (
-            <Link to={post.fields.link} className="post" key={post.id}>
+            <Link to={post.path} className="post" key={post.id}>
               {post.featured_media && post.featured_media.localFile && (
                 <div className="post-image">
                   <Img
@@ -49,6 +49,7 @@ PostList.propTypes = {
 export const pageQuery = graphql`
   fragment PostListFields on wordpress__POST {
     id
+    path
     title
     excerpt
     author {
@@ -59,9 +60,6 @@ export const pageQuery = graphql`
       }
     }
     date(formatString: "MMMM DD, YYYY")
-    fields {
-      link
-    }
     featured_media {
       localFile {
         ...FluidImage

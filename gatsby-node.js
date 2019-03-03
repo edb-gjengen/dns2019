@@ -15,6 +15,7 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             id
+            path
             slug
             status
           }
@@ -41,9 +42,13 @@ exports.createPages = ({ actions, graphql }) => {
           : allPages
 
       // Call `createPage()` once per WordPress page
+      const ignoreSlugs = ['program', 'foreningene']
       _.each(pages, ({ node: page }) => {
+        if (ignoreSlugs.includes(page.slug)) {
+          return
+        }
         createPage({
-          path: `/${page.slug}/`,
+          path: `/${page.path}/`,
           component: pageTemplate,
           context: {
             id: page.id,
@@ -58,11 +63,9 @@ exports.createPages = ({ actions, graphql }) => {
             edges {
               node {
                 id
+                path
                 slug
                 status
-                fields {
-                  link
-                }
               }
             }
           }
@@ -89,7 +92,7 @@ exports.createPages = ({ actions, graphql }) => {
       _.each(posts, ({ node: post }) => {
         // Create the Gatsby page for this WordPress post
         createPage({
-          path: post.fields.link,
+          path: post.path,
           component: postTemplate,
           context: {
             id: post.id,
@@ -114,11 +117,9 @@ exports.createPages = ({ actions, graphql }) => {
             edges {
               node {
                 id
+                path
                 slug
                 status
-                fields {
-                  link
-                }
               }
             }
           }
@@ -144,7 +145,7 @@ exports.createPages = ({ actions, graphql }) => {
       _.each(events, ({ node: event }) => {
         // Create the Gatsby page for this WordPress event
         createPage({
-          path: event.fields.link,
+          path: event.path,
           component: eventTemplate,
           context: {
             id: event.id,
@@ -174,11 +175,9 @@ exports.createPages = ({ actions, graphql }) => {
             edges {
               node {
                 id
+                path
                 name
                 slug
-                fields {
-                  link
-                }
               }
             }
           }
@@ -195,13 +194,13 @@ exports.createPages = ({ actions, graphql }) => {
 
       _.each(
         result.data.allWordpressWpEventTypes.edges,
-        ({ node: event_type }) => {
+        ({ node: eventType }) => {
           createPage({
-            path: event_type.fields.link,
+            path: eventType.path,
             component: eventTypeTemplate,
             context: {
-              name: event_type.name,
-              slug: event_type.slug,
+              name: eventType.name,
+              slug: eventType.slug,
             },
           })
         }
@@ -214,11 +213,9 @@ exports.createPages = ({ actions, graphql }) => {
             edges {
               node {
                 id
+                path
                 slug
                 status
-                fields {
-                  link
-                }
               }
             }
           }
@@ -244,7 +241,7 @@ exports.createPages = ({ actions, graphql }) => {
       _.each(associations, ({ node: association }) => {
         // Create the Gatsby page for this WordPress event
         createPage({
-          path: association.fields.link,
+          path: association.path,
           component: associationTemplate,
           context: {
             id: association.id,
@@ -375,21 +372,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: `slug`,
       node,
       value,
-    })
-  }
-
-  relativeLinksFor = [
-    'wordpress__POST',
-    'wordpress__wp_associations',
-    'wordpress__wp_events',
-    'wordpress__wp_event_types',
-  ]
-  if (relativeLinksFor.includes(node.internal.type)) {
-    const link = new URL(node.link).pathname
-    createNodeField({
-      node,
-      name: `link`,
-      value: link,
     })
   }
 }

@@ -10,17 +10,12 @@ export default class AssociationList extends React.Component {
         {association.featured_media && association.featured_media.localFile && (
           <div className="association-image">
             <Img
-              fluid={
-                association.featured_media.localFile.childImageSharp.fluid
-              }
+              fluid={association.featured_media.localFile.childImageSharp.fluid}
             />
           </div>
         )}
         <div className="association-text">
-          <Link
-            to={association.fields.link}
-            key={association.id}
-          >
+          <Link to={association.path} key={association.id}>
             <h2 className="association-title">{association.title}</h2>
           </Link>
 
@@ -57,15 +52,13 @@ AssociationList.propTypes = {
 export const pageQuery = graphql`
   fragment AssociationListFields on wordpress__wp_associations {
     id
+    path
     title
     excerpt
     featured_media {
       localFile {
         ...FluidImage
       }
-    }
-    fields {
-      link
     }
   }
 `

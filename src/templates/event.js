@@ -82,7 +82,7 @@ export const EventTemplate = ({
                 <ul>
                   {eventTypes.map(type => (
                     <li key={`${type.slug}`}>
-                      <Link to={type.fields.link}>{type.name}</Link>
+                      <Link to={type.path}>{type.name}</Link>
                     </li>
                   ))}
                 </ul>
@@ -96,7 +96,7 @@ export const EventTemplate = ({
           </div>
         )}
       </div>
-      <div 
+      <div
         className="event-content"
         dangerouslySetInnerHTML={{ __html: content }}
       />
@@ -148,6 +148,8 @@ export const eventQuery = graphql`
   query EventByID($id: String!) {
     wordpressWpEvents(id: { eq: $id }) {
       id
+      link
+      path
       title
       slug
       content

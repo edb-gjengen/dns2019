@@ -3,21 +3,13 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
-const Navbar = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        allWordpressPage(sort: { fields: wordpress_id }, limit: 5) {
-          edges {
-            node {
-              title
-              slug
-            }
-          }
-        }
-      }
-    `}
-    render={data => (
+export default class Navbar extends React.Component {
+  toggleNav() {
+    console.log('toggle')
+  }
+
+  render() {
+    return (
       <header className="site-header">
         <nav className="site-nav">
           <Link to="/program/">Program</Link>
@@ -41,11 +33,11 @@ const Navbar = () => (
           <Link to="/om-dns/">Om oss</Link>
           <Link to="/foreningene/">Foreningene</Link>
           <Link to="/booking/">Utleie</Link>
-          <div className="site-nav_toggle">=</div>
+          <div className="site-nav_toggle" onClick={this.toggleNav}>
+            =
+          </div>
         </nav>
       </header>
-    )}
-  />
-)
-
-export default Navbar
+    )
+  }
+}

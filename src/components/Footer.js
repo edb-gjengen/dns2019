@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import logo from '../img/logo-h.svg'
+import logo from '../img/logo/logo-h.svg'
 
 const Footer = () => (
   <footer className="site-footer">

@@ -148,7 +148,6 @@ export const eventQuery = graphql`
   query EventByID($id: String!) {
     wordpressWpEvents(id: { eq: $id }) {
       id
-      link
       path
       title
       slug

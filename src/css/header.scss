@@ -1,5 +1,5 @@
 .site-header {
-  padding: 1rem 2rem;
+  padding: 1rem;
   background: $color-black;
   color: $color-white;
   display: flex;
@@ -10,14 +10,21 @@
   left: 0;
   right: 0;
   z-index: 10;
-  height: 3rem;
 
   .logo {
-    width: 3rem;
+    width: 6rem;
+    height: 6rem;
     margin: 0 3rem;
-  
-    a {
-      display: block;
+    background: url('../img/logo/logo-xxl.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &.large {
+    .logo {
+      width: 12rem;
+      height: 12rem;
     }
   }
 }
@@ -52,7 +59,7 @@
   }
   &_toggle {
     position: fixed;
-    top: 1rem;
+    top: 0;
     right: 2rem;
     font-size: 3rem;
     transform: translateX(3em);
@@ -67,22 +74,45 @@
 
 @media (max-width: $media-s) {
   .site-header {
-    display: block;
-  }
-  .logo {
-    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    height: 6rem;
+
+    .logo {
+      order: 1;
+      margin: 0;
+      width: 6rem;
+      height: 6rem;
+      background: url('../img/logo/logo-s.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
   .site-nav {
-    display: block;
+    display: none;
     text-align: center;
     margin-top: 3rem;
     a {
       display: block;
       margin: 1.2rem 0;
       font-size: 1rem;
+      &:hover {
+        box-shadow: none;
+      }
     }
     &_toggle {
       transform: translateX(0);
     }
+    order: 2;
+    &:last-of-type {
+      order: 3;
+    }
+  }
+  .site-nav-visible {
+    height: 100%;
+    .site-nav {
+      display: block;
+    }
+
   }
 }

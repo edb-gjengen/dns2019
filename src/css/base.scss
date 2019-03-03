@@ -12,13 +12,13 @@ html {
 
 body {
   min-height: 100%;
-  margin: 3rem 0 0;
+  margin: 14rem 0 0;
   padding: 0;
   background: $color-background;
   color: $color-text;
-
-  border-left: 2rem solid $color-black;
-  border-right: 2rem solid $color-black;
+/*
+  border-left: 1rem solid $color-black;
+  border-right: 1rem solid $color-black;
   &:after {
     content: " ";
     display: block;
@@ -27,7 +27,14 @@ body {
     right: 0;
     left: 0;
     background: $color-black;
-    height: 2rem;
+    height: 1rem;
+  }*/
+
+  @media (max-width: $media-s) {
+    border: none;
+    &:after {
+      display: none;
+    }
   }
 
   font-family: $sans-serif;
@@ -41,6 +48,10 @@ main {
 
 section {
   padding: 2rem 2rem 6rem;
+
+  @media (max-width: $media-s) {
+    padding: 1rem 1rem 3rem;
+  }
 }
 
 a {

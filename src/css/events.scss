@@ -3,10 +3,10 @@
   color: $color-white;
 }
 
-.event-group {
-}
 .event-grouped-by-day {
   width: $width-m;
+  max-width: 100%;
+  margin: 0 auto 4rem;
 }
 
 .event-list {
@@ -17,6 +17,7 @@
 
 .event {
   width: $width-s;
+  max-width: 100%;
   margin: 0 2rem 1.2rem;
   position: relative;
 
@@ -92,6 +93,10 @@
       max-width: $width-m;
       margin-top: 3.6rem;
     }
+  }
+
+  @media (max-width: $media-s) {
+    margin: 0 0 1.2rem;
   }
 }
 

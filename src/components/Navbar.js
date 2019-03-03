@@ -4,13 +4,26 @@ import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
 export default class Navbar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showNav: false,
+    }
+  }
+
   toggleNav() {
-    console.log('toggle')
+    this.setState({
+      showNav: !this.state.showNav,
+    })
   }
 
   render() {
     return (
-      <header className="site-header">
+      <header
+        className={`site-header ${
+          this.state.showNav ? 'site-nav-visible' : ''
+        }`}
+      >
         <nav className="site-nav">
           <Link to="/program/">Program</Link>
           <Link to="/nyheter/">Nyheter</Link>
@@ -33,7 +46,7 @@ export default class Navbar extends React.Component {
           <Link to="/om-dns/">Om oss</Link>
           <Link to="/foreningene/">Foreningene</Link>
           <Link to="/booking/">Utleie</Link>
-          <div className="site-nav_toggle" onClick={this.toggleNav}>
+          <div className="site-nav_toggle" onClick={this.toggleNav.bind(this)}>
             =
           </div>
         </nav>

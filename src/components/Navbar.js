@@ -35,14 +35,6 @@ export default class Navbar extends React.Component {
           </Link>
         </div>
         <nav className="site-nav">
-          {/*data.allWordpressPage.edges.map(edge => (
-            <Link
-              to={edge.node.slug}
-              key={edge.node.slug}
-            >
-              {edge.node.title}
-            </Link>
-          ))*/}
           <Link to="/om-dns/">Om oss</Link>
           <Link to="/foreningene/">Foreningene</Link>
           <Link to="/booking/">Utleie</Link>

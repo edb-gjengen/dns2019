@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import github from '../img/github-icon.svg'
+import logo from '../img/logo/logo-xl.svg'
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -46,7 +47,9 @@ export default class Navbar extends React.Component {
           <Link to="/nyheter/">Nyheter</Link>
           <Link to="/om-dns/">Praktisk</Link>
         </nav>
-        <Link to="/" className="logo" style={{ width: `${ this.state.headerSize }px`, height: `${ this.state.headerSize }px` }}></Link>
+        <Link to="/" className="logo" style={{ width: `${ this.state.headerSize }px`, height: `${ this.state.headerSize }px` }}>
+          <img src={logo} alt="Det Norske Studentersamfund" />
+        </Link>
         <nav className="site-nav">
           <Link to="/om-dns/">Om oss</Link>
           <Link to="/foreningene/">Foreningene</Link>

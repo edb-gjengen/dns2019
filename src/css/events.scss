@@ -3,26 +3,67 @@
   color: $color-white;
 }
 
+.event-group-header {
+  color: $color-orange;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem;
+}
+
 .event-grouped-by-day {
-  width: $width-m;
-  max-width: 100%;
+  display: inline-block;
+  width: 31.333333%;
+  margin: 0 1% 1rem 1%;
+
+  .event-types, .event-date {
+    display: none;
+  }
+}
+
+.event-grouped-by-month {
+  width: 100%;
+  display: flex;
   margin: 0 auto 4rem;
+
+  .event-group-header {
+    font-size: 1.6rem;
+    width: 20%;
+  }
+
+  .event-list {
+    width: 80%;
+  }
+
+  .event {
+    width: 50%;
+  }
+
+  .event-title {
+    font-size: 1.6rem;
+  }
+
+  .event-date {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 }
 
 .event-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
 }
 
 .event {
-  width: $width-s;
-  max-width: 100%;
-  margin: 0 2rem 1.2rem;
+  width: 100%;
+  margin: 0 0 1.2rem 0;
   position: relative;
-
-  padding-top: 2rem;
-  border-top: 1px solid $color-white;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $color-white;
 
   text-decoration: none;
 
@@ -101,8 +142,6 @@
 }
 
 .event-types {
-  position: absolute;
-  top: 0.2rem;
   ul {
     list-style: none;
     margin: 0;
@@ -124,7 +163,7 @@
     line-height: 1;
     text-transform: uppercase;
     font-weight: 600;
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.05em;
     font-size: $font-xs;
     
   }
@@ -191,7 +230,7 @@
 
   .event-date {
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.1em;
   }
 
   .ticket-url {

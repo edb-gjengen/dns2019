@@ -1,6 +1,6 @@
 .blog {
-  background: $color-black;
-  color: $color-white;
+  background: $color-yellow;
+  color: $color-black;
   padding-bottom: 1rem;
 }
 
@@ -11,27 +11,27 @@
 }
 
 .post {
-  width: $width-xs;
-  margin: 0 1rem 1.3rem 0;
+  width: 31.333333%;
+  margin: 0 1% 1rem 1%;
   position: relative;
   text-decoration: none;
 
-  background: $color-yellow;
-  color: $color-black;
+  background: $color-black;
+  color: $color-white;
   box-shadow: 
-    0 0 0 0.3rem $color-black,
-    0 0 0 0.35rem $color-black;
+    0 0 0 0.3rem $color-yellow,
+    0 0 0 0.35rem $color-yellow;
   transition: box-shadow .1s ease-in-out;
 
   &:hover {
-    color: $color-black;
+    color: $color-white;
     box-shadow: 
-      0 0 0 0.3rem $color-black,
-      0 0 0 0.35rem $color-yellow;
+      0 0 0 0.3rem $color-yellow,
+      0 0 0 0.35rem $color-black;
   }
 
   &-text {
-    padding: 0.4rem 1rem 1.4rem;
+    padding: 1.4rem 1.6rem 2rem;
 
     p {
       margin-bottom: 0;

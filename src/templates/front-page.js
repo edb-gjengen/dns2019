@@ -14,6 +14,7 @@ export default class IndexPage extends React.Component {
     return (
       <Layout>
         <EventList events={events} numDays={7} groupBy="day" />
+        <div className="volunteer">Bli frivillig!</div>
         <PostList posts={posts} title="Aktuelt" />
       </Layout>
     )

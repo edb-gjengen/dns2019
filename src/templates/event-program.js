@@ -11,7 +11,7 @@ export default class EventProgram extends React.Component {
 
     return (
       <Layout>
-        <EventList events={events} title="Program" groupBy="month" />
+        <EventList events={events} title="Dette skjer" groupBy="month" />
       </Layout>
     )
   }

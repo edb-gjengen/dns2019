@@ -42,7 +42,7 @@ exports.createPages = ({ actions, graphql }) => {
           : allPages
 
       // Call `createPage()` once per WordPress page
-      const ignoreSlugs = ['program', 'foreningene']
+      const ignoreSlugs = ['program', 'foreningene', 'profil']
       _.each(pages, ({ node: page }) => {
         if (ignoreSlugs.includes(page.slug)) {
           return
@@ -54,6 +54,11 @@ exports.createPages = ({ actions, graphql }) => {
             id: page.id,
           },
         })
+      })
+
+      createPage({
+        path: '/profil/',
+        component: path.resolve('./src/templates/design-manual.js'),
       })
     })
     .then(() => {

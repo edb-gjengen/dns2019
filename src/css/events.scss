@@ -208,6 +208,10 @@
   background: $color-black;
   color: $color-white;
   padding-top: 0;
+
+  .event-meta {
+    color: $color-white;
+  }
 }
 
 .event-hero {
@@ -217,7 +221,7 @@
   align-items: flex-end;
 
   max-width: $width-l;
-  margin: 8rem auto;
+  margin: 2rem auto 6rem;
   
   &_text, &_image {
     width: 50%;

@@ -37,7 +37,7 @@ export class VenueTemplate extends React.Component {
           )}
         </div>
         <div
-          className="venue-content"
+          className="venue-content wp-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <div className="venue-meta">

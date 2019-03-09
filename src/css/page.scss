@@ -6,27 +6,25 @@
   text-align: center;
 }
 
-.page {
-  &-content {
+.wp-content {
+  max-width: $width-m;
+  margin: 0 auto;
+
+  img, div {
+    max-width: 100%;
+  }
+
+  ul {
     max-width: $width-m;
-    margin: 0 auto;
+    margin: 0 auto 1rem;
+  }
 
-    img, div {
-      max-width: 100%;
-    }
+  ul, p {
+    margin: 0 auto 1.6rem;
+  }
 
-    ul {
-      max-width: $width-m;
-      margin: 0 auto 1rem;
-    }
-
-    ul, p {
-      margin: 0 auto 1.6rem;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      max-width: $width-m;
-      margin-top: 3.6rem;
-    }
+  h1, h2, h3, h4, h5, h6 {
+    max-width: $width-m;
+    margin-top: 3.6rem;
   }
 }

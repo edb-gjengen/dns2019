@@ -97,7 +97,7 @@ export const EventTemplate = ({
         )}
       </div>
       <div
-        className="event-content"
+        className="event-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </section>

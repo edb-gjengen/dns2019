@@ -37,7 +37,7 @@ export const BlogPostTemplate = ({
         )}
       </div>
       <div
-        className="post-content"
+        className="post-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </section>

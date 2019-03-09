@@ -27,6 +27,7 @@ export default class PostList extends React.Component {
                 </header>
                 <div className="post-body">
                   <div
+                    className="wp-content"
                     dangerouslySetInnerHTML={{
                       __html: post.excerpt.replace(/<p class="link-more.*/, ''),
                     }}

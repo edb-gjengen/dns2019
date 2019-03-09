@@ -28,7 +28,7 @@ export const AssociationTemplate = data => {
       )}
       <div className="association-type">Type: {type}</div>
       <div
-        className="association-content"
+        className="association-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </section>

@@ -8,7 +8,7 @@ export const PageTemplate = ({ title, content }) => {
     <section className="page">
       <h1 className="section-title">{title}</h1>
       <div
-        className="page-content"
+        className="page-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </section>

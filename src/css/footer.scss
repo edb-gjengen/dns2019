@@ -12,12 +12,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     margin: 0 auto 2rem;
   }
 
   .logo {
     width: 50%;
-    padding-right: 3rem;
+    padding-right: 4rem;
   }
   p {
     width: 50%;

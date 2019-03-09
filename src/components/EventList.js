@@ -10,7 +10,7 @@ moment.locale('nb')
 
 export default class EventList extends React.Component {
   render() {
-    const { events, onlyUpcoming, numDays, groupBy } = this.props
+    const { events, title, onlyUpcoming, numDays, groupBy, showMore } = this.props
 
     const filteredEvents = events.filter(({ node: event }) => {
       const startTime = moment(event.start_time)
@@ -27,11 +27,13 @@ export default class EventList extends React.Component {
     })
 
     return (
-      <div className="events">
+      <section className="events">
+        {title && <h1 className="section-title">{title}</h1>}
         {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
         {!groupBy &&
           filteredEvents.map(({ node: event }) => this.renderEvent(event))}
-      </div>
+        {showMore && <div className="show-more"><Link to="/program/">Vis alle</Link></div>}
+      </section>
     )
   }
 
@@ -121,10 +123,12 @@ export default class EventList extends React.Component {
 
 EventList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object),
+  title: PropTypes.string,
   onlyUpcoming: PropTypes.bool,
   numDays: PropTypes.number,
   groupBy: PropTypes.string,
   compactDate: PropTypes.bool,
+  showMore: PropTypes.bool
 }
 
 EventList.defaultProps = {

@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 
 export default class PostList extends React.Component {
   render() {
-    const { posts, title } = this.props
+    const { posts, title, showMore } = this.props
 
     return (
       <section className="blog">
@@ -36,6 +36,7 @@ export default class PostList extends React.Component {
             </Link>
           ))}
         </div>
+        {showMore && <div className="show-more"><Link to="/nyheter/" className="show-more">Vis alle</Link></div>}
       </section>
     )
   }
@@ -44,6 +45,7 @@ export default class PostList extends React.Component {
 PostList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
+  showMore: PropTypes.bool
 }
 
 export const pageQuery = graphql`

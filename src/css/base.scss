@@ -116,3 +116,17 @@ td, th {
 .volunteer {
   background: $color-green;
 }
+
+.show-more {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+
+  a {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    color: $color-black;
+  }
+}

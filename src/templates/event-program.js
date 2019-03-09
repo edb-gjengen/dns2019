@@ -11,13 +11,7 @@ export default class EventProgram extends React.Component {
 
     return (
       <Layout>
-        <section className="event-program">
-          <EventList
-            events={events}
-            groupBy="month"
-            compactDate={true}
-          />
-        </section>
+        <EventList events={events} title="Dette skjer" groupBy="month" />
       </Layout>
     )
   }

@@ -25,28 +25,32 @@
 
 .event-grouped-by-month {
   width: 100%;
-  display: flex;
   margin: 0 auto 4rem;
 
   .event-group-header {
-    font-size: 1.6rem;
-    width: 20%;
-  }
-
-  .event-list {
-    width: 80%;
+    text-align: center;
+    background-color: $color-red;
+    color: $color-white;
+    margin: 2rem -2rem;
   }
 
   .event {
-    width: 48%;
-    margin: 0 0 1.2rem 2%;
-    &:nth-child(odd) {
-      margin: 0 2% 1.2rem 0;
-    }
-  }
+    width: 29.333333%;
+    margin: 0 2% 1.2rem 2%;
 
-  .event-title {
-    font-size: 1.6rem;
+    @media (max-width: $media-m) {
+      width: 46%;
+    }
+  
+    @media (max-width: $media-s) {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  
+    @media (min-width: $media-xl) {
+      width: 21%;
+    }
   }
 
   .event-date {

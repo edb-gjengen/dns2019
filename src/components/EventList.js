@@ -66,6 +66,7 @@ export default class EventList extends React.Component {
   }
 
   renderEvent(event) {
+    const { compactDate } = this.props
     return (
       <Link to={event.path} className="event" key={event.id}>
         <div className="event-image">
@@ -79,16 +80,23 @@ export default class EventList extends React.Component {
             <span className="event-start">
               {moment(event.start_time).format('HH:mm')}
             </span>
-            <span className="event-date">
+            <span
+              className={`event-date $(compactDate && event-date-is-compact)`}
+            >
               <span className="event-date-weekday">
                 {moment(event.start_time).format('dddd')}{' '}
               </span>
-              <span className="event-date-day">
-                {moment(event.start_time).format('D.')}{' '}
-              </span>
-              <span className="event-date-month">
-                {moment(event.start_time).format('MMMM')}{' '}
-              </span>
+              {!compactDate && (
+                <span className="event-date-day-month">
+                  {moment(event.start_time).format('D.')}{' '}
+                  {moment(event.start_time).format('MMMM')}{' '}
+                </span>
+              )}
+              {compactDate && (
+                <span className="event-date-day-month">
+                  {moment(event.start_time).format('D/M')}{' '}
+                </span>
+              )}
               {/* Only specify year if different. */}
               {!moment(event.start_time).isSame(new Date(), 'year') && (
                 <span className="event-date-year">
@@ -118,12 +126,14 @@ EventList.propTypes = {
   onlyUpcoming: PropTypes.bool,
   numDays: PropTypes.number,
   groupBy: PropTypes.string,
+  compactDate: PropTypes.bool,
 }
 
 EventList.defaultProps = {
   onlyUpcoming: true,
   numDays: 0,
   groupBy: null,
+  compactDate: false,
 }
 
 export const pageQuery = graphql`

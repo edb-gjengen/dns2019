@@ -47,6 +47,13 @@ PostList.propTypes = {
 }
 
 export const pageQuery = graphql`
+  fragment PostListImage on File {
+    childImageSharp {
+      fluid(maxWidth: 800, maxHeight: 600) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
   fragment PostListFields on wordpress__POST {
     id
     path
@@ -62,7 +69,7 @@ export const pageQuery = graphql`
     date(formatString: "MMMM DD, YYYY")
     featured_media {
       localFile {
-        ...FluidImage
+        ...PostListImage
       }
     }
   }

@@ -16,11 +16,29 @@ export default class IndexPage extends React.Component {
     return (
       <Layout>
         <EventList events={events} numDays={7} groupBy="day" />
+        <Link to="/program/">Vis alle</Link>
+        <section className="front-page-info">
+          <div className="opening-hours">
+            <h2>Åpningstider</h2>
+            <ul>
+              <li>Glassbaren:</li>
+              <li>Bokcaféen:</li>
+            </ul>
+          </div>
+          <div className="address">
+            <h2>Adresse</h2>
+            <p>Finn veibeskrivelse</p>
+            <label for="directions">Jeg vil reise fra:</label>
+            <input type="text" name="directions" placeholder="Skriv inn adresse" />
+            
+          </div>
+        </section>
         <section className="volunteer">
           <Link to="/bli-aktiv/"><h1 className="section-title">Bli frivillig</h1></Link>
           <p>Vil du være med å arrangere greier på studentersamfundet? Kom æ</p>
         </section>
         <PostList posts={posts} title="Aktuelt" />
+        <Link to="/nyheter/">Vis alle</Link>
       </Layout>
     )
   }

@@ -101,3 +101,18 @@ td, th {
     height: 100%;
   }
 }
+
+/* ———————— TODO: place this stuff somewhere else ———————— */
+
+.front-page-info {
+  display: flex;
+  background: $color-white;
+  > div {
+    width: 50%;
+  }
+}
+
+
+.volunteer {
+  background: $color-green;
+}

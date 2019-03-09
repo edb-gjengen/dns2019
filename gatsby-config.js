@@ -32,6 +32,7 @@ module.exports = {
           '**/*/*/tags',
           '**/*/*/taxonomies',
           '**/*/*/users',
+          '**/*/*/venues',
         ],
         excludedRoutes: [
           '/yoast/**',

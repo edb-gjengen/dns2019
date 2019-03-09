@@ -23,7 +23,6 @@ const formatPrices = (regular, student) => {
 export const EventTemplate = ({
   content,
   title,
-  hasFeaturedMedia,
   featuredMedia,
   startTime,
   endTime,
@@ -34,6 +33,7 @@ export const EventTemplate = ({
   priceRegular,
   eventTypes,
 }) => {
+  const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
   return (
     <section className="event-page">
       <div className="event-hero">
@@ -119,9 +119,6 @@ const Event = ({ data }) => {
       <EventTemplate
         title={event.title}
         content={event.content}
-        hasFeaturedMedia={
-          event.featured_media && !!event.featured_media.localFile
-        }
         featuredMedia={event.featured_media}
         startTime={event.start_time}
         endTime={event.end_time}

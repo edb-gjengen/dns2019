@@ -12,9 +12,9 @@ export const BlogPostTemplate = ({
   title,
   date,
   author,
-  hasFeaturedMedia,
   featuredMedia,
 }) => {
+  const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
   return (
     <section
       className={`post-page ${
@@ -62,7 +62,6 @@ const BlogPost = ({ data }) => {
         title={post.title}
         date={post.date}
         author={post.author}
-        hasFeaturedMedia={!!post.featured_media.localFile}
         featuredMedia={post.featured_media}
       />
     </Layout>

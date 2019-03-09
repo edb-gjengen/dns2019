@@ -118,6 +118,56 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
+          allWordpressWpVenues {
+            edges {
+              node {
+                id
+                path
+                slug
+                status
+              }
+            }
+          }
+        }
+      `)
+    })
+    .then(result => {
+      if (result.errors) {
+        result.errors.forEach(e => console.error(e.toString()))
+        return Promise.reject(result.errors)
+      }
+
+      const venueTemplate = path.resolve(`./src/templates/venue.js`)
+
+      // In production builds, filter for only published venues.
+      const allVenues = result.data.allWordpressWpVenues.edges
+      const venues =
+        process.env.NODE_ENV === 'production'
+          ? getOnlyPublished(allVenues)
+          : allVenues
+
+      // Iterate over the array of venues
+      _.each(venues, ({ node: venue }) => {
+        // Create the Gatsby page for this WordPress venue
+        createPage({
+          path: venue.path,
+          component: venueTemplate,
+          context: {
+            id: venue.id,
+          },
+        })
+      })
+
+      // Create the booking page
+      // const bookingTemplate = path.resolve(`./src/templates/booking.js`)
+      // createPage({
+      //   path: `/booking/`,
+      //   component: bookingTemplate,
+      // })
+    })
+    .then(() => {
+      return graphql(`
+        {
           allWordpressWpEvents {
             edges {
               node {

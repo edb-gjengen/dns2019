@@ -10,7 +10,7 @@
   font-size: 1.3rem;
   line-height: 1.2;
   letter-spacing: 0.05em;
-  margin: 0 0 1rem;
+  margin: 0 0 1.2rem;
 }
 
 .event-grouped-by-day {
@@ -38,7 +38,11 @@
   }
 
   .event {
-    width: 50%;
+    width: 48%;
+    margin: 0 0 1.2rem 2%;
+    &:nth-child(odd) {
+      margin: 0 2% 1.2rem 0;
+    }
   }
 
   .event-title {
@@ -49,6 +53,10 @@
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+
+  .event-types {
+    display: none;
   }
 }
 
@@ -62,7 +70,7 @@
   width: 100%;
   margin: 0 0 1.2rem 0;
   position: relative;
-  padding-bottom: 1rem;
+  padding-bottom: 1.2rem;
   border-bottom: 1px solid $color-white;
 
   text-decoration: none;

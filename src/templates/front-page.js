@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import EventList from '../components/EventList'
+
 
 export default class IndexPage extends React.Component {
   render() {
@@ -14,7 +16,10 @@ export default class IndexPage extends React.Component {
     return (
       <Layout>
         <EventList events={events} numDays={7} groupBy="day" />
-        <div className="volunteer">Bli frivillig!</div>
+        <section className="volunteer">
+          <Link to="/bli-aktiv/"><h1 className="section-title">Bli frivillig</h1></Link>
+          <p>Vil du være med å arrangere greier på studentersamfundet? Kom æ</p>
+        </section>
         <PostList posts={posts} title="Aktuelt" />
       </Layout>
     )

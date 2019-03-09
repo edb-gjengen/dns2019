@@ -1,6 +1,7 @@
-.events {
-  background: $color-black;
-  color: $color-white;
+.front-page-events, .event-program, .events {
+  background: $color-pink;
+  color: $color-text-event;
+  padding-top: 0;
 }
 
 .event-group-header {
@@ -10,15 +11,29 @@
   font-size: 1.3rem;
   line-height: 1.2;
   letter-spacing: 0.05em;
-  margin: 0 0 1.2rem;
+  margin: 0;
 }
 
 .event-grouped-by-day {
   display: inline-block;
-  width: 31.333333%;
-  margin: 0 1% 1rem 1%;
+  width: 29.333333%;
+  margin: 0 2% 1rem 2%;
 
-  .event-types, .event-date {
+  @media (max-width: $media-m) {
+    width: 46%;
+  }
+
+  @media (max-width: $media-s) {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @media (min-width: $media-xl) {
+    width: 21%;
+  }
+
+  .event-types, .event-group-header {
     display: none;
   }
 }
@@ -31,7 +46,8 @@
     text-align: center;
     background-color: $color-red;
     color: $color-white;
-    margin: 2rem -2rem;
+    margin: 0 -2rem;
+    padding: 0.4rem 2rem;
   }
 
   .event {
@@ -53,11 +69,6 @@
     }
   }
 
-  .event-date {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
 
   .event-types {
     display: none;
@@ -65,6 +76,7 @@
 }
 
 .event-list {
+  padding-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
@@ -75,7 +87,7 @@
   margin: 0 0 1.2rem 0;
   position: relative;
   padding-bottom: 1.2rem;
-  border-bottom: 1px solid $color-white;
+  border-bottom: 0.13rem solid $color-text-event;
 
   text-decoration: none;
 
@@ -88,7 +100,7 @@
   &-title {
     display: block;
     text-decoration: none;
-    color: $color-white;
+    color: $color-text-event;
     font-size: 1.3rem;
     font-weight: 700;
     line-height: 1.2;
@@ -112,7 +124,7 @@
 
   &-meta {
     font-size: $font-s;
-    color: $color-white;
+    color: $color-text-event;
   }
 
   .event-start {
@@ -146,6 +158,14 @@
       max-width: $width-m;
       margin-top: 3.6rem;
     }
+  }
+
+  .event-date {
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
   }
 
   @media (max-width: $media-s) {

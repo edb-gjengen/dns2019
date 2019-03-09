@@ -10,7 +10,7 @@ moment.locale('nb')
 
 export default class EventList extends React.Component {
   render() {
-    const { events, title, onlyUpcoming, numDays, groupBy } = this.props
+    const { events, onlyUpcoming, numDays, groupBy } = this.props
 
     const filteredEvents = events.filter(({ node: event }) => {
       const startTime = moment(event.start_time)
@@ -27,12 +27,11 @@ export default class EventList extends React.Component {
     })
 
     return (
-      <section className="events">
-        {title && <h1 className="section-title">{title}</h1>}
+      <div className="events">
         {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
         {!groupBy &&
           filteredEvents.map(({ node: event }) => this.renderEvent(event))}
-      </section>
+      </div>
     )
   }
 
@@ -75,34 +74,34 @@ export default class EventList extends React.Component {
           )}
         </div>
         <header className="event-header">
+          <span
+            className={`event-date $(compactDate && event-date-is-compact)`}
+          >
+            <span className="event-date-weekday">
+              {moment(event.start_time).format('dddd')}{' '}
+            </span>
+            {!compactDate && (
+              <span className="event-date-day-month">
+                {moment(event.start_time).format('D.')}{' '}
+                {moment(event.start_time).format('MMMM')}{' '}
+              </span>
+            )}
+            {compactDate && (
+              <span className="event-date-day-month">
+                {moment(event.start_time).format('D/M')}{' '}
+              </span>
+            )}
+            {/* Only specify year if different. */}
+            {!moment(event.start_time).isSame(new Date(), 'year') && (
+              <span className="event-date-year">
+                {moment(event.start_time).format('YYYY')}{' '}
+              </span>
+            )}
+          </span>
           <h2 className="event-title">{event.title}</h2>
           <div className="event-meta">
             <span className="event-start">
               {moment(event.start_time).format('HH:mm')}
-            </span>
-            <span
-              className={`event-date $(compactDate && event-date-is-compact)`}
-            >
-              <span className="event-date-weekday">
-                {moment(event.start_time).format('dddd')}{' '}
-              </span>
-              {!compactDate && (
-                <span className="event-date-day-month">
-                  {moment(event.start_time).format('D.')}{' '}
-                  {moment(event.start_time).format('MMMM')}{' '}
-                </span>
-              )}
-              {compactDate && (
-                <span className="event-date-day-month">
-                  {moment(event.start_time).format('D/M')}{' '}
-                </span>
-              )}
-              {/* Only specify year if different. */}
-              {!moment(event.start_time).isSame(new Date(), 'year') && (
-                <span className="event-date-year">
-                  {moment(event.start_time).format('YYYY')}{' '}
-                </span>
-              )}
             </span>
             {event.event_types && event.event_types.length && (
               <div className="event-types">
@@ -122,7 +121,6 @@ export default class EventList extends React.Component {
 
 EventList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string,
   onlyUpcoming: PropTypes.bool,
   numDays: PropTypes.number,
   groupBy: PropTypes.string,

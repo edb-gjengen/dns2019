@@ -4,7 +4,7 @@ import logo from '../img/logo/logo-h.svg'
 
 const Footer = () => (
   <footer className="site-footer">
-    <div className="hours">
+    <div className="opening-hours">
       Åpningstider:
       <br />
       Glassbaren
@@ -31,10 +31,6 @@ const Footer = () => (
         ønsker en tur i baren, på kafé, på debatt, på konsert, teater eller
         kino, har man muligheten på Det Norske Studentersamfund.
       </p>
-      <div className="meta">
-        Chateau Neuf – Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo
-        | Ansvarlig redaktør: Stein-Olav Moe Fause | <a href="#">Logg inn</a>
-      </div>
     </div>
   </footer>
 )

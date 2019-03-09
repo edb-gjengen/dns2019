@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import github from '../img/github-icon.svg'
-import logo from '../img/logo/logo-xl.svg'
+import logo from '../img/logo/logo-s.svg'
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -28,7 +28,6 @@ export default class Navbar extends React.Component {
   }
 
   resizeHeader() {
-    console.log(this.state.headerSize)
     if (window.scrollY < 160) {
       this.setState({
         headerSize: 200 - window.scrollY,
@@ -40,14 +39,13 @@ export default class Navbar extends React.Component {
     return (
       <header
         className={`site-header ${this.state.showNav ? 'site-nav-visible' : ''}`}
-        style={{ height: `${ this.state.headerSize }px` }}
       >
         <nav className="site-nav">
           <Link to="/program/">Program</Link>
           <Link to="/nyheter/">Nyheter</Link>
           <Link to="/om-dns/">Praktisk</Link>
         </nav>
-        <Link to="/" className="logo" style={{ width: `${ this.state.headerSize }px`, height: `${ this.state.headerSize }px` }}>
+        <Link to="/" className="logo">
           <img src={logo} alt="Det Norske Studentersamfund" />
         </Link>
         <nav className="site-nav">

@@ -15,8 +15,10 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <EventList events={events} numDays={7} groupBy="day" />
-        <Link to="/program/">Vis alle</Link>
+        <section className="front-page-events">
+          <EventList events={events} numDays={7} groupBy="day" />
+          <Link to="/program/">Vis alle</Link>
+        </section>
         <section className="front-page-info">
           <div className="opening-hours">
             <h2>Åpningstider</h2>

@@ -7,21 +7,33 @@
   flex-wrap: wrap;
   justify-content: center;
 
+  .info {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto 2rem;
+  }
+
   .logo {
-    width: $width-m;
+    width: 50%;
     padding-right: 3rem;
   }
-
   p {
-    margin: 0 0 3rem;
+    width: 50%;
+    margin: 0;
   }
-}
 
-.info {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  @media (max-width: $media-s) {
+    .info {
+      display: block;
+    }
+    .logo, p {
+      width: 100%;
+      padding: 0;
+      margin: 0 0 2rem;
+    }
+  }
 }
 
 .social-nav {
@@ -35,14 +47,4 @@
       margin-right: 0;
     }
   }
-}
-
-.hours {
-  font-size: 2rem;
-  background: $color-red;
-  width: 100%;
-}
-
-.meta {
-  font-size: $font-xs;
 }

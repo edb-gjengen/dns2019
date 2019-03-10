@@ -1,5 +1,5 @@
 .blog {
-  background: $color-yellow;
+  background: $color-background-blog;
   color: $color-black;
   padding-bottom: 1rem;
 }
@@ -19,15 +19,15 @@
   background: $color-black;
   color: $color-white;
   box-shadow: 
-    0 0 0 0.3rem $color-yellow,
-    0 0 0 0.35rem $color-yellow;
+    0 0 0 0.3rem $color-background-blog,
+    0 0 0 0.35rem $color-background-blog;
   transition: box-shadow .1s ease-in-out;
   cursor: pointer;
 
   &:hover {
     color: $color-white;
     box-shadow: 
-      0 0 0 0.3rem $color-yellow,
+      0 0 0 0.3rem $color-background-blog,
       0 0 0 0.35rem $color-black;
   }
 
@@ -148,7 +148,8 @@
 
 .pagination {
   text-align: center;
-  background: $color-black;
+  background: $color-background-blog;
+  color: $color-black;
   padding-bottom: 3rem;
   a {
     display: inline-block;

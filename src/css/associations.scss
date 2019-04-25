@@ -1,11 +1,26 @@
 .association-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .association {
-  width: $width-m;
-  margin: 0 auto 3rem;
+  width: 29.333333%;
+  margin: 0 2% 1rem 2%;
   position: relative;
-  display: flex;
+
+  @media (max-width: $media-m) {
+    width: 46%;
+  }
+
+  @media (max-width: $media-s) {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @media (min-width: $media-xl) {
+    width: 21%;
+  }
   
   a {
     text-decoration: none;
@@ -13,16 +28,21 @@
   }
 
   &-title {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
   }
 
   &-image {
-    width: 34%;
+    width: 100%;
     padding-right: 2rem;
+    margin-bottom: 1rem;
+    img {
+      height: 20rem;
+    }
   }
 
   &-text {
-    width: 66%;
+    width: 100%;
     p {
       font-size: $font-s;
     }

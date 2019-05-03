@@ -5,6 +5,10 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Img from 'gatsby-image'
 
+import moment from 'moment'
+import 'moment/locale/nb'
+moment.locale('nb')
+
 export const BlogPostTemplate = ({
   content,
   categories,
@@ -26,7 +30,8 @@ export const BlogPostTemplate = ({
           <h1>{title}</h1>
           <div className="post-meta">
             <p>
-              {date} av <Link to={`/author/${author.slug}`}>{author.name}</Link>
+              {moment(date).format('dddd D. MMMM YYYY')} av{' '}
+              <Link to={`/author/${author.slug}`}>{author.name}</Link>
             </p>
           </div>
         </div>
@@ -88,7 +93,7 @@ export const pageQuery = graphql`
     id
     slug
     content
-    date(formatString: "MMMM DD, YYYY")
+    date
     title
   }
   query BlogPostByID($id: String!) {
@@ -97,7 +102,7 @@ export const pageQuery = graphql`
       title
       slug
       content
-      date(formatString: "MMMM DD, YYYY")
+      date
       categories {
         name
         slug

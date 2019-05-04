@@ -2,22 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
 import Img from 'gatsby-image'
-
 import moment from 'moment'
 import 'moment/locale/nb'
+
+import Layout from '../components/Layout'
+
 moment.locale('nb')
 
 const formatPrices = (regular, student) => {
   let cc = ''
-  if (regular && regular != 0) {
+  if (regular && regular !== 0) {
     cc += regular
   }
-  if (student && student != 0) {
-    cc += ' / ' + student
+  if (student && student !== 0) {
+    cc += ` / ${student}`
   }
-  return cc == '' ? 'Gratis' : cc
+  return cc === '' ? 'Gratis' : cc
 }
 
 export const EventTemplate = ({
@@ -106,8 +107,16 @@ export const EventTemplate = ({
 
 EventTemplate.propTypes = {
   content: PropTypes.node.isRequired,
-  title: PropTypes.string,
-  featuredImage: PropTypes.object,
+  title: PropTypes.string.isRequired,
+  featuredMedia: PropTypes.shape({}),
+  startTime: PropTypes.string.isRequired,
+  endTime: PropTypes.string,
+  venue: PropTypes.string,
+  facebookUrl: PropTypes.string,
+  ticketUrl: PropTypes.string,
+  priceStudent: PropTypes.string,
+  priceRegular: PropTypes.string,
+  eventTypes: PropTypes.arrayOf(PropTypes.string),
 }
 
 const Event = ({ data }) => {

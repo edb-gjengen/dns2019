@@ -1,9 +1,21 @@
 .section-title {
-  margin: 1rem auto 3rem;
-  font-weight: 700;
-  font-size: 3.2rem;
+  display: block;
+  position: relative;
+  z-index: 5;
+  margin: -3rem auto 3rem;
+  padding: 0.5rem 1rem;
+  font-weight: 400;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   line-height: 1.1;
   text-align: center;
+  text-decoration: none;
+  background: $color-black;
+  color: $color-white;
+}
+h1.section-title {
+  margin-top: 1rem;
 }
 
 .wp-content {

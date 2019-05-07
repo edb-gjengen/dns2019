@@ -7,17 +7,15 @@
 .post-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .post {
   width: 31.333333%;
-  margin: 0 1% 1rem 1%;
+  margin-bottom: 1rem;
   position: relative;
   text-decoration: none;
-
-  background: $color-black;
-  color: $color-white;
+  color: $color-black;
   box-shadow: 
     0 0 0 0.3rem $color-background-blog,
     0 0 0 0.35rem $color-background-blog;
@@ -25,14 +23,11 @@
   cursor: pointer;
 
   &:hover {
-    color: $color-white;
-    box-shadow: 
-      0 0 0 0.3rem $color-background-blog,
-      0 0 0 0.35rem $color-black;
+    color: $color-black;
   }
 
   &-text {
-    padding: 1.4rem 1.6rem 2rem;
+    padding: 1rem 2rem 1rem 0;
 
     p {
       margin-bottom: 0;
@@ -45,7 +40,7 @@
     color: inherit;
     font-size: 1.4rem;
     font-weight: bold;
-    line-height: 1.2;
+    line-height: 1.1;
     margin-bottom: 0.4rem;
   }
 
@@ -132,10 +127,12 @@
 
   &_image {
     position: relative;
+    order: 1;
   }
 
   &_text {
-    padding: 4rem 2rem 2rem 0;
+    order: 2;
+    padding: 4rem 0 2rem 2rem;
     z-index: 666;
   }
 
@@ -157,7 +154,6 @@
     background: $color-green;
     color: $color-black;
     text-decoration: none;
-    border-radius: 10rem;
     margin-right: 0.6rem;
 
     &:hover {

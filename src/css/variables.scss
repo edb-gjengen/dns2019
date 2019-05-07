@@ -10,9 +10,12 @@ $color-pink: #FFD5DC;
 $color-green: #92CBA5;
 $color-black: #060606;
 $color-white: #FFFFFF;
+$color-gray: #242424;
+
+$color-black-gradient: linear-gradient($color-black, $color-gray); 
 
 $color-background: $color-black;
-$color-background-events: $color-white;
+$color-background-events: $color-black-gradient;
 $color-background-blog: $color-white;
 
 $color-text: $color-white;

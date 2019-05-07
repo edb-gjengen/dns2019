@@ -32,7 +32,7 @@ export default class EventList extends React.Component {
         {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
         {!groupBy &&
           filteredEvents.map(({ node: event }) => this.renderEvent(event))}
-        {showMore && <div className="show-more"><Link to="/program/">Vis alle</Link></div>}
+        {showMore && <div className="show-more"><Link to="/program/" className="button">Vis alle</Link></div>}
       </section>
     )
   }

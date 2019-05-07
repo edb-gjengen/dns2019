@@ -37,7 +37,6 @@ section {
 
 a {
   color: $color-link;
-  transition: color .2s ease-in-out;
 
   &:hover {
     color: $color-hover;
@@ -75,6 +74,25 @@ figure {
   margin: 2rem 0;
 }
 
+button, .button {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: $color-black;
+  background: $color-orange;
+  width: 100%;
+  max-width: $width-m;
+  padding: 0.6rem 2rem;
+  margin-bottom: 1rem;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    color: $color-orange;
+    background: $color-black;
+  }
+}
+
 .table-wrap {
   max-width: 100%;
   overflow: scroll;
@@ -102,31 +120,20 @@ td, th {
   }
 }
 
-/* ———————— TODO: place this stuff somewhere else ———————— */
-
-.front-page-info {
-  display: flex;
+input, textarea {
+  font-size: 1rem;
+  font-family: inherit;
+  border: 2px solid $color-black;
   background: $color-white;
-  > div {
-    width: 50%;
+  color: $color-black;
+  padding: 0.4rem 0.6rem;
+
+  &:focus {
+    outline: none;
+    border-color: $color-yellow;
   }
 }
 
-
-.volunteer {
-  background: $color-green;
-}
-
-.show-more {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 1rem;
-
-  a {
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-    color: $color-black;
-  }
+label {
+  font-weight: 700;
 }

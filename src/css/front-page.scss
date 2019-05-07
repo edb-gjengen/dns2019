@@ -1,0 +1,54 @@
+.front-page-info {
+  display: flex;
+  background: $color-white;
+  padding: 0;
+  > div {
+    width: 50%;
+  }
+
+  h2 {
+    font-weight: 400;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+  }
+
+  p {
+    margin-left: 0;
+  }
+}
+
+.address, .opening-hours {
+  padding: 2rem 2rem 6rem;
+
+  @media (max-width: $media-s) {
+    padding: 1rem 1rem 3rem;
+  }
+}
+
+.address {
+  background: $color-orange;
+
+  label, input {
+    display: block;
+    width: 100%;
+  }
+}
+
+.opening-hours {
+  background: $color-orange;
+}
+
+
+.volunteer {
+  background: $color-black-gradient;
+  color: $color-white;
+}
+
+.show-more {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}

@@ -1,12 +1,16 @@
 .front-page-events, .event-program, .events {
   background: $color-background-events;
-  color: $color-text-event;
+  color: $color-white;
+}
+
+.events {
+  text-align: center;
+  padding: 0;
 }
 
 .event-group-header {
-  color: $color-orange;
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 1.3rem;
   line-height: 1.2;
   letter-spacing: 0.05em;
@@ -15,7 +19,7 @@
 
 .event-grouped-by-day {
   display: inline-block;
-  width: 29.333333%;
+  //width: 29.333333%;
   margin: 0 2% 1rem 2%;
 
   @media (max-width: $media-m) {
@@ -39,7 +43,9 @@
 
 .event-grouped-by-month {
   width: 100%;
-  margin: 0 auto 4rem;
+  margin: 0;
+  padding: 0 1rem 1rem;
+  background: $color-background-events;
 
   .event-group-header {
     text-align: center;
@@ -50,8 +56,8 @@
   }
 
   .event {
-    width: 29.333333%;
-    margin: 0 2% 1.2rem 2%;
+    width: 47.2%;
+    margin: 0 1.4% 2rem 1.4%;
 
     @media (max-width: $media-m) {
       width: 46%;
@@ -85,28 +91,37 @@
   width: 100%;
   margin: 0 0 1.2rem 0;
   position: relative;
-  padding-bottom: 1.2rem;
-  border-bottom: 0.13rem solid $color-text-event;
-
   text-decoration: none;
+  color: $color-black;
+  background: $color-white;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
 
   &-image {
-    width: 5rem;
-    margin: 0 1rem 1rem 0;
-    float: right;
+    display: block;
+    position: relative;
+    width: 30%;
+    margin: 0;
+  }
+
+  &-header {
+    padding: 0.6rem 0.8rem;
+    line-height: 1.1;
   }
   
   &-title {
     display: block;
     text-decoration: none;
-    color: $color-text-event;
     font-size: 1.3rem;
     font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0;
+    line-height: 1.1;
+    margin: 0.2rem 0;
   }
 
+  transition: color 1s ease-in-out;
   &:hover {
+    transition: color 1s ease-in-out;
     color: $color-orange;
     border-color: $color-orange;
     
@@ -121,14 +136,9 @@
     }
   }
 
-  &-meta {
-    font-size: $font-s;
-    color: $color-text-event;
-  }
-
   .event-start {
     display: block;
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 
   &-content {
@@ -218,13 +228,19 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
 
   max-width: $width-l;
   margin: 2rem auto 6rem;
   
   &_text, &_image {
     width: 50%;
+  }
+
+  &_image {
+    .gatsby-image-wrapper {
+      margin-left: -25%;
+    }
   }
 
 
@@ -240,7 +256,7 @@
       content: " ";
       display: block;
       position: absolute;
-      top: -1rem; right: -1rem; bottom: -1rem; left: -1rem;
+      top: -1rem; right: -1rem; bottom: -1rem; left: -25%;
       background: linear-gradient(90deg, $color-black, transparent, transparent)
     }
   }

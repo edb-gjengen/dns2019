@@ -9,7 +9,7 @@ export default class PostList extends React.Component {
 
     return (
       <section className="blog">
-        <h1 className="section-title">{title}</h1>
+        <h2 className="section-title">{title}</h2>
         <div className="post-list">
           {posts.map(({ node: post }) => (
             <Link to={post.path} className="post" key={post.id}>
@@ -37,7 +37,7 @@ export default class PostList extends React.Component {
             </Link>
           ))}
         </div>
-        {showMore && <div className="show-more"><Link to="/nyheter/" className="show-more">Vis alle</Link></div>}
+        {showMore && <div className="show-more"><Link to="/nyheter/" className="button">Vis alle</Link></div>}
       </section>
     )
   }

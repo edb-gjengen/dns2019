@@ -39,73 +39,77 @@ export const EventTemplate = ({
   return (
     <section className="event-page">
       <div className="event-hero">
-        <div className="event-hero_text">
-          <h1>{title}</h1>
-          <div className="event-meta">
-            <div className="venue">
-              {venueCustom && <span>{venueCustom}</span>}
-              {venue && venue.title !== 'Hele huset' && (
-                <span>
-                  {venue.preposition} <Link to={venue.path}>{venue.title}</Link>
-                </span>
-              )}
-              {venue && venue.title === 'Hele huset' && (
-                <span>på Chateau Neuf</span>
-              )}
-            </div>
-            <div className="event-date">
-              <span className="event-date-weekday">
-                {moment(startTime).format('dddd')}{' '}
-              </span>
-              <span className="event-date-day">
-                {moment(startTime).format('D.')}{' '}
-              </span>
-              <span className="event-date-month">
-                {moment(startTime).format('MMMM')}{' '}
-              </span>
-              {/* Only specify year if different. */}
-              {!moment(startTime).isSame(new Date(), 'year') && (
-                <span className="event-date-year">
-                  {moment(startTime).format('YYYY')}{' '}
-                </span>
-              )}
-            </div>
-            <div className="event-time">
-              {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
-              kl. {moment(startTime).format('HH:mm')}
-              &mdash;
-              {endTime && moment(endTime).format('HH:mm')}
-            </div>
-            <div className="price">
-              Pris: {formatPrices(priceRegular, priceStudent)}
-            </div>
-            {ticketUrl && (
-              <a className="ticket-url" href={ticketUrl} target="_blank">
-                Kjøp billetter
-              </a>
-            )}
-            {facebookUrl && (
-              <a className="facebook-url" href={facebookUrl}>
-                Se Facebook-event
-              </a>
-            )}
-            {eventTypes && eventTypes.length && (
-              <div className="event-types">
-                <ul>
-                  {eventTypes.map(type => (
-                    <li key={`${type.slug}`}>
-                      <Link to={type.path}>{type.name}</Link>
-                    </li>
-                  ))}
-                </ul>
+        <div className="event-hero-inner">
+          <div className="event-hero_text">
+            <h1>{title}</h1>
+            <div className="event-meta">
+              <div className="venue">
+                {venueCustom && <span>{venueCustom}</span>}
+                {venue && venue.title !== 'Hele huset' && (
+                  <span>
+                    {venue.preposition} <Link to={venue.path}>{venue.title}</Link>
+                  </span>
+                )}
+                {venue && venue.title === 'Hele huset' && (
+                  <span>på Chateau Neuf</span>
+                )}
               </div>
-            )}
+              <div className="event-date">
+                <span className="event-date-weekday">
+                  {moment(startTime).format('dddd')}{' '}
+                </span>
+                <span className="event-date-day">
+                  {moment(startTime).format('D.')}{' '}
+                </span>
+                <span className="event-date-month">
+                  {moment(startTime).format('MMMM')}{' '}
+                </span>
+                {/* Only specify year if different. */}
+                {!moment(startTime).isSame(new Date(), 'year') && (
+                  <span className="event-date-year">
+                    {moment(startTime).format('YYYY')}{' '}
+                  </span>
+                )}
+              </div>
+              <div className="event-time">
+                {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
+                kl. {moment(startTime).format('HH:mm')}
+                &mdash;
+                {endTime && moment(endTime).format('HH:mm')}
+              </div>
+              <div className="price">
+                Pris: {formatPrices(priceRegular, priceStudent)}
+              </div>
+              {eventTypes && eventTypes.length && (
+                <div className="event-types">
+                  <ul>
+                    {eventTypes.map(type => (
+                      <li key={`${type.slug}`}>
+                        <Link to={type.path}>{type.name}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
+          {hasFeaturedMedia && (
+            <div className="event-hero_image">
+              <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+            </div>
+          )}
         </div>
-        {hasFeaturedMedia && (
-          <div className="event-hero_image">
-            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
-          </div>
+      </div>
+      <div className="event-links">
+        {ticketUrl && (
+          <a className="event-link ticket-url" href={ticketUrl} target="_blank">
+            <span>Kjøp billetter</span>
+          </a>
+        )}
+        {facebookUrl && (
+          <a className="event-link facebook-url" href={facebookUrl}>
+            <span>Se Facebook-event</span>
+          </a>
         )}
       </div>
       <div

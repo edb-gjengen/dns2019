@@ -16,6 +16,18 @@ export default class IndexPage extends React.Component {
     return (
       <Layout>
         <EventList events={events} numDays={7} groupBy="day" title="Dette skjer" showMore />
+        <section className="volunteer">
+        <Link to="/bli-aktiv/" className="section-title">Bli frivillig</Link>
+          <p>Vil du være med å arrangere greier på studentersamfundet? Sjekk ut de ulike <Link to="/bli-aktiv/">foreningene</Link> som holder til på Chateau Neuf.</p>
+          <p>Vi trenger alltid flere engasjerte folk! Her er noen eksempler på roller du kan innta:</p>
+          <ul>
+            <li>Økonomiansvarlig</li>
+            <li>Skuespiller</li>
+            <li>Designere</li>
+            <li>Utviklere</li>
+          </ul>
+        </section>
+        <PostList posts={posts} title="Aktuelt" showMore />
         <section className="front-page-info">
           <div className="address">
             <h2>Besøk oss</h2>
@@ -32,18 +44,6 @@ export default class IndexPage extends React.Component {
             </ul>
           </div>
         </section>
-        <section className="volunteer">
-        <Link to="/bli-aktiv/" className="section-title">Bli frivillig</Link>
-          <p>Vil du være med å arrangere greier på studentersamfundet? Sjekk ut de ulike <Link to="/bli-aktiv/">foreningene</Link> som holder til på Chateau Neuf.</p>
-          <p>Vi trenger alltid flere engasjerte folk! Her er noen eksempler på roller du kan innta:</p>
-          <ul>
-            <li>Økonomiansvarlig</li>
-            <li>Skuespiller</li>
-            <li>Designere</li>
-            <li>Utviklere</li>
-          </ul>
-        </section>
-        <PostList posts={posts} title="Aktuelt" showMore />
       </Layout>
     )
   }

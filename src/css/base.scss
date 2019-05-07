@@ -92,11 +92,11 @@ button, .button {
   max-width: $width-m;
   padding: 0.6rem 2rem;
   margin-bottom: 1rem;
-  transition: all .2s ease-in-out;
+  transition: all .1s ease-in-out;
 
   &:hover {
-    color: $color-orange;
-    background: $color-black;
+    color: $color-black;
+    background: $color-yellow;
   }
 }
 

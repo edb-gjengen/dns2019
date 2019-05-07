@@ -2,14 +2,6 @@ const Entities = require('html-entities').AllHtmlEntities
 
 const htmlEntities = new Entities()
 
-const neufNormalizer = ({ entities }) => {
-  entities = decodeTitles(entities)
-  entities = mapEventsToEventTypes(entities)
-  return entities
-}
-
-exports.neufNormalizer = neufNormalizer
-
 const decodeTitles = entities => {
   return entities.map(e => {
     if (e.title) {
@@ -25,7 +17,7 @@ const mapEventsToEventTypes = entities => {
 
   return entities.map(e => {
     // Replace event types with links to their nodes.
-    let eventHasType =
+    const eventHasType =
       e.event_types && Array.isArray(e.event_types) && e.event_types.length
     if (eventTypes.length && eventHasType) {
       e.event_types___NODE = e.event_types.map(
@@ -41,3 +33,34 @@ const mapEventsToEventTypes = entities => {
     return e
   })
 }
+
+const mapEventsToVenues = entities => {
+  const venues = entities.filter(e => e.__type === 'wordpress__wp_venues')
+
+  return entities.map(e => {
+    if (e.__type !== 'wordpress__wp_events') {
+      return e
+    }
+    // Replace venue IDs with links to their nodes.
+    const venueId = parseInt(e.venue_id, 10)
+    const eventHasVenueId = !Number.isNaN(venueId)
+    if (!eventHasVenueId) {
+      e.venue_custom = e.venue
+    } else {
+      e.venue_custom = null
+      e.venue___NODE = venues.find(obj => venueId === obj.wordpress_id).id
+    }
+    delete e.venue
+    delete e.venue_id
+    return e
+  })
+}
+
+const neufNormalizer = ({ entities }) => {
+  entities = decodeTitles(entities)
+  entities = mapEventsToEventTypes(entities)
+  entities = mapEventsToVenues(entities)
+  return entities
+}
+
+exports.neufNormalizer = neufNormalizer

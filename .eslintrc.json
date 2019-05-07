@@ -6,7 +6,8 @@
     "react/prefer-stateless-function": "off",
     "react/require-default-props": "off",
     "react/no-danger": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "no-underscore-dangle": "off"
   },
   "settings": {
     "import/core-modules": []

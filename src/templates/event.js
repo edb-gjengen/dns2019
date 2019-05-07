@@ -28,6 +28,7 @@ export const EventTemplate = ({
   startTime,
   endTime,
   venue,
+  venueCustom,
   facebookUrl,
   ticketUrl,
   priceStudent,
@@ -41,7 +42,17 @@ export const EventTemplate = ({
         <div className="event-hero_text">
           <h1>{title}</h1>
           <div className="event-meta">
-            <div className="venue">i {venue}</div>
+            <div className="venue">
+              {venueCustom && <span>{venueCustom}</span>}
+              {venue && venue.title !== 'Hele huset' && (
+                <span>
+                  {venue.preposition} <Link to={venue.path}>{venue.title}</Link>
+                </span>
+              )}
+              {venue && venue.title === 'Hele huset' && (
+                <span>på Chateau Neuf</span>
+              )}
+            </div>
             <div className="event-date">
               <span className="event-date-weekday">
                 {moment(startTime).format('dddd')}{' '}
@@ -111,7 +122,8 @@ EventTemplate.propTypes = {
   featuredMedia: PropTypes.shape({}),
   startTime: PropTypes.string.isRequired,
   endTime: PropTypes.string,
-  venue: PropTypes.string,
+  venue: PropTypes.shape({}),
+  venueCustom: PropTypes.string,
   facebookUrl: PropTypes.string,
   ticketUrl: PropTypes.string,
   priceStudent: PropTypes.string,
@@ -132,6 +144,7 @@ const Event = ({ data }) => {
         startTime={event.start_time}
         endTime={event.end_time}
         venue={event.venue}
+        venueCustom={event.venue_custom}
         facebookUrl={event.facebook_url}
         ticketUrl={event.ticket_url}
         priceStudent={event.price_member}
@@ -160,7 +173,12 @@ export const eventQuery = graphql`
       content
       start_time
       end_time
-      venue
+      venue {
+        title
+        path
+        preposition
+      }
+      venue_custom
       facebook_url
       ticket_url
       price_member

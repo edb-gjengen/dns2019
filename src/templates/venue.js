@@ -29,7 +29,7 @@ export class VenueTemplate extends React.Component {
         }`}
       >
         <div className="venue-hero">
-          <h1 className="section-title">{title}</h1>
+          <h1 className="page-title">{title}</h1>
           {hasFeaturedMedia && (
             <div className="venue-featured-image">
               <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />

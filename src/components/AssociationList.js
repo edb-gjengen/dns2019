@@ -6,7 +6,7 @@ import Img from 'gatsby-image'
 export default class AssociationList extends React.Component {
   render_association(association) {
     return (
-      <div className="association">
+      <Link className="association" to={association.path} key={association.id}>
         {association.featured_media && association.featured_media.localFile && (
           <div className="association-image">
             <Img
@@ -15,16 +15,14 @@ export default class AssociationList extends React.Component {
           </div>
         )}
         <div className="association-text">
-          <Link to={association.path} key={association.id}>
-            <h2 className="association-title">{association.title}</h2>
-          </Link>
+          <h2 className="association-title">{association.title}</h2>
 
           <div
             className="association-description"
             dangerouslySetInnerHTML={{ __html: association.excerpt }}
           />
         </div>
-      </div>
+      </Link>
     )
   }
 
@@ -33,7 +31,8 @@ export default class AssociationList extends React.Component {
 
     return (
       <section className="associations">
-        <h1 className="section-title">{title}</h1>
+        <h1 className="page-title">{title}</h1>
+        <p class="lead">Her burde det være en generell tekst om foreningene. Hva er en forening? Hvordan kan man bli med i en forening? Hva gjør foreningene? Kan jeg se alt som arrangeres av Kulturutvalget, for eksempel?</p>
         <div className="association-list">
           {associations.map(({ node: association }) =>
             this.render_association(association)

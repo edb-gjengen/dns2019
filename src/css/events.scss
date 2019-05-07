@@ -4,38 +4,16 @@
 }
 
 .events {
-  text-align: center;
   padding: 0;
 }
 
-.event-group-header {
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 1.3rem;
-  line-height: 1.2;
-  letter-spacing: 0.05em;
-  margin: 0;
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .event-grouped-by-day {
-  display: inline-block;
-  //width: 29.333333%;
-  margin: 0 2% 1rem 2%;
-
-  @media (max-width: $media-m) {
-    width: 46%;
-  }
-
-  @media (max-width: $media-s) {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  @media (min-width: $media-xl) {
-    width: 21%;
-  }
-
   .event-types, .event-group-header {
     display: none;
   }
@@ -49,47 +27,32 @@
 
   .event-group-header {
     text-align: center;
-    background-color: $color-red;
+    background-color: $color-orange;
     color: $color-white;
-    margin: 0 -2rem;
+    margin: 0 -2rem 1rem;
     padding: 0.4rem 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
   }
-
-  .event {
-    width: 47.2%;
-    margin: 0 1.4% 2rem 1.4%;
-
-    @media (max-width: $media-m) {
-      width: 46%;
-    }
-  
-    @media (max-width: $media-s) {
-      width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-    }
-  
-    @media (min-width: $media-xl) {
-      width: 21%;
-    }
-  }
-
 
   .event-types {
     display: none;
   }
 }
 
-.event-list {
-  padding-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-}
-
 .event {
-  width: 100%;
-  margin: 0 0 1.2rem 0;
+  width: calc(33.333333333% - 1rem);
+  margin: 0 0.5rem 1rem;
+  @media (max-width: $media-l) {
+    width: calc(50% - 1rem);
+  }
+  @media (max-width: $media-s) {
+    width: 100%;
+    margin: 0 0 1rem;
+  }
   position: relative;
   text-decoration: none;
   color: $color-black;
@@ -97,15 +60,20 @@
   text-align: left;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   &-image {
     display: block;
     position: relative;
     width: 30%;
+    height: 100%;
     margin: 0;
+    overflow: hidden;
+    background: $color-black;
   }
 
   &-header {
+    width: 70%;
     padding: 0.6rem 0.8rem;
     line-height: 1.1;
   }

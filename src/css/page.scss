@@ -18,6 +18,15 @@ h1.section-title {
   margin-top: 1rem;
 }
 
+.page-title {
+  font-size: 3.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 .wp-content {
   max-width: $width-m;
   margin: 0 auto;

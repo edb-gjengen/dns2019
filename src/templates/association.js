@@ -15,7 +15,7 @@ export const AssociationTemplate = data => {
   } = data
   return (
     <section className="association-page">
-      <h1 className="section-title">{title}</h1>
+      <h1 className="page-title">{title}</h1>
       {hasFeaturedMedia && (
         <div className="association-logo">
           <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />

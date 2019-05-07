@@ -80,7 +80,7 @@ export const EventTemplate = ({
               Pris: {formatPrices(priceRegular, priceStudent)}
             </div>
             {ticketUrl && (
-              <a className="ticket-url" href={ticketUrl}>
+              <a className="ticket-url" href={ticketUrl} target="_blank">
                 Kjøp billetter
               </a>
             )}

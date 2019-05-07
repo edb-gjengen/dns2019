@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 export const PageTemplate = ({ title, content }) => {
   return (
     <section className="page">
-      <h1 className="section-title">{title}</h1>
+      <h1 className="page-title">{title}</h1>
       <div
         className="page-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}

@@ -9,7 +9,7 @@ export default class PostList extends React.Component {
 
     return (
       <section className="blog">
-        <h2 className="section-title">{title}</h2>
+        <h2 className="page-title">{title}</h2>
         <div className="post-list">
           {posts.map(({ node: post }) => (
             <Link to={post.path} className="post" key={post.id}>

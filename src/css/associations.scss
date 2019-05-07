@@ -4,29 +4,28 @@
 }
 
 .association {
-  width: 29.333333%;
-  margin: 0 2% 1rem 2%;
   position: relative;
+  width: calc(50% - 1rem);
+  margin: 0 0.5rem 1rem;
+  border: 1px solid black;
+  padding: 1rem;
 
   @media (max-width: $media-m) {
-    width: 46%;
-  }
-
-  @media (max-width: $media-s) {
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0 0 1rem;
   }
-
   @media (min-width: $media-xl) {
-    width: 21%;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
+    width: calc(33.333333333% - 1rem);
   }
 
+  display: flex;
+  
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: inherit;
+    border-color: orange;
+  }
   &-title {
     font-size: 1.3rem;
     margin-bottom: 0.6rem;
@@ -34,17 +33,20 @@
 
   &-image {
     width: 100%;
-    padding-right: 2rem;
-    margin-bottom: 1rem;
-    img {
-      height: 20rem;
-    }
+    max-width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+    padding-left: 2rem;
+    order: 2;
   }
 
   &-text {
     width: 100%;
     p {
       font-size: $font-s;
+      line-height: 1.4;
+      margin-left: 0;
     }
   }
 }

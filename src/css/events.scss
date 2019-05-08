@@ -94,17 +94,18 @@
   transition: box-shadow .1s ease-in-out;
 
   &:hover {
-    color: $color-black;
-    box-shadow: 0 0 0 4px $color-black, 0 0 0 6px darken($color-orange, 20%);
-    animation: shine 3s alternate infinite;
+    color: $color-orange;
+    box-shadow: 0 0 0 4px $color-black, 0 0 0 7px darken($color-orange, 20%);
+    animation: shine 2s alternate infinite;
+    animation-delay: .3s;
   }
   
   @keyframes shine {
     from {
-      color: $color-black;
+      color: $color-orange;
     }
     to {
-      color: $color-orange;
+      color: $color-black;
     }
   }
 

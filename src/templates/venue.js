@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
 import Img from 'gatsby-image'
+import Layout from '../components/Layout'
 
 export class VenueTemplate extends React.Component {
   render() {
@@ -61,7 +61,7 @@ export class VenueTemplate extends React.Component {
 VenueTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
-  featuredImage: PropTypes.object,
+  featuredMedia: PropTypes.shape({}),
   floor: PropTypes.string,
   capacityLegal: PropTypes.string,
   capacityStanding: PropTypes.string,
@@ -97,7 +97,7 @@ const VenuePage = ({ data }) => {
 }
 
 VenuePage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({}).isRequired,
 }
 
 export default VenuePage

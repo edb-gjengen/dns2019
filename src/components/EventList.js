@@ -3,40 +3,12 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import _ from 'lodash'
-
 import moment from 'moment'
 import 'moment/locale/nb'
+
 moment.locale('nb')
 
 export default class EventList extends React.Component {
-  render() {
-    const { events, title, onlyUpcoming, numDays, groupBy, showMore } = this.props
-
-    const filteredEvents = events.filter(({ node: event }) => {
-      const startTime = moment(event.start_time)
-      if (onlyUpcoming && !startTime.isSameOrAfter(new Date(), 'day')) {
-        return false
-      }
-      if (numDays) {
-        const lastDay = moment().add(numDays - 1, 'days')
-        if (!startTime.isSameOrBefore(lastDay, 'day')) {
-          return false
-        }
-      }
-      return true
-    })
-
-    return (
-      <section className="events">
-        {title && <h1 className="section-title">{title}</h1>}
-        {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
-        {!groupBy &&
-          filteredEvents.map(({ node: event }) => this.renderEvent(event))}
-        {showMore && <div className="show-more"><Link to="/program/" className="button">Vis alle</Link></div>}
-      </section>
-    )
-  }
-
   renderEventsByDate(filteredEvents, groupBy) {
     let groupByFormat = null
     if (groupBy === 'day') {
@@ -77,7 +49,7 @@ export default class EventList extends React.Component {
         </div>
         <header className="event-header">
           <span
-            className={`event-date $(compactDate && event-date-is-compact)`}
+            className={`event-date ${compactDate && 'event-date-is-compact'}`}
           >
             <span className="event-date-weekday">
               {moment(event.start_time).format('dddd')}{' '}
@@ -119,6 +91,47 @@ export default class EventList extends React.Component {
       </Link>
     )
   }
+
+  render() {
+    const {
+      events,
+      title,
+      onlyUpcoming,
+      numDays,
+      groupBy,
+      showMore,
+    } = this.props
+
+    const filteredEvents = events.filter(({ node: event }) => {
+      const startTime = moment(event.start_time)
+      if (onlyUpcoming && !startTime.isSameOrAfter(new Date(), 'day')) {
+        return false
+      }
+      if (numDays) {
+        const lastDay = moment().add(numDays - 1, 'days')
+        if (!startTime.isSameOrBefore(lastDay, 'day')) {
+          return false
+        }
+      }
+      return true
+    })
+
+    return (
+      <section className="events">
+        {title && <h1 className="section-title">{title}</h1>}
+        {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
+        {!groupBy &&
+          filteredEvents.map(({ node: event }) => this.renderEvent(event))}
+        {showMore && (
+          <div className="show-more">
+            <Link to="/program/" className="button">
+              Vis alle
+            </Link>
+          </div>
+        )}
+      </section>
+    )
+  }
 }
 
 EventList.propTypes = {
@@ -128,7 +141,7 @@ EventList.propTypes = {
   numDays: PropTypes.number,
   groupBy: PropTypes.string,
   compactDate: PropTypes.bool,
-  showMore: PropTypes.bool
+  showMore: PropTypes.bool,
 }
 
 EventList.defaultProps = {

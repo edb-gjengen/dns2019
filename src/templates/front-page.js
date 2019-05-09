@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import EventList from '../components/EventList'
-
 
 export default class IndexPage extends React.Component {
   render() {
@@ -15,11 +13,26 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <EventList events={events} numDays={7} groupBy="day" title="Dette skjer" showMore />
+        <EventList
+          events={events}
+          numDays={7}
+          groupBy="day"
+          title="Dette skjer"
+          showMore
+        />
         <section className="volunteer">
-        <Link to="/bli-aktiv/" className="section-title">Bli frivillig</Link>
-          <p>Vil du være med å arrangere greier på studentersamfundet? Sjekk ut de ulike <Link to="/bli-aktiv/">foreningene</Link> som holder til på Chateau Neuf.</p>
-          <p>Vi trenger alltid flere engasjerte folk! Her er noen eksempler på roller du kan innta:</p>
+          <Link to="/bli-aktiv/" className="section-title">
+            Bli frivillig
+          </Link>
+          <p>
+            Vil du være med å arrangere greier på studentersamfundet? Sjekk ut
+            de ulike <Link to="/bli-aktiv/">foreningene</Link> som holder til på
+            Chateau Neuf.
+          </p>
+          <p>
+            Vi trenger alltid flere engasjerte folk! Her er noen eksempler på
+            roller du kan innta:
+          </p>
           <ul>
             <li>Økonomiansvarlig</li>
             <li>Skuespiller</li>
@@ -32,9 +45,13 @@ export default class IndexPage extends React.Component {
           <div className="address">
             <h2>Besøk oss</h2>
             <p>Vi holder til på Majorstua. Finn veibeskrivelse under.</p>
-            <label for="directions">Jeg vil reise fra:</label>
-            <input type="text" name="directions" placeholder="Skriv inn adresse" />
-            
+            <label htmlFor="directions">Jeg vil reise fra:</label>
+            <input
+              type="text"
+              id="directions"
+              name="directions"
+              placeholder="Skriv inn adresse"
+            />
           </div>
           <div className="opening-hours">
             <h2>Åpningstider</h2>

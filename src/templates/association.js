@@ -1,18 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
 import Img from 'gatsby-image'
+import Layout from '../components/Layout'
 
-export const AssociationTemplate = data => {
-  const {
-    title,
-    content,
-    hasFeaturedMedia,
-    featuredMedia,
-    type,
-    homepage,
-  } = data
+export const AssociationTemplate = ({
+  title,
+  content,
+  featuredMedia,
+  type,
+  homepage,
+}) => {
+  const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
   return (
     <section className="association-page">
       <h1 className="page-title">{title}</h1>
@@ -38,6 +37,9 @@ export const AssociationTemplate = data => {
 AssociationTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
+  featuredMedia: PropTypes.shape({}),
+  type: PropTypes.string,
+  homepage: PropTypes.string,
 }
 
 const Association = ({ data }) => {
@@ -50,7 +52,6 @@ const Association = ({ data }) => {
         content={association.content}
         type={association.association_type}
         homepage={association.association_homepage}
-        hasFeaturedMedia={!!association.featured_media.localFile}
         featuredMedia={association.featured_media}
       />
     </Layout>
@@ -58,7 +59,7 @@ const Association = ({ data }) => {
 }
 
 Association.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({}).isRequired,
 }
 
 export default Association

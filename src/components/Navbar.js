@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
-import github from '../img/github-icon.svg'
+import { Link } from 'gatsby'
 import logo from '../img/logo/logo-s.svg'
 
 export default class Navbar extends React.Component {
@@ -8,17 +7,17 @@ export default class Navbar extends React.Component {
     super(props)
     this.state = {
       showNav: false,
-      headerSize: 200
+      headerSize: 200,
     }
-    this.resizeHeader = this.resizeHeader.bind(this);
+    this.resizeHeader = this.resizeHeader.bind(this)
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.resizeHeader);
+    window.addEventListener('scroll', this.resizeHeader)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.resizeHeader);
+    window.removeEventListener('scroll', this.resizeHeader)
   }
 
   toggleNav() {
@@ -38,7 +37,9 @@ export default class Navbar extends React.Component {
   render() {
     return (
       <header
-        className={`site-header ${this.state.showNav ? 'site-nav-visible' : ''}`}
+        className={`site-header ${
+          this.state.showNav ? 'site-nav-visible' : ''
+        }`}
       >
         <nav className="site-nav">
           <Link to="/program/">Program</Link>

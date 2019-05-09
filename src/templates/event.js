@@ -47,7 +47,8 @@ export const EventTemplate = ({
                 {venueCustom && <span>{venueCustom}</span>}
                 {venue && venue.title !== 'Hele huset' && (
                   <span>
-                    {venue.preposition} <Link to={venue.path}>{venue.title}</Link>
+                    {venue.preposition}{' '}
+                    <Link to={venue.path}>{venue.title}</Link>
                   </span>
                 )}
                 {venue && venue.title === 'Hele huset' && (
@@ -102,7 +103,12 @@ export const EventTemplate = ({
       </div>
       <div className="event-links">
         {ticketUrl && (
-          <a className="event-link ticket-url" href={ticketUrl} target="_blank">
+          <a
+            className="event-link ticket-url"
+            href={ticketUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span>Kjøp billetter</span>
           </a>
         )}

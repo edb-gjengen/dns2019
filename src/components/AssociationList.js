@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 export default class AssociationList extends React.Component {
-  render_association(association) {
+  static renderAssociation(association) {
     return (
       <Link className="association" to={association.path} key={association.id}>
         {association.featured_media && association.featured_media.localFile && (
@@ -32,10 +32,14 @@ export default class AssociationList extends React.Component {
     return (
       <section className="associations">
         <h1 className="page-title">{title}</h1>
-        <p class="lead">Her burde det være en generell tekst om foreningene. Hva er en forening? Hvordan kan man bli med i en forening? Hva gjør foreningene? Kan jeg se alt som arrangeres av Kulturutvalget, for eksempel?</p>
+        <p className="lead">
+          Her burde det være en generell tekst om foreningene. Hva er en
+          forening? Hvordan kan man bli med i en forening? Hva gjør foreningene?
+          Kan jeg se alt som arrangeres av Kulturutvalget, for eksempel?
+        </p>
         <div className="association-list">
           {associations.map(({ node: association }) =>
-            this.render_association(association)
+            this.renderAssociation(association)
           )}
         </div>
       </section>

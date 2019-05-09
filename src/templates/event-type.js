@@ -24,6 +24,7 @@ EventTypeProgram.propTypes = {
       edges: PropTypes.array,
     }),
   }),
+  pageContext: PropTypes.shape({}),
 }
 
 export const pageQuery = graphql`

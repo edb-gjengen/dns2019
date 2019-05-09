@@ -2,17 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
 import Img from 'gatsby-image'
-
 import moment from 'moment'
 import 'moment/locale/nb'
+import Layout from '../components/Layout'
+
 moment.locale('nb')
 
 export const BlogPostTemplate = ({
   content,
-  categories,
-  tags,
+  // categories,
+  // tags,
   title,
   date,
   author,
@@ -52,6 +52,12 @@ export const BlogPostTemplate = ({
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   title: PropTypes.string,
+  date: PropTypes.string.isRequired,
+  featuredMedia: PropTypes.shape({}),
+  author: PropTypes.shape({
+    name: PropTypes.string,
+    slug: PropTypes.string,
+  }),
 }
 
 const BlogPost = ({ data }) => {

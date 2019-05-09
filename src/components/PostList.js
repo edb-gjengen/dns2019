@@ -23,7 +23,7 @@ export default class PostList extends React.Component {
               <div className="post-text">
                 <header className="post-header">
                   <h2 className="post-title">{post.title}</h2>
-                  {/*<div className="post-meta">{post.date}</div>*/}
+                  {/* <div className="post-meta">{post.date}</div> */}
                 </header>
                 <div className="post-body">
                   <div
@@ -37,7 +37,13 @@ export default class PostList extends React.Component {
             </Link>
           ))}
         </div>
-        {showMore && <div className="show-more"><Link to="/nyheter/" className="button">Vis alle</Link></div>}
+        {showMore && (
+          <div className="show-more">
+            <Link to="/nyheter/" className="button">
+              Vis alle
+            </Link>
+          </div>
+        )}
       </section>
     )
   }
@@ -46,7 +52,7 @@ export default class PostList extends React.Component {
 PostList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
-  showMore: PropTypes.bool
+  showMore: PropTypes.bool,
 }
 
 export const pageQuery = graphql`

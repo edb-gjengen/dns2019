@@ -216,14 +216,6 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
     .then(() => {
-      const indexTemplate = path.resolve(`./src/templates/front-page.js`)
-
-      createPage({
-        path: `/`,
-        component: indexTemplate,
-      })
-    })
-    .then(() => {
       return graphql(`
         {
           allWordpressWpEventTypes(filter: { count: { gt: 0 } }) {

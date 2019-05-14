@@ -75,8 +75,7 @@ export const EventTemplate = ({
               <div className="event-time">
                 {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
                 kl. {moment(startTime).format('HH:mm')}
-                &mdash;
-                {endTime && moment(endTime).format('HH:mm')}
+                {endTime && '&mdash;' + moment(endTime).format('HH:mm')}
               </div>
               <div className="price">
                 Pris: {formatPrices(priceRegular, priceStudent)}

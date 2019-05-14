@@ -44,7 +44,7 @@ export default class Navbar extends React.Component {
         <nav className="site-nav">
           <Link to="/program/">Program</Link>
           <Link to="/nyheter/">Nyheter</Link>
-          <Link to="/om-dns/">Praktisk</Link>
+          <Link to="/praktisk/">Praktisk</Link>
         </nav>
         <Link to="/" className="logo">
           <img src={logo} alt="Det Norske Studentersamfund" />

@@ -56,8 +56,19 @@ export default class IndexPage extends React.Component {
           <div className="opening-hours">
             <h2>Åpningstider</h2>
             <ul>
-              <li>Glassbaren:</li>
-              <li>Bokcaféen:</li>
+              <li>
+                Glassbaren:
+                <ul>
+                  <li>Mandag–lørdag: 14:00–00:00</li>
+                </ul>
+              </li>
+              <li>
+                Bokcaféen:
+                <ul>
+                  <li>Mandag–torsdag: 19:00–00:00</li>
+                  <li>Fredag: 20:00–03:00</li>
+                </ul>
+              </li>
             </ul>
           </div>
         </section>

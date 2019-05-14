@@ -39,7 +39,7 @@ export default class AssociationList extends React.Component {
         </p>
         <div className="association-list">
           {associations.map(({ node: association }) =>
-            this.renderAssociation(association)
+            AssociationList.renderAssociation(association)
           )}
         </div>
       </section>

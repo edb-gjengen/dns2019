@@ -29,13 +29,23 @@ h1.section-title {
 }
 
 .wp-content {
-  img, div, ul, p, h1, h2, h3, h4, h5, h6 {
+  img, div, ul, p, h1, h2, h3, h4, h5, h6, span, blockquote {
     max-width: $width-m;
     margin: 0 auto;
+
+    /* overwrite styles from wordpress */
+    text-align: left !important;
+    color: inherit !important;
+    font-family: inherit !important;
   }
 
-  img, div {
+  img, div, .wp-caption {
     max-width: $width-l;
+    width: 100% !important;
+  }
+  .wp-caption-text {
+    font-size: 0.8rem;
+    margin-bottom: 4rem;
   }
 
   ul, p {
@@ -49,5 +59,9 @@ h1.section-title {
 
   table {
     width: 100% !important;
+  }
+
+  .instagram-media {
+    margin: 1rem auto 2rem !important;
   }
 }

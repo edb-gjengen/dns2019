@@ -53,34 +53,6 @@
     font-size: $font-s;
   }
 
-  &-content {
-    max-width: $width-m;
-    margin: 0 auto;
-
-    img, div {
-      max-width: 100%;
-    }
-
-    ul {
-      max-width: $width-m;
-      margin: 0 auto 1rem;
-    }
-
-    ul, p, span {
-      margin: 0 auto 1.6rem;
-
-      /* overwrite styles from wordpress */
-      text-align: left !important;
-      color: inherit !important;
-      font-family: inherit !important;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      max-width: $width-m;
-      margin-top: 3.6rem;
-    }
-  }
-
   &:last-of-type {
     display: none;
   }
@@ -107,15 +79,13 @@
 }
 
 .post-hero {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: block;
 
   max-width: $width-xl;
   margin: 0 auto 4rem;
   
   &_text, &_image {
-    width: 50%;
+    width: 100%;
   }
 
 
@@ -125,21 +95,10 @@
     }
   }
 
-  &_image {
-    position: relative;
-    order: 1;
-  }
-
-  &_text {
-    order: 2;
-    padding: 4rem 0 2rem 2rem;
-    z-index: 666;
-  }
-
   h1 {
-    font-size: 2.4rem;
-    font-weight: 900;
-    text-shadow: -0.1rem 1.6rem 0 $color-white;
+    font-size: 3.6rem;
+    text-align: center;
+    line-height: 1.1;
   }
 }
 
@@ -176,18 +135,9 @@
     margin: 0 auto 1rem;
   }
   .post-meta {
+    font-size: $font-s;
+    text-transform: uppercase;
+    text-align: center;
     margin-bottom: 3rem;
-    p {
-      margin-left: 0;
-    }
-  }
-}
-
-.wp-caption {
-  max-width: 100%;
-  margin-bottom: 3rem;
-
-  &-text {
-    font-size: 0.8rem;
   }
 }

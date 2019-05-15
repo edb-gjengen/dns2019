@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/Layout'
+import Map from '../components/Map'
 
 export class VenueTemplate extends React.Component {
   render() {
@@ -52,6 +53,9 @@ export class VenueTemplate extends React.Component {
             {lighting && <li>Lys: {lighting}</li>}
             {audioVideo && <li>A/V: {audioVideo}</li>}
           </ul>
+        </div>
+        <div className="venue-map">
+          <Map />
         </div>
       </section>
     )

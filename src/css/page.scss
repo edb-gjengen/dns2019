@@ -26,6 +26,10 @@ h1.section-title {
   font-weight: 400;
   text-align: center;
   margin-bottom: 2rem;
+
+  @media (max-width: $media-s) {
+    font-size: 2rem;
+  }
 }
 
 .wp-content {

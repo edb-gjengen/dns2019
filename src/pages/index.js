@@ -33,7 +33,7 @@ export default class IndexPage extends React.Component {
             Vi trenger alltid flere engasjerte folk! Her er noen eksempler på
             roller du kan innta:
           </p>
-          <ul style={{maxWidth: 28 + 'rem', margin: '0 auto'}}>
+          <ul>
             <li>Økonomiansvarlig</li>
             <li>Skuespiller</li>
             <li>Designere</li>

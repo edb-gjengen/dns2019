@@ -55,6 +55,11 @@ p {
   }
 }
 
+ul {
+  max-width: $width-m;
+  margin: 0 auto 2rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   margin: 0 auto 1rem;

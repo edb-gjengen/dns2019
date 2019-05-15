@@ -29,16 +29,13 @@ h1.section-title {
 }
 
 .wp-content {
-  max-width: $width-m;
-  margin: 0 auto;
-
-  img, div {
-    max-width: 100%;
+  img, div, ul, p, h1, h2, h3, h4, h5, h6 {
+    max-width: $width-m;
+    margin: 0 auto;
   }
 
-  ul {
-    max-width: $width-m;
-    margin: 0 auto 1rem;
+  img, div {
+    max-width: $width-l;
   }
 
   ul, p {
@@ -47,6 +44,10 @@ h1.section-title {
 
   h1, h2, h3, h4, h5, h6 {
     max-width: $width-m;
-    margin-top: 3.6rem;
+    margin: 3.6rem auto 1rem;
+  }
+
+  table {
+    width: 100% !important;
   }
 }

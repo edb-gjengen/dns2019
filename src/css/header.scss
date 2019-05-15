@@ -65,12 +65,13 @@
     }
   }
   &_toggle {
-    position: fixed;
+    position: absolute;
     top: 0;
-    right: 2rem;
-    font-size: 3rem;
-    transform: translateX(3em);
-    transition: transform .3s ease-in-out;
+    right: 0;
+    font-size: 2rem;
+    line-height: 1;
+
+    display: none;
 
     &:hover {
       cursor: pointer;
@@ -85,28 +86,36 @@
     flex-direction: column;
 
     .logo {
-      order: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
       margin: 0;
     }
   }
   .site-nav {
+    flex: none;
     display: none;
     text-align: center;
     margin-top: 3rem;
-    a {
-      display: block;
-      margin: 1.2rem 0;
-      font-size: 1rem;
-      &:hover {
-        box-shadow: none;
-      }
-    }
     &_toggle {
-      transform: translateX(0);
+      display: block;
     }
     order: 2;
     &:last-of-type {
       order: 3;
+      margin-top: 0;
+    }
+    a {
+      font-size: 1rem;
+      display: block;
+      margin: 1rem 0 0;
+      &:hover {
+        color: $color-orange;
+      }
+      &:hover:after, 
+      &:focus:after {
+        display: none;
+      }
     }
   }
   .site-nav-visible {
@@ -114,6 +123,5 @@
     .site-nav {
       display: block;
     }
-
   }
 }

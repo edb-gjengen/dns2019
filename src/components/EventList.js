@@ -118,8 +118,13 @@ export default class EventList extends React.Component {
       <section className="events">
         {title && <h1 className="section-title">{title}</h1>}
         {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
-        {!groupBy &&
-          filteredEvents.map(({ node: event }) => this.renderEvent(event))}
+        {!groupBy && (
+          <div className="event-list">
+            {filteredEvents.map(({ node: event }) => {
+              return this.renderEvent(event)
+            })}
+          </div>
+        )}
         {showMore && (
           <div className="show-more">
             <Link to="/program/" className="button">

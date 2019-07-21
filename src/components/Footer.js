@@ -78,7 +78,7 @@ const Footer = () => (
         </a>
       </nav>
     </div>
-    <div class="footer-links">
+    <div className="footer-links">
       <a href="#">Praktisk info</a>
       <a href="#">Kontakt</a>
       <a href="#">Sponsorer</a>

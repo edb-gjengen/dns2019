@@ -97,24 +97,22 @@ export default class EventList extends React.Component {
       events,
       title,
       onlyUpcoming,
-      numDays,
+      maxEvents,
       groupBy,
       showMore,
     } = this.props
 
-    const filteredEvents = events.filter(({ node: event }) => {
+    let filteredEvents = events.filter(({ node: event }) => {
       const startTime = moment(event.start_time)
       if (onlyUpcoming && !startTime.isSameOrAfter(new Date(), 'day')) {
         return false
       }
-      if (numDays) {
-        const lastDay = moment().add(numDays - 1, 'days')
-        if (!startTime.isSameOrBefore(lastDay, 'day')) {
-          return false
-        }
-      }
       return true
     })
+
+    if (maxEvents) {
+      filteredEvents = filteredEvents.slice(0, maxEvents)
+    }
 
     return (
       <section className="events">
@@ -138,7 +136,7 @@ EventList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
   onlyUpcoming: PropTypes.bool,
-  numDays: PropTypes.number,
+  maxEvents: PropTypes.number,
   groupBy: PropTypes.string,
   compactDate: PropTypes.bool,
   showMore: PropTypes.bool,
@@ -146,7 +144,7 @@ EventList.propTypes = {
 
 EventList.defaultProps = {
   onlyUpcoming: true,
-  numDays: 0,
+  maxEvents: 0,
   groupBy: null,
   compactDate: false,
 }

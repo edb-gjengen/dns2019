@@ -15,8 +15,7 @@ export default class IndexPage extends React.Component {
       <Layout>
         <EventList
           events={events}
-          numDays={7}
-          groupBy="day"
+          maxEvents={9}
           title="Dette skjer"
           showMore
         />

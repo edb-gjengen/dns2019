@@ -75,8 +75,8 @@ export const BookingPage = () => {
           etasjer!
         </p>
         <iframe
-          title="test"
-          style={{ border: 0, height: '450px', width: '100%' }}
+          title="Chateau Neuf i Google Maps"
+          style={{ border: 0, height: '600px', width: '100%' }}
           src="https://www.google.com/maps/embed?pb=!4v1521198562809!6m8!1m7!1sCAoSLEFGMVFpcE81LWR3UFhhcDVSTUduaWcyWXFsbElyRGpLZThLdlBLWFFkbllm!2m2!1d59.93243773194!2d10.71237824484!3f50.83!4f1.5300000000000011!5f0.5970117501821992"
           frameBorder="0"
           allowFullScreen="allowfullscreen"

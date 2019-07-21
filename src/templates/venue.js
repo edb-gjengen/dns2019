@@ -6,8 +6,9 @@ import Layout from '../components/Layout'
 import Map from '../components/Map'
 
 export class VenueTemplate extends React.Component {
-  render() {
+  renderInner() {
     const {
+      isSingle,
       title,
       content,
       featuredMedia,
@@ -24,13 +25,10 @@ export class VenueTemplate extends React.Component {
     const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
 
     return (
-      <section
-        className={`venue-page ${
-          hasFeaturedMedia ? 'has-featured-media' : 'no-featured-media'
-        }`}
-      >
+      <>
         <div className="venue-hero">
-          <h1 className="page-title">{title}</h1>
+          {isSingle && <h1 className="venue-title">{title}</h1>}
+          {!isSingle && <h2 className="venue-title">{title}</h2>}
           {hasFeaturedMedia && (
             <div className="venue-featured-image">
               <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
@@ -54,18 +52,50 @@ export class VenueTemplate extends React.Component {
             {audioVideo && <li>A/V: {audioVideo}</li>}
           </ul>
         </div>
-        <div className="venue-map">
-          <Map />
-        </div>
-      </section>
+        {isSingle && (
+          <div className="venue-map">
+            <Map />
+          </div>
+        )}
+      </>
+    )
+  }
+
+  render() {
+    const { isSingle, className, featuredMedia } = this.props
+    const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
+    const hasFeaturedMediaClass = hasFeaturedMedia
+      ? 'has-featured-media'
+      : 'no-featured-media'
+
+    if (isSingle) {
+      return (
+        <section className={`venue-page ${hasFeaturedMediaClass}`}>
+          {this.renderInner()}
+        </section>
+      )
+    }
+
+    return (
+      <div className={`venue ${hasFeaturedMediaClass}`}>
+        {this.renderInner()}
+      </div>
     )
   }
 }
 
 VenueTemplate.propTypes = {
+  isSingle: PropTypes.bool.isRequired,
+  className: PropTypes.string,
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
-  featuredMedia: PropTypes.shape({}),
+  featuredMedia: PropTypes.shape({
+    localFile: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        fluid: PropTypes.shape({}),
+      }),
+    }),
+  }),
   floor: PropTypes.string,
   capacityLegal: PropTypes.string,
   capacityStanding: PropTypes.string,
@@ -83,6 +113,8 @@ const VenuePage = ({ data }) => {
   return (
     <Layout>
       <VenueTemplate
+        isSingle={true}
+        className="venue-page"
         title={venue.title}
         content={venue.content}
         featuredMedia={venue.featured_media}
@@ -101,7 +133,9 @@ const VenuePage = ({ data }) => {
 }
 
 VenuePage.propTypes = {
-  data: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({
+    wordpressWpVenues: PropTypes.shape({}),
+  }).isRequired,
 }
 
 export default VenuePage

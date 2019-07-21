@@ -276,15 +276,6 @@ exports.createPages = ({ actions, graphql }) => {
           },
         })
       })
-
-      // Create the list of associations
-      const associationListTemplate = path.resolve(
-        `./src/templates/association-list.js`
-      )
-      createPage({
-        path: `/foreningene/`,
-        component: associationListTemplate,
-      })
     })
     .then(() => {
       return graphql(`

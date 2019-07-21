@@ -3,10 +3,10 @@ import Layout from '../components/Layout'
 
 const NotFoundPage = () => (
   <Layout>
-    <div>
-      <h1>404: Denne siden er på grisefest</h1>
+    <section className="page error error-404">
+      <h1 className="section-title">404: Denne siden er på grisefest</h1>
       <p>Lykke til videre.</p>
-    </div>
+    </section>
   </Layout>
 )
 

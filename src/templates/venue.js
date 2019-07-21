@@ -107,27 +107,30 @@ VenuePage.propTypes = {
 export default VenuePage
 
 export const pageQuery = graphql`
+  fragment VenueFields on wordpress__wp_venues {
+    id
+    path
+    title
+    slug
+    content
+    floor
+    capacity_legal
+    capacity_standing
+    capacity_sitting
+    used_for
+    bar
+    audio
+    lighting
+    audio_video
+    featured_media {
+      localFile {
+        ...FluidImage
+      }
+    }
+  }
   query VenueById($id: String!) {
     wordpressWpVenues(id: { eq: $id }) {
-      id
-      path
-      title
-      slug
-      content
-      floor
-      capacity_legal
-      capacity_standing
-      capacity_sitting
-      used_for
-      bar
-      audio
-      lighting
-      audio_video
-      featured_media {
-        localFile {
-          ...FluidImage
-        }
-      }
+      ...VenueFields
     }
   }
 `

@@ -152,13 +152,6 @@ exports.createPages = ({ actions, graphql }) => {
           },
         })
       })
-
-      // Create the booking page
-      // const bookingTemplate = path.resolve(`./src/templates/booking.js`)
-      // createPage({
-      //   path: `/booking/`,
-      //   component: bookingTemplate,
-      // })
     })
     .then(() => {
       return graphql(`

@@ -43,6 +43,7 @@ module.exports = {
         normalizer: neufNormalizer,
       },
     },
+    'gatsby-plugin-catch-links',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {

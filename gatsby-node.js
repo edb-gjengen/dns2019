@@ -55,11 +55,6 @@ exports.createPages = ({ actions, graphql }) => {
           },
         })
       })
-
-      createPage({
-        path: '/profil/',
-        component: path.resolve('./src/templates/design-manual.js'),
-      })
     })
     .then(() => {
       return graphql(`

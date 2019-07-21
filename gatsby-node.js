@@ -42,7 +42,7 @@ exports.createPages = ({ actions, graphql }) => {
           : allPages
 
       // Call `createPage()` once per WordPress page
-      const ignoreSlugs = ['program', 'foreningene', 'profil']
+      const ignoreSlugs = ['program', 'foreningene', 'profil', 'booking']
       _.each(pages, ({ node: page }) => {
         if (ignoreSlugs.includes(page.slug)) {
           return
@@ -194,13 +194,6 @@ exports.createPages = ({ actions, graphql }) => {
             id: event.id,
           },
         })
-      })
-
-      // Create the event program
-      const programTemplate = path.resolve(`./src/templates/event-program.js`)
-      createPage({
-        path: `/program/`,
-        component: programTemplate,
       })
     })
     .then(() => {

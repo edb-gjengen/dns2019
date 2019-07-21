@@ -75,7 +75,7 @@ export default class EventList extends React.Component {
           <h2 className="event-title">{event.title}</h2>
           <div className="event-meta">
             <span className="event-start">
-              {moment(event.start_time).format('HH:mm')}
+              kl. {moment(event.start_time).format('HH:mm')}
             </span>
             {event.event_types && event.event_types.length && (
               <div className="event-types">

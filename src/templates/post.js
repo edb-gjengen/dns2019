@@ -26,21 +26,23 @@ export const BlogPostTemplate = ({
       }`}
     >
       <div className="post-hero">
-        <div className="post-hero_text">
-          <h1>{title}</h1>
-          <div className="post-meta">
-            <p>
-              {moment(date).format('dddd D. MMMM YYYY')} av{' '}
-              <Link to={`/author/${author.slug}`}>{author.name}</Link>
-            </p>
+        <div className="post-hero-inner">
+          <div className="post-hero_text">
+            <h1>{title}</h1>
+            <div className="post-meta">
+              <p>
+                {moment(date).format('dddd D. MMMM YYYY')} av{' '}
+                <Link to={`/author/${author.slug}`}>{author.name}</Link>
+              </p>
+            </div>
           </div>
         </div>
-        {hasFeaturedMedia && (
-          <div className="post-hero_image">
-            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
-          </div>
-        )}
       </div>
+      {hasFeaturedMedia && (
+        <div className="post-hero_image">
+          <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+        </div>
+      )}
       <div
         className="post-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}

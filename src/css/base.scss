@@ -89,19 +89,19 @@ figure {
 button, .button {
   display: inline-block;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
+  font-weight: 700;
   color: $color-black;
+  border: 2px solid $color-orange;
   background: $color-orange;
   width: 100%;
   max-width: $width-m;
   padding: 0.6rem 2rem;
   margin-bottom: 1rem;
-  transition: all .1s ease-in-out;
+  transition: all .2s ease-in-out;
 
   &:hover {
-    color: $color-black;
-    background: $color-yellow;
+    color: $color-orange;
+    background: transparent;
   }
 }
 

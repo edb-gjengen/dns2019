@@ -17,8 +17,8 @@
   padding: 0 1rem 1rem;
 }
 
-.event-grouped-by-day {
-  .event-types, .event-group-header {
+.index .event {
+  .event-types {
     display: none;
   }
 }
@@ -42,7 +42,6 @@
   }
 
   .event-meta, .event-date-weekday, .event-date-day-month {
-    font-size: 1rem;
     transition: none;
   }
 
@@ -89,33 +88,17 @@
   &-title {
     display: block;
     text-decoration: none;
-    font-size: 1.16rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0.2rem 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0.4rem 0 0.5rem;
   }
 
   transition: box-shadow .1s ease-in-out;
 
   &:hover {
     color: $color-orange;
-    box-shadow: 0 0 0 4px $color-black, 0 0 0 7px darken($color-orange, 20%);
-    animation: shine 2s alternate infinite;
-    animation-delay: .3s;
-  }
-  
-  @keyframes shine {
-    from {
-      color: $color-orange;
-    }
-    to {
-      color: $color-black;
-    }
-  }
-
-  .event-start {
-    display: block;
-    font-size: 1rem;
+    box-shadow: 0 0 0 4px $color-black, 0 0 0 6px darken($color-orange, 20%);
   }
 
   &-content {
@@ -146,12 +129,17 @@
     }
   }
 
-  .event-date {
+  .event-date, .event-meta {
     display: block;
-    font-size: 1rem;
+    font-size: .8rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     line-height: 1.2;
+  }
+
+  .event-start {
+    text-transform: none;
   }
 
   @media (max-width: $media-s) {

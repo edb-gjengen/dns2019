@@ -43,6 +43,14 @@
 
 .volunteer {
   background: $color-pink;
+  .section-title {
+    font-weight: 700;
+    color: $color-white;
+    text-shadow: 0.05em 0.05em $color-black;
+    &:hover {
+      color: $color-white;
+    }
+  }
 }
 
 .show-more {

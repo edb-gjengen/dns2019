@@ -54,7 +54,7 @@ export const BookingPage = () => {
 
   return (
     <Layout>
-      <section className="booking-page">
+      <section classes="booking-page">
         <h1 className="page-title">{title}</h1>
         <div
           className="page-content wp-content"

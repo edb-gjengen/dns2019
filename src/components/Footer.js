@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import logo from '../img/logo/logo-h.svg'
 
 const Footer = () => (
@@ -63,7 +63,11 @@ const Footer = () => (
             />
           </svg>
         </a>
-        <a href="https://www.flickr.com/groups/neuf/pool/" target="_blank">
+        <a
+          href="https://www.flickr.com/groups/neuf/pool/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="97.75"
@@ -79,10 +83,10 @@ const Footer = () => (
       </nav>
     </div>
     <div className="footer-links">
-      <a href="#">Praktisk info</a>
-      <a href="#">Kontakt</a>
-      <a href="#">Sponsorer</a>
-      <a href="#">Personvern</a>
+      <Link to="/om-dns/">Om oss</Link>
+      <Link to="/kontakt/">Kontakt</Link>
+      <Link to="/sponsorer/">Sponsorer</Link>
+      <Link to="/personvern/">Personvern</Link>
     </div>
   </footer>
 )

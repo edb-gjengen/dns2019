@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import classNames from 'classnames'
 import _ from 'lodash'
 import moment from 'moment'
 import 'moment/locale/nb'
@@ -96,6 +97,7 @@ export default class EventList extends React.Component {
     const {
       events,
       title,
+      classes,
       onlyUpcoming,
       maxEvents,
       groupBy,
@@ -115,7 +117,7 @@ export default class EventList extends React.Component {
     }
 
     return (
-      <section className="events">
+      <section className={classNames("events", classes)}>
         {title && <h1 className="section-title">{title}</h1>}
         {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
         {!groupBy && (
@@ -139,6 +141,7 @@ export default class EventList extends React.Component {
 
 EventList.propTypes = {
   events: PropTypes.arrayOf(PropTypes.object),
+  classes: PropTypes.string,
   title: PropTypes.string,
   onlyUpcoming: PropTypes.bool,
   maxEvents: PropTypes.number,
@@ -160,6 +163,14 @@ export const pageQuery = graphql`
       name
       slug
       path
+    }
+  }
+  fragment EventOrganizerFields on wordpress__wp_events {
+    event_organizers {
+      name
+      slug
+      path
+      description
     }
   }
   fragment EventListFields on wordpress__wp_events {

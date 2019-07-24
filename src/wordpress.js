@@ -34,6 +34,33 @@ const mapEventsToEventTypes = entities => {
   })
 }
 
+const mapEventsToEventOrganizers = entities => {
+  const eventTaxonomies = [`wordpress__wp_event_organizers`]
+  const eventOrganizers = entities.filter(e =>
+    eventTaxonomies.includes(e.__type)
+  )
+
+  return entities.map(e => {
+    // Replace event organizers with links to their nodes.
+    const eventHasOrganizer =
+      e.event_organizers &&
+      Array.isArray(e.event_organizers) &&
+      e.event_organizers.length
+    if (eventOrganizers.length && eventHasOrganizer) {
+      e.event_organizers___NODE = e.event_organizers.map(
+        t =>
+          eventOrganizers.find(
+            tObj =>
+              (Number.isInteger(t) ? t : t.wordpress_id) === tObj.wordpress_id
+          ).id
+      )
+      delete e.event_organizers
+    }
+
+    return e
+  })
+}
+
 const mapEventsToVenues = entities => {
   const venues = entities.filter(e => e.__type === 'wordpress__wp_venues')
 
@@ -59,6 +86,7 @@ const mapEventsToVenues = entities => {
 const neufNormalizer = ({ entities }) => {
   entities = decodeTitles(entities)
   entities = mapEventsToEventTypes(entities)
+  entities = mapEventsToEventOrganizers(entities)
   entities = mapEventsToVenues(entities)
   return entities
 }

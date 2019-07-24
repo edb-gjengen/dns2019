@@ -26,6 +26,7 @@ module.exports = {
           '**/*/*/categories',
           '**/*/*/events',
           '**/*/*/event_types',
+          '**/*/*/event_organizers',
           '**/*/*/posts',
           '**/*/*/pages',
           '**/*/*/media',

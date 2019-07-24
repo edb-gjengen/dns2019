@@ -237,6 +237,48 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
+          allWordpressWpEventOrganizers(filter: { count: { gt: 0 } }) {
+            edges {
+              node {
+                id
+                path
+                name
+                slug
+                description
+              }
+            }
+          }
+        }
+      `)
+    })
+    .then(result => {
+      if (result.errors) {
+        result.errors.forEach(e => console.error(e.toString()))
+        return Promise.reject(result.errors)
+      }
+
+      const eventOrganizerTemplate = path.resolve(
+        `./src/templates/event-organizer.js`
+      )
+
+      _.each(
+        result.data.allWordpressWpEventOrganizers.edges,
+        ({ node: eventOrganizer }) => {
+          createPage({
+            path: eventOrganizer.path,
+            component: eventOrganizerTemplate,
+            context: {
+              name: eventOrganizer.name,
+              slug: eventOrganizer.slug,
+              description: eventOrganizer.description,
+            },
+          })
+        }
+      )
+    })
+    .then(() => {
+      return graphql(`
+        {
           allWordpressWpAssociations {
             edges {
               node {

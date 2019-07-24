@@ -173,31 +173,35 @@ Event.propTypes = {
 export default Event
 
 export const eventQuery = graphql`
+  fragment EventFields on wordpress__wp_events {
+    id
+    path
+    title
+    slug
+    content
+    start_time
+    end_time
+    venue {
+      title
+      path
+      preposition
+    }
+    venue_custom
+    facebook_url
+    ticket_url
+    price_member
+    price_regular
+    featured_media {
+      localFile {
+        ...FluidImage
+      }
+    }
+    ...EventTypeFields
+    ...EventOrganizerFields
+  }
   query EventByID($id: String!) {
     wordpressWpEvents(id: { eq: $id }) {
-      id
-      path
-      title
-      slug
-      content
-      start_time
-      end_time
-      venue {
-        title
-        path
-        preposition
-      }
-      venue_custom
-      facebook_url
-      ticket_url
-      price_member
-      price_regular
-      featured_media {
-        localFile {
-          ...FluidImage
-        }
-      }
-      ...EventTypeFields
+      ...EventFields
     }
   }
 `

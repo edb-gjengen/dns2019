@@ -34,6 +34,7 @@ export const EventTemplate = ({
   priceStudent,
   priceRegular,
   eventTypes,
+  organizers,
 }) => {
   const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
   return (
@@ -117,6 +118,18 @@ export const EventTemplate = ({
           </a>
         )}
       </div>
+      {organizers && (
+        <div className="event-organizers">
+          <div className="event-organizers-title">
+            {organizers.length === 1 ? 'Arrangør' : 'Arrangører'}
+          </div>
+          {organizers.map(organizer => (
+            <div className="event-organizer">
+              <Link to={organizer.path}>{organizer.name}</Link>
+            </div>
+          ))}
+        </div>
+      )}
       <div
         className="event-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}
@@ -131,13 +144,21 @@ EventTemplate.propTypes = {
   featuredMedia: PropTypes.shape({}),
   startTime: PropTypes.string.isRequired,
   endTime: PropTypes.string,
-  venue: PropTypes.shape({}),
+  venue: PropTypes.shape({
+    title: PropTypes.string,
+    path: PropTypes.string,
+    preposition: PropTypes.string,
+  }),
   venueCustom: PropTypes.string,
   facebookUrl: PropTypes.string,
   ticketUrl: PropTypes.string,
   priceStudent: PropTypes.string,
   priceRegular: PropTypes.string,
   eventTypes: PropTypes.arrayOf(PropTypes.string),
+  organizers: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    path: PropTypes.string,
+  })),
 }
 
 const Event = ({ data }) => {
@@ -159,6 +180,7 @@ const Event = ({ data }) => {
         priceStudent={event.price_member}
         priceRegular={event.price_regular}
         eventTypes={event.event_types}
+        organizers={event.event_organizers}
       />
     </Layout>
   )

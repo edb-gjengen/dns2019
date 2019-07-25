@@ -171,6 +171,10 @@ export const pageQuery = graphql`
       slug
       path
       description
+      association {
+        title
+        path
+      }
     }
   }
   fragment EventListFields on wordpress__wp_events {

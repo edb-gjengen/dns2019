@@ -61,6 +61,27 @@ const mapEventsToEventOrganizers = entities => {
   })
 }
 
+const mapEventOrganizersToAssociations = entities => {
+  const associations = entities.filter(
+    e => e.__type === 'wordpress__wp_associations'
+  )
+
+  return entities.map(e => {
+    if (e.__type !== 'wordpress__wp_event_organizers') {
+      return e
+    }
+    // Replace venue IDs with links to their nodes.
+    const associationId = e.association_id
+    if (associationId !== null) {
+      e.association___NODE = associations.find(
+        obj => associationId === obj.wordpress_id
+      ).id
+    }
+    delete e.association_id
+    return e
+  })
+}
+
 const mapEventsToVenues = entities => {
   const venues = entities.filter(e => e.__type === 'wordpress__wp_venues')
 
@@ -87,6 +108,7 @@ const neufNormalizer = ({ entities }) => {
   entities = decodeTitles(entities)
   entities = mapEventsToEventTypes(entities)
   entities = mapEventsToEventOrganizers(entities)
+  entities = mapEventOrganizersToAssociations(entities)
   entities = mapEventsToVenues(entities)
   return entities
 }

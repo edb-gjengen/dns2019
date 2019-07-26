@@ -29,6 +29,7 @@ const VenueList = ({ venues }) => {
       {venues.map(({ node: venue }) => (
         <VenueTemplate
           key={venue.id}
+          path={venue.path}
           title={venue.title}
           content={venue.content}
           featuredMedia={venue.featured_media}
@@ -54,7 +55,7 @@ export const BookingPage = () => {
 
   return (
     <Layout>
-      <section classes="booking-page">
+      <section className="booking-page">
         <h1 className="page-title">{title}</h1>
         <div
           className="page-content wp-content"

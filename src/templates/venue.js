@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
+import classNames from 'classnames'
 import Layout from '../components/Layout'
 import Map from '../components/Map'
 
@@ -9,6 +10,7 @@ export class VenueTemplate extends React.Component {
   renderInner() {
     const {
       isSingle,
+      path,
       title,
       content,
       featuredMedia,
@@ -27,8 +29,12 @@ export class VenueTemplate extends React.Component {
     return (
       <>
         <div className="venue-hero">
-          {isSingle && <h1 className="venue-title">{title}</h1>}
-          {!isSingle && <h2 className="venue-title">{title}</h2>}
+          {isSingle && <h1 className="venue-title page-title">{title}</h1>}
+          {!isSingle && (
+            <Link to={path}>
+              <h2 className="venue-title">{title}</h2>
+            </Link>
+          )}
           {hasFeaturedMedia && (
             <div className="venue-featured-image">
               <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
@@ -62,7 +68,7 @@ export class VenueTemplate extends React.Component {
   }
 
   render() {
-    const { isSingle, className, featuredMedia } = this.props
+    const { isSingle, featuredMedia } = this.props
     const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
     const hasFeaturedMediaClass = hasFeaturedMedia
       ? 'has-featured-media'
@@ -70,7 +76,7 @@ export class VenueTemplate extends React.Component {
 
     if (isSingle) {
       return (
-        <section className={`venue-page ${hasFeaturedMediaClass}`}>
+        <section className={classNames('venue-page', hasFeaturedMediaClass)}>
           {this.renderInner()}
         </section>
       )
@@ -85,8 +91,8 @@ export class VenueTemplate extends React.Component {
 }
 
 VenueTemplate.propTypes = {
+  path: PropTypes.string,
   isSingle: PropTypes.bool.isRequired,
-  className: PropTypes.string,
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   featuredMedia: PropTypes.shape({
@@ -113,8 +119,8 @@ const VenuePage = ({ data }) => {
   return (
     <Layout>
       <VenueTemplate
-        isSingle={true}
-        className="venue-page"
+        isSingle
+        path={venue.path}
         title={venue.title}
         content={venue.content}
         featuredMedia={venue.featured_media}

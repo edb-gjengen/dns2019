@@ -87,9 +87,28 @@
     display: block;
     text-decoration: none;
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 1.1;
-    margin: 0.4rem 0.5rem 0.5rem;
+    margin: 0.8rem 0.6rem 0.6rem;
+  }
+
+  .event-date {
+    background: $color-yellow;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .event-date, .event-meta {
+    display: block;
+    font-size: .8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  .event-start {
+    text-transform: none;
+    padding: 0.666rem;
   }
 
   @media (min-width: $media-xl) {
@@ -152,7 +171,7 @@
       margin: 0 auto 1rem;
     }
 
-    ul, p, span{
+    ul, p, span {
       margin: 0 auto 1.6rem;
 
       /* overwrite styles from wordpress */
@@ -165,25 +184,6 @@
       max-width: $width-m;
       margin-top: 3.6rem;
     }
-  }
-
-  .event-date {
-    background: $color-yellow;
-    padding: 0.2rem 0.5rem;
-  }
-
-  .event-date, .event-meta {
-    display: block;
-    font-size: .8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-  }
-
-  .event-start {
-    text-transform: none;
-    padding: 0.5rem;
   }
 }
 

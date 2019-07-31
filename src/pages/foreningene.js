@@ -13,7 +13,7 @@ export default class AssociationListPage extends React.Component {
     return (
       <Layout>
         <Helmet title="Foreningene" />
-        <AssociationList associations={associations} title="Foreninger" />
+        <AssociationList associations={associations} title="Foreningene" />
       </Layout>
     )
   }

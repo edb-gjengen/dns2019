@@ -7,12 +7,12 @@ const Pagination = ({ pageContext, pathPrefix }) => {
   return (
     <nav className="pagination" role="navigation">
       {previousPagePath && (
-        <Link to={previousPagePath} rel="prev" class="button button-prev">
+        <Link to={previousPagePath} rel="prev" className="button button-prev">
           Forrige
         </Link>
       )}
       {nextPagePath && (
-        <Link to={nextPagePath} rel="next" class="button button-next">
+        <Link to={nextPagePath} rel="next" className="button button-next">
           Neste
         </Link>
       )}

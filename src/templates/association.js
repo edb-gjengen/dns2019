@@ -22,7 +22,7 @@ export const AssociationTemplate = ({
       )}
       {homepage && (
         <div className="association-homepage">
-          <a href="{{ homepage }}">Nettside</a>
+          <a href={homepage}>Nettside</a>
         </div>
       )}
       <div className="association-type">Type: {type}</div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import { VenueTemplate } from '../templates/venue'
@@ -55,6 +56,7 @@ export const BookingPage = () => {
 
   return (
     <Layout>
+      <Helmet title="Utleie" />
       <section className="booking-page">
         <h1 className="page-title">{title}</h1>
         <div
@@ -62,7 +64,7 @@ export const BookingPage = () => {
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <VenueList venues={venues} />
-        <div class="wp-content">
+        <div className="wp-content">
           <h2>Se utvalgte lokaler i vår 3D-løsning</h2>
           <p>
             Med vår 3D-løsning har du muligheten til å navigere deg rundt på

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import AssociationList from '../components/AssociationList'
@@ -11,7 +12,8 @@ export default class AssociationListPage extends React.Component {
 
     return (
       <Layout classes="association-page">
-        <AssociationList associations={associations} title="Foreninger" />
+        <Helmet title="Foreningene" />
+        <AssociationList associations={associations} title="Foreningene" />
       </Layout>
     )
   }

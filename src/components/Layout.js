@@ -8,7 +8,10 @@ import '../css/main.scss'
 
 const TemplateWrapper = ({ children, classes }) => (
   <div>
-    <Helmet title="Det Norske Studentersamfund" />
+    <Helmet
+      titleTemplate="%s | Det Norske Studentersamfund"
+      defaultTitle="Det Norske Studentersamfund"
+    />
     <Navbar />
     <main className={classNames(classes)}>{children}</main>
     <Footer />
@@ -17,7 +20,7 @@ const TemplateWrapper = ({ children, classes }) => (
 
 TemplateWrapper.propTypes = {
   children: PropTypes.shape({}).isRequired,
-  classes: PropTypes.string
+  classes: PropTypes.string,
 }
 
 export default TemplateWrapper

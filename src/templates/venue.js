@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import classNames from 'classnames'
@@ -118,6 +119,7 @@ const VenuePage = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet title={venue.title} />
       <VenueTemplate
         isSingle
         path={venue.path}

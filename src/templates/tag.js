@@ -15,7 +15,7 @@ const Tag = props => {
 
   return (
     <Layout>
-      <Helmet title={`${tag} | ${siteTitle}`} />
+      <Helmet title={tag} />
       <PostList posts={posts} title={title} />
     </Layout>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 
@@ -25,6 +26,7 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet title={page.title} />
       <PageTemplate title={page.title} content={page.content} />
     </Layout>
   )

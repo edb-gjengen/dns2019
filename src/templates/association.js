@@ -42,7 +42,7 @@ AssociationTemplate.propTypes = {
   homepage: PropTypes.string,
 }
 
-const Association = ({ data }) => {
+const AssociationPage = ({ data }) => {
   const { wordpressWpAssociations: association } = data
 
   return (
@@ -58,11 +58,11 @@ const Association = ({ data }) => {
   )
 }
 
-Association.propTypes = {
+AssociationPage.propTypes = {
   data: PropTypes.shape({}).isRequired,
 }
 
-export default Association
+export default AssociationPage
 
 export const associationQuery = graphql`
   query AssociationById($id: String!) {

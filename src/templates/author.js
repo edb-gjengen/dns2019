@@ -23,7 +23,7 @@ const Author = props => {
 
   return (
     <Layout>
-      <Helmet title={`${name} | ${siteTitle}`} />
+      <Helmet title={name} />
       <PostList posts={posts} title={title} />
     </Layout>
   )

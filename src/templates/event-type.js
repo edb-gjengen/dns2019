@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import EventList from '../components/EventList'
@@ -12,6 +13,7 @@ export default class EventTypeProgram extends React.Component {
 
     return (
       <Layout>
+        <Helmet title={`Konsept: ${eventTypeName}`} />
         <EventList events={events} title={eventTypeName} />
       </Layout>
     )

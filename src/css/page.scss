@@ -62,8 +62,9 @@ h1.section-title {
     margin: 2.2rem auto 1rem;
   }
 
-  table {
+  table, .table-wrap {
     width: 100% !important;
+    max-width: 100%;
   }
 
   .instagram-media {

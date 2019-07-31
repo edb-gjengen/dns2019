@@ -62,19 +62,21 @@ export const BookingPage = () => {
           dangerouslySetInnerHTML={{ __html: content }}
         />
         <VenueList venues={venues} />
-        <h2>Se utvalgte lokaler i vår 3D-løsning</h2>
-        <p>
-          Med vår 3D-løsning har du muligheten til å navigere deg rundt på
-          huset! Du kan bevege deg mellom etasjer ved å trykke på tallene i den
-          lille kolonnen nederst til høyre. Dra deg rundt fra rom til rom ved å
-          klikke dit du vil, og bruk den røde og hvite krystallen i høyre hjørne
-          til å få opptil en 360 graders rotasjon i alle rom. Pluss- og minus-
-          knappene i høyre hjørne kan brukes for å zoome inn eller ut. På denne
-          måten får du en rask og god oversikt over lokalene, og får et solid
-          innblikk i hvordan rommene ser ut. Vi har valgt at løsningen starter i
-          øverste etasje i Storsalen - men ta gjerne en titt på lokalene i alle
-          etasjer!
-        </p>
+        <div class="wp-content">
+          <h2>Se utvalgte lokaler i vår 3D-løsning</h2>
+          <p>
+            Med vår 3D-løsning har du muligheten til å navigere deg rundt på
+            huset! Du kan bevege deg mellom etasjer ved å trykke på tallene i den
+            lille kolonnen nederst til høyre. Dra deg rundt fra rom til rom ved å
+            klikke dit du vil, og bruk den røde og hvite krystallen i høyre hjørne
+            til å få opptil en 360 graders rotasjon i alle rom. Pluss- og minus-
+            knappene i høyre hjørne kan brukes for å zoome inn eller ut. På denne
+            måten får du en rask og god oversikt over lokalene, og får et solid
+            innblikk i hvordan rommene ser ut. Vi har valgt at løsningen starter i
+            øverste etasje i Storsalen - men ta gjerne en titt på lokalene i alle
+            etasjer!
+          </p>
+        </div>
         <iframe
           title="Chateau Neuf i Google Maps"
           style={{ border: 0, height: '600px', width: '100%' }}

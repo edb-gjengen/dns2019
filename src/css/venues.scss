@@ -2,3 +2,15 @@
   max-width: $width-l;
   margin: 0 auto 2rem;
 }
+
+h2.venue-title {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 1rem auto;
+  padding-top: 2rem;
+}
+
+.venue-featured-image {
+  width: 36rem;
+  margin: 0 auto;
+}

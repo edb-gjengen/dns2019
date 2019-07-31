@@ -11,9 +11,9 @@ export default class AssociationListPage extends React.Component {
     const { edges: associations } = data.allWordpressWpAssociations
 
     return (
-      <Layout classes="association-page">
+      <Layout>
         <Helmet title="Foreningene" />
-        <AssociationList associations={associations} title="Foreningene" />
+        <AssociationList associations={associations} title="Foreninger" />
       </Layout>
     )
   }

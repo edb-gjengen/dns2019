@@ -5,10 +5,9 @@
 
 .association {
   position: relative;
-  width: calc(50% - 1rem);
+  width: calc(50% - 2rem);
   margin: 0 0.5rem 1rem;
-  border: 1px solid black;
-  padding: 1rem;
+  padding: 2rem;
 
   @media (max-width: $media-m) {
     width: 100%;
@@ -33,12 +32,11 @@
 
   &-image {
     width: 100%;
-    max-width: 200px;
-    height: 200px;
+    max-width: 300px;
+    height: 300px;
     overflow: hidden;
     margin: 0 auto 1rem;
-    padding-left: 2rem;
-    order: 2;
+    padding-right: 1rem;
   }
 
   &-text {
@@ -52,6 +50,16 @@
 }
 
 .association-page {
+  .page-title {
+    &:before {
+      content: "Forening";
+      display: block;
+      font-size: $font-s;
+      font-weight: 700;
+      color: $color-red;
+    }
+  }
+
   .association-logo {
     width: $width-s;
     max-width: 100%;

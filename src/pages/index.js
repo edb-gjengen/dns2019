@@ -15,44 +15,14 @@ export default class IndexPage extends React.Component {
       <Layout classes="index">
         <EventList
           events={events}
-          maxEvents={9}
+          maxEvents={10}
           title="Dette skjer"
           showMore
         />
-        <section className="volunteer">
-          <Link to="/bli-aktiv/" className="section-title">
-            Bli frivillig
-          </Link>
-          <p>
-            Vil du være med å arrangere greier på studentersamfundet? Sjekk ut
-            de ulike <Link to="/bli-aktiv/">foreningene</Link> som holder til på
-            Chateau Neuf.
-          </p>
-          <p>
-            Vi trenger alltid flere engasjerte folk! Her er noen eksempler på
-            roller du kan innta:
-          </p>
-          <ul>
-            <li>Økonomiansvarlig</li>
-            <li>Skuespiller</li>
-            <li>Designere</li>
-            <li>Utviklere</li>
-          </ul>
-        </section>
-        <PostList posts={posts} title="Aktuelt" showMore />
         <section className="front-page-info">
           <div className="address">
             <h2>Besøk oss</h2>
-            <p>Vi holder til på Majorstua. Finn veibeskrivelse under.</p>
-            <label htmlFor="directions">Jeg vil reise fra:</label>
-            <input
-              type="text"
-              id="directions"
-              name="directions"
-              placeholder="Skriv inn adresse"
-            />
-          </div>
-          <div className="opening-hours">
+            <p>Vi holder til på Majorstua.</p>
             <h2>Åpningstider</h2>
             <ul>
               <li>
@@ -70,7 +40,28 @@ export default class IndexPage extends React.Component {
               </li>
             </ul>
           </div>
+          <div className="volunteer">
+            <Link to="/bli-aktiv/" className="section-title">
+              Bli frivillig
+            </Link>
+            <p>
+              Vil du være med å arrangere greier på studentersamfundet? Sjekk ut
+              de ulike <Link to="/bli-aktiv/">foreningene</Link> som holder til på
+              Chateau Neuf.
+            </p>
+            <p>
+              Vi trenger alltid flere engasjerte folk! Her er noen eksempler på
+              roller du kan innta:
+            </p>
+            <ul>
+              <li>Økonomiansvarlig</li>
+              <li>Skuespiller</li>
+              <li>Designere</li>
+              <li>Utviklere</li>
+            </ul>
+          </div>
         </section>
+        <PostList posts={posts} title="Aktuelt" showMore />
       </Layout>
     )
   }

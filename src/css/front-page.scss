@@ -19,8 +19,8 @@
   }
 }
 
-.address, .opening-hours {
-  padding: 2rem 2rem 6rem;
+.address, .volunteer {
+  padding: 2rem;
 
   @media (max-width: $media-s) {
     padding: 1rem 1rem 3rem;
@@ -36,13 +36,8 @@
   }
 }
 
-.opening-hours {
-  background: $color-green;
-}
-
-
 .volunteer {
-  background: $color-pink;
+  background: $color-yellow;
   .section-title {
     font-weight: 700;
     color: $color-white;
@@ -57,5 +52,11 @@
   display: block;
   width: 100%;
   text-align: center;
-  padding: 1rem;
+  padding: 0 1rem 1rem;
+
+  @media (max-width: $media-s) {
+    .button {
+      margin: 0;
+    }
+  }
 }

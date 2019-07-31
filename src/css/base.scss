@@ -87,16 +87,14 @@ figure {
 }
 
 button, .button {
-  display: inline-block;
+  display: block;
   text-decoration: none;
   font-weight: 700;
   color: $color-black;
   border: 2px solid $color-orange;
   background: $color-orange;
-  width: 100%;
-  max-width: $width-m;
-  padding: 0.6rem 2rem;
-  margin-bottom: 1rem;
+  padding: 0.2rem 2rem;
+  margin: 0 .5rem 1rem;
   transition: all .2s ease-in-out;
 
   &:hover {
@@ -121,8 +119,9 @@ td, th {
 
 .iframe-wrap {
   width: 100%;
+  max-width: 36rem !important;
   position: relative;
-	padding-bottom: 56.25%;
+	padding-bottom: calc(36rem * 0.5625);
 	padding-top: 25px;
 	height: 0;
   iframe {

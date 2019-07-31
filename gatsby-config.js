@@ -47,13 +47,13 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    {
-      resolve: 'gatsby-plugin-purgecss',
-      options: {
-        printRejected: true,
-        whitelistPatterns: [/^(.*)-content(.*)/, /^event-grouped-by-(.*)/],
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-purgecss',
+    //   options: {
+    //     printRejected: true,
+    //     whitelistPatterns: [/^(.*)-content(.*)/, /^event-grouped-by-(.*)/],
+    //   },
+    // },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

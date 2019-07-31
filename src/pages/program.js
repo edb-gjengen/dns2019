@@ -13,7 +13,12 @@ export default class EventProgram extends React.Component {
     return (
       <Layout>
         <Helmet title="Program" />
-        <EventList events={events} title="Dette skjer" groupBy="month" />
+        <EventList
+          events={events}
+          title="Dette skjer"
+          groupBy="month"
+          showFilter
+        />
       </Layout>
     )
   }

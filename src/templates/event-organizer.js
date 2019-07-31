@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
-import EventList from '../components/EventList'
 import moment from 'moment'
 import 'moment/locale/nb'
+
+import Layout from '../components/Layout'
+import EventList from '../components/EventList'
 
 moment.locale('nb')
 
@@ -13,37 +14,26 @@ export default class EventOrganizerPage extends React.Component {
   render() {
     const { data, pageContext } = this.props
     const { edges: events, totalCount } = data.allWordpressWpEvents
-    const { name, description } = pageContext
-
-    const future = events.filter(({ node: event }) => {
-      const startTime = moment(event.start_time)
-      return !!startTime.isSameOrAfter(new Date(), 'day')
-    })
-    const past = events.filter(({ node: event }) => {
-      const startTime = moment(event.start_time)
-      return !startTime.isSameOrAfter(new Date(), 'day')
-    })
+    const { name, description, slug } = pageContext
 
     return (
-      <Layout>
-        <Helmet title={`Arrangør: ${name}`} />
-        <section className="event-organizer-page">
+      <Layout classes="organizer-page">
+        <Helmet title={`${name} | Program`} />
+        <EventList
+          events={events}
+          title={`Program for ${name}`}
+          groupBy="month"
+          filterOrganizer={slug}
+          showFilter
+        />
+        {/* <section className="event-organizer-page">
           <h1 className="page-title">{name}</h1>
           <div
             className="event-organizer-description wp-content"
             dangerouslySetInnerHTML={{ __html: description }}
           />
-          {future.length !== 0 && (
-            <EventList
-              events={future}
-              onlyUpcoming={false}
-              title="I fremtiden"
-            />
-          )}
-          {past.length !== 0 && (
-            <EventList events={past} onlyUpcoming={false} title="I fortiden" />
-          )}
-        </section>
+          <EventList events={events} title="I fremtiden" />
+        </section> */}
       </Layout>
     )
   }

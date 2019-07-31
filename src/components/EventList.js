@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import Dropdown from 'react-dropdown'
+import { Link, graphql, useStaticQuery, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import classNames from 'classnames'
 import _ from 'lodash'
@@ -9,38 +10,22 @@ import 'moment/locale/nb'
 
 moment.locale('nb')
 
-export default class EventList extends React.Component {
-  renderEventsByDate(filteredEvents, groupBy) {
-    let groupByFormat = null
-    if (groupBy === 'day') {
-      groupByFormat = 'YYYY-MM-DD'
+const eventOrganizersQuery = graphql`
+  query EventOrganizers {
+    allWordpressWpEventOrganizers {
+      edges {
+        node {
+          name
+          slug
+          path
+        }
+      }
     }
-    if (groupBy === 'month') {
-      groupByFormat = 'YYYY-MM'
-    }
-    const grouper = ({ node: event }) => {
-      return moment(event.start_time).format(groupByFormat)
-    }
-    const groupedEvents = _.groupBy(filteredEvents, grouper)
-    return _.map(groupedEvents, (theseEvents, date) => {
-      return (
-        <div className={`event-group event-grouped-by-${groupBy}`}>
-          <div className="event-group-header">
-            {groupBy === 'day' && moment(date).format('dddd D. MMMM')}
-            {groupBy === 'month' && moment(date).format('MMMM')}
-          </div>
-          <div className="event-list">
-            {theseEvents.map(({ node: event }) => {
-              return this.renderEvent(event)
-            })}
-          </div>
-        </div>
-      )
-    })
   }
-
-  renderEvent(event) {
-    const { compactDate } = this.props
+`
+const EventList = props => {
+  const renderEvent = event => {
+    const { compactDate } = props
     return (
       <Link to={event.path} className="event" key={event.id}>
         <div className="event-image">
@@ -93,50 +78,123 @@ export default class EventList extends React.Component {
     )
   }
 
-  render() {
-    const {
-      events,
-      title,
-      classes,
-      onlyUpcoming,
-      maxEvents,
-      groupBy,
-      showMore,
-    } = this.props
-
-    let filteredEvents = events.filter(({ node: event }) => {
-      const startTime = moment(event.start_time)
-      if (onlyUpcoming && !startTime.isSameOrAfter(new Date(), 'day')) {
-        return false
-      }
-      return true
-    })
-
-    if (maxEvents) {
-      filteredEvents = filteredEvents.slice(0, maxEvents)
+  const renderEventsByDate = (filteredEvents, groupBy) => {
+    let groupByFormat = null
+    if (groupBy === 'day') {
+      groupByFormat = 'YYYY-MM-DD'
     }
-
-    return (
-      <section className={classNames("events", classes)}>
-        {title && <h1 className="section-title">{title}</h1>}
-        {groupBy && this.renderEventsByDate(filteredEvents, groupBy)}
-        {!groupBy && (
+    if (groupBy === 'month') {
+      groupByFormat = 'YYYY-MM'
+    }
+    const grouper = ({ node: event }) => {
+      return moment(event.start_time).format(groupByFormat)
+    }
+    const groupedEvents = _.groupBy(filteredEvents, grouper)
+    return _.map(groupedEvents, (theseEvents, date) => {
+      return (
+        <div className={`event-group event-grouped-by-${groupBy}`}>
+          <div className="event-group-header">
+            {groupBy === 'day' && moment(date).format('dddd D. MMMM')}
+            {groupBy === 'month' && moment(date).format('MMMM')}
+          </div>
           <div className="event-list">
-            {filteredEvents.map(({ node: event }) => {
-              return this.renderEvent(event)
+            {theseEvents.map(({ node: event }) => {
+              return renderEvent(event)
             })}
           </div>
-        )}
-        {showMore && (
-          <div className="show-more">
-            <Link to="/program/" className="button">
-              Vis alle
-            </Link>
-          </div>
-        )}
-      </section>
-    )
+        </div>
+      )
+    })
   }
+
+  const handleOrganizerFilterChange = ({ value }) => {
+    navigate(`/organizer/${value}/`)
+  }
+
+  const {
+    events,
+    title,
+    classes,
+    onlyUpcoming,
+    maxEvents,
+    groupBy,
+    showMore,
+    showFilter,
+    filterOrganizer,
+  } = props
+
+  let filteredEvents = events.filter(({ node: event }) => {
+    const startTime = moment(event.start_time)
+    if (onlyUpcoming && !startTime.isSameOrAfter(new Date(), 'day')) {
+      return false
+    }
+    return true
+  })
+
+  const data = useStaticQuery(eventOrganizersQuery)
+  const { edges: organizers } = data.allWordpressWpEventOrganizers
+  const organizerOptions = organizers.map(({ node: organizer }) => {
+    return { value: organizer.slug, label: organizer.name }
+  })
+  const selectedOrganizer =
+    filterOrganizer !== null
+      ? organizers.find(obj => filterOrganizer === obj.node.slug).node
+      : null
+  const organizerOptionsDefault =
+    selectedOrganizer !== null
+      ? {
+          value: selectedOrganizer.slug,
+          label: selectedOrganizer.name,
+        }
+      : null
+
+  if (maxEvents) {
+    filteredEvents = filteredEvents.slice(0, maxEvents)
+  }
+
+  return (
+    <section className={classNames('events', classes)}>
+      {title && <h1 className="section-title">{title}</h1>}
+      {showFilter && organizers && (
+        <div className="event-list-filter">
+          <Dropdown
+            className="event-list-filter-dropdown"
+            options={organizerOptions}
+            onChange={handleOrganizerFilterChange}
+            value={organizerOptionsDefault}
+            placeholder="Arrangør"
+          />
+        </div>
+      )}
+      {groupBy && renderEventsByDate(filteredEvents, groupBy)}
+      {!groupBy && (
+        <div className="event-list">
+          {filteredEvents.map(({ node: event }) => {
+            return renderEvent(event)
+          })}
+        </div>
+      )}
+      {showMore && (
+        <div className="show-more">
+          <Link to="/program/" className="button">
+            Vis alle
+          </Link>
+        </div>
+      )}
+      {filteredEvents.length === 0 && (
+        <div className="event-list-tumbleweed">
+          {!selectedOrganizer && (
+            <>
+              Det ligger ingenting i programmet akkurat nå. Prøv igjen senere!
+            </>
+          )}
+          {selectedOrganizer && (
+            <>{selectedOrganizer.name} har ingen kommende arrangementer.</>
+          )}
+        </div>
+      )}
+    </section>
+  )
 }
 
 EventList.propTypes = {
@@ -148,6 +206,8 @@ EventList.propTypes = {
   groupBy: PropTypes.string,
   compactDate: PropTypes.bool,
   showMore: PropTypes.bool,
+  showFilter: PropTypes.bool,
+  filterOrganizer: PropTypes.string,
 }
 
 EventList.defaultProps = {
@@ -155,7 +215,12 @@ EventList.defaultProps = {
   maxEvents: 0,
   groupBy: null,
   compactDate: false,
+  showMore: false,
+  showFilter: false,
+  filterOrganizer: null,
 }
+
+export default EventList
 
 export const pageQuery = graphql`
   fragment EventTypeFields on wordpress__wp_events {

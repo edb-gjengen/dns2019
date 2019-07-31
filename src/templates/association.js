@@ -14,6 +14,7 @@ export const AssociationTemplate = ({
   const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
   return (
     <section className="association-page">
+      <div className="page-title-pre">{type}</div>
       <h1 className="page-title">{title}</h1>
       {hasFeaturedMedia && (
         <div className="association-logo">
@@ -25,7 +26,6 @@ export const AssociationTemplate = ({
           <a href={homepage}>Nettside</a>
         </div>
       )}
-      <div className="association-type">Type: {type}</div>
       <div
         className="association-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}

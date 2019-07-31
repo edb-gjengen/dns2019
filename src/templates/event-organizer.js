@@ -21,7 +21,8 @@ export default class EventOrganizerPage extends React.Component {
         <Helmet title={`${name} | Program`} />
         <EventList
           events={events}
-          title={`Program for ${name}`}
+          preTitle="Kommende arrangementer fra"
+          title={name}
           groupBy="month"
           filterOrganizer={slug}
           showFilter

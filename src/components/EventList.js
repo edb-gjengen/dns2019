@@ -114,6 +114,7 @@ const EventList = props => {
   const {
     events,
     title,
+    preTitle,
     classes,
     onlyUpcoming,
     maxEvents,
@@ -155,8 +156,9 @@ const EventList = props => {
 
   return (
     <section className={classNames('events', classes)}>
+      {preTitle && <div className="page-title-pre">{preTitle}</div>}
       {title && <h1 className="section-title">{title}</h1>}
-      {children}
+      {children !== null && children}
       {showFilter && organizers && (
         <div className="event-list-filter">
           <Dropdown
@@ -203,6 +205,7 @@ EventList.propTypes = {
   children: PropTypes.shape({}),
   events: PropTypes.arrayOf(PropTypes.object),
   classes: PropTypes.string,
+  preTitle: PropTypes.string,
   title: PropTypes.string,
   onlyUpcoming: PropTypes.bool,
   maxEvents: PropTypes.number,
@@ -214,6 +217,7 @@ EventList.propTypes = {
 }
 
 EventList.defaultProps = {
+  preTitle: null,
   onlyUpcoming: true,
   maxEvents: 0,
   groupBy: null,

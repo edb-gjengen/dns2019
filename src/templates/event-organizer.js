@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import moment from 'moment'
 import 'moment/locale/nb'
 
@@ -14,10 +14,10 @@ export default class EventOrganizerPage extends React.Component {
   render() {
     const { data, pageContext } = this.props
     const { edges: events, totalCount } = data.allWordpressWpEvents
-    const { name, description, slug } = pageContext
+    const { name, description, slug, association } = pageContext
 
     return (
-      <Layout classes="organizer-page">
+      <Layout classes="event-organizer-page">
         <Helmet title={`${name} | Program`} />
         <EventList
           events={events}
@@ -25,15 +25,19 @@ export default class EventOrganizerPage extends React.Component {
           groupBy="month"
           filterOrganizer={slug}
           showFilter
-        />
-        {/* <section className="event-organizer-page">
-          <h1 className="page-title">{name}</h1>
-          <div
-            className="event-organizer-description wp-content"
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
-          <EventList events={events} title="I fremtiden" />
-        </section> */}
+        >
+          <div className="event-organizer-info">
+            <div
+              className="event-organizer-description wp-content"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+            {association && (
+              <div className="event-organizer-read-more">
+                <Link to={association.path}>Les mer om {name}</Link>
+              </div>
+            )}
+          </div>
+        </EventList>
       </Layout>
     )
   }
@@ -49,16 +53,12 @@ EventOrganizerPage.propTypes = {
     name: PropTypes.string,
     slug: PropTypes.string,
     description: PropTypes.string,
+    association: PropTypes.shape({}),
   }),
 }
 
 export const pageQuery = graphql`
   query EventOrganizerPage($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allWordpressWpEvents(
       filter: { event_organizers: { elemMatch: { slug: { eq: $slug } } } }
       sort: { fields: date, order: DESC }

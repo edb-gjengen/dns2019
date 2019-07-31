@@ -121,6 +121,7 @@ const EventList = props => {
     showMore,
     showFilter,
     filterOrganizer,
+    children,
   } = props
 
   let filteredEvents = events.filter(({ node: event }) => {
@@ -155,6 +156,7 @@ const EventList = props => {
   return (
     <section className={classNames('events', classes)}>
       {title && <h1 className="section-title">{title}</h1>}
+      {children}
       {showFilter && organizers && (
         <div className="event-list-filter">
           <Dropdown
@@ -198,6 +200,7 @@ const EventList = props => {
 }
 
 EventList.propTypes = {
+  children: PropTypes.shape({}),
   events: PropTypes.arrayOf(PropTypes.object),
   classes: PropTypes.string,
   title: PropTypes.string,

@@ -245,6 +245,9 @@ exports.createPages = ({ actions, graphql }) => {
                 name
                 slug
                 description
+                association {
+                  path
+                }
               }
             }
           }
@@ -271,6 +274,7 @@ exports.createPages = ({ actions, graphql }) => {
               name: eventOrganizer.name,
               slug: eventOrganizer.slug,
               description: eventOrganizer.description,
+              association: eventOrganizer.association,
             },
           })
         }

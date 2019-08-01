@@ -181,8 +181,8 @@ const EventList = props => {
       )}
       {showMore && (
         <div className="show-more">
-          <Link to="/program/" className="button">
-            Vis alle
+          <Link to="/program/" className="button button-large">
+            <span>Se alle arrangementer</span>
           </Link>
         </div>
       )}

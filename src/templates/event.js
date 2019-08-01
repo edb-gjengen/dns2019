@@ -92,6 +92,16 @@ export const EventTemplate = ({
                   </ul>
                 </div>
               )}
+              {organizers && (
+                <div className="event-organizers">
+                  <span className="event-organizers-title">Arrangeres av </span>
+                  {organizers.map(organizer => (
+                    <span className="event-organizer">
+                      <Link to={organizer.path}>{organizer.name}</Link>
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           {hasFeaturedMedia && (
@@ -118,18 +128,6 @@ export const EventTemplate = ({
           </a>
         )}
       </div>
-      {organizers && (
-        <div className="event-organizers">
-          <div className="event-organizers-title">
-            {organizers.length === 1 ? 'Arrangør' : 'Arrangører'}
-          </div>
-          {organizers.map(organizer => (
-            <div className="event-organizer">
-              <Link to={organizer.path}>{organizer.name}</Link>
-            </div>
-          ))}
-        </div>
-      )}
       <div
         className="event-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}

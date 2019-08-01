@@ -16,7 +16,7 @@ export default class EventProgram extends React.Component {
         <EventList
           events={events}
           preTitle="Program"
-          title="Dette skjer på Neuf"
+          title="Chateau Neuf"
           groupBy="month"
           showFilter
         />

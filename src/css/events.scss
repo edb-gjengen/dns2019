@@ -28,7 +28,7 @@
     text-align: left;
     border-bottom: 2px solid $color-yellow;
     color: $color-yellow;
-    margin: 0 1.5rem 0.5rem;
+    margin: 0 1.5rem 1rem;
     padding: 0.4rem 2rem 0.4rem 0;
     text-transform: uppercase;
     font-weight: 700;
@@ -315,6 +315,10 @@
       font-size: 1rem;
     }
   }
+
+  .event-organizers {
+    margin-bottom: 1rem;
+  }
 }
 
 .event-links {
@@ -378,6 +382,7 @@
   }
   @media (max-width: $media-s) {
     display: block;
+    margin-bottom: 1rem;
     .event-link {
       width: 100%;
       margin-bottom: 0.5rem;
@@ -399,11 +404,15 @@
   &-read-more {
     a {
       display: block;
+      margin-top: .5rem;
       width: 100%;
       color: $color-orange;
       text-decoration: underline;
       font-size: 1rem;
       text-align: center;
+      &:hover {
+        color: $color-white;
+      }
     }
   }
 }

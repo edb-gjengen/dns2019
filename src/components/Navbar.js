@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import logo from '../img/logo/logo-s.svg'
+import logo from '../img/logo/logo-xs.svg'
 
 export default class Navbar extends React.Component {
   constructor(props) {

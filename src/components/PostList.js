@@ -39,8 +39,8 @@ export default class PostList extends React.Component {
         </div>
         {showMore && (
           <div className="show-more">
-            <Link to="/nyheter/" className="button">
-              Vis alle
+            <Link to="/nyheter/" className="button button-large">
+              <span>Se alle nyheter</span>
             </Link>
           </div>
         )}

@@ -21,24 +21,29 @@ export default class IndexPage extends React.Component {
         />
         <section className="front-page-info">
           <div className="address">
-            <h2>Besøk oss</h2>
-            <p>Vi holder til på Majorstua.</p>
-            <h2>Åpningstider</h2>
-            <ul>
-              <li>
-                Glassbaren:
-                <ul>
-                  <li>Mandag–lørdag: 14:00–00:00</li>
-                </ul>
-              </li>
-              <li>
-                Bokcaféen:
-                <ul>
-                  <li>Mandag–torsdag: 19:00–00:00</li>
-                  <li>Fredag: 20:00–03:00</li>
-                </ul>
-              </li>
-            </ul>
+            <div>
+              <h2>Besøk oss</h2>
+              <p>Vi holder til på Majorstua.</p>
+            </div>
+            <div>
+              <h2>Åpningstider</h2>
+              <ul>
+                <li>
+                  Glassbaren:
+                  <ul>
+                    <li>Mandag–lørdag: 14:00–00:00</li>
+                  </ul>
+                </li>
+                <li>
+                  Bokcaféen:
+                  <ul>
+                    <li>Mandag–torsdag: 19:00–00:00</li>
+                    <li>Fredag: 20:00–03:00</li>
+                  </ul>
+                </li>
+              </ul>
+              <a href="#">Se alle åpningstider</a>
+            </div>
           </div>
           <div className="volunteer">
             <Link to="/bli-aktiv/" className="section-title">

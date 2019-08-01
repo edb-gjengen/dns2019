@@ -1,9 +1,10 @@
 .site-header {
-  padding: 0.6rem 1rem;
+  padding: 0;
   background: $color-black;
   color: $color-white;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 
   position: fixed;
   top: 0;
@@ -12,10 +13,16 @@
   z-index: 9002;
 
   .logo {
-    width: 2rem;
-    height: 1rem;
-    margin: 0 3rem;
-    margin-top: -0.35rem;
+    width: 3.2rem;
+    height: 2.5rem;
+    position: relative;
+    margin: 0 1.2rem;
+
+    img {
+      position: absolute;
+      bottom: 0;
+      width: 3.6rem;
+    }
   }
 }
 
@@ -25,6 +32,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
+  padding: 0.6rem 1rem;
   &:last-of-type {
     justify-content: flex-start;
   }
@@ -67,7 +75,7 @@
   &_toggle {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 1rem;
     font-size: 2rem;
     line-height: 1;
 
@@ -88,7 +96,7 @@
     .logo {
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
       margin: 0;
     }
   }

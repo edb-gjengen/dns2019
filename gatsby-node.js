@@ -237,7 +237,7 @@ exports.createPages = ({ actions, graphql }) => {
     .then(() => {
       return graphql(`
         {
-          allWordpressWpEventOrganizers(filter: { count: { gt: 0 } }) {
+          allWordpressWpEventOrganizers {
             edges {
               node {
                 id

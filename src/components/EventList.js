@@ -108,6 +108,10 @@ const EventList = props => {
   }
 
   const handleOrganizerFilterChange = ({ value }) => {
+    if (!value) {
+      navigate('/program/')
+      return
+    }
     navigate(`/organizer/${value}/`)
   }
 
@@ -135,9 +139,16 @@ const EventList = props => {
 
   const data = useStaticQuery(eventOrganizersQuery)
   const { edges: organizers } = data.allWordpressWpEventOrganizers
-  const organizerOptions = organizers.map(({ node: organizer }) => {
-    return { value: organizer.slug, label: organizer.name }
-  })
+  const allOrganizersOption = {
+    value: null,
+    label: 'Alle arrangører',
+  }
+  const organizerOptions = [
+    allOrganizersOption,
+    ...organizers.map(({ node: organizer }) => {
+      return { value: organizer.slug, label: organizer.name }
+    }),
+  ]
   const selectedOrganizer =
     filterOrganizer !== null
       ? organizers.find(obj => filterOrganizer === obj.node.slug).node
@@ -148,7 +159,7 @@ const EventList = props => {
           value: selectedOrganizer.slug,
           label: selectedOrganizer.name,
         }
-      : null
+      : allOrganizersOption
 
   if (maxEvents) {
     filteredEvents = filteredEvents.slice(0, maxEvents)
@@ -161,13 +172,12 @@ const EventList = props => {
       {children !== null && children}
       {showFilter && organizers && (
         <div className="event-list-filter">
-          <div className="event-list-filter-heading">Se arrangementer av</div>
+          <div className="event-list-filter-heading">Se arrangementer fra</div>
           <Dropdown
             className="event-list-filter-dropdown"
             options={organizerOptions}
             onChange={handleOrganizerFilterChange}
             value={organizerOptionsDefault}
-            placeholder="Arrangør"
           />
         </div>
       )}

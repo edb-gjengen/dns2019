@@ -20,7 +20,7 @@ module.exports = {
         useACF: false,
         auth: {},
         // Set to true to debug endpoints on 'gatsby build'
-        verboseOutput: true,
+        verboseOutput: false,
         includedRoutes: [
           '**/*/*/associations',
           '**/*/*/categories',

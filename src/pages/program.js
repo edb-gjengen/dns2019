@@ -15,7 +15,8 @@ export default class EventProgram extends React.Component {
         <Helmet title="Program" />
         <EventList
           events={events}
-          title="Dette skjer"
+          preTitle="Program"
+          title="Dette skjer på Neuf"
           groupBy="month"
           showFilter
         />

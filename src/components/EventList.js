@@ -161,6 +161,7 @@ const EventList = props => {
       {children !== null && children}
       {showFilter && organizers && (
         <div className="event-list-filter">
+          <div className="event-list-filter-heading">Se arrangementer av</div>
           <Dropdown
             className="event-list-filter-dropdown"
             options={organizerOptions}

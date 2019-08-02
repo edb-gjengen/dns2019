@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import EventList from '../components/EventList'
+import logo from '../img/logo/logo-xxl.svg'
 
 export default class IndexPage extends React.Component {
   render() {
@@ -15,8 +16,8 @@ export default class IndexPage extends React.Component {
       <Layout classes="index">
         <EventList
           events={events}
-          maxEvents={10}
           title="Dette skjer"
+          maxEvents={10}
           showMore
         />
         <section className="front-page-info">

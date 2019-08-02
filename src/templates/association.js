@@ -23,7 +23,7 @@ export const AssociationTemplate = ({
       )}
       {homepage && (
         <div className="association-homepage">
-          <a href={homepage}>Nettside</a>
+          &rarr; <a href={homepage}>Besøk vår nettside</a>
         </div>
       )}
       <div

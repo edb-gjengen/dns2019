@@ -72,40 +72,59 @@
       transition: transform 0.3s, opacity 0.3s;
     }
   }
-  &_toggle {
+  &_toggle, &_program {
     position: absolute;
-    top: 0;
-    left: 1rem;
-    font-size: 2rem;
+    top: 1rem;
+    right: 1rem;
+    left: auto;
+    font-size: $font-s;
     line-height: 1;
+    color: $color-white;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
 
     display: none;
 
     &:hover {
       cursor: pointer;
-      color: $color-orange;
+    }
+  }
+  &_program {
+    left: 1rem;
+    right: auto;
+    a {
+      color: $color-white;
+      text-decoration: none;
     }
   }
 }
 
 @media (max-width: $media-s) {
   .site-header {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    background: $color-black;
+    height: 2.5rem;
+    padding-top: 2.5rem;
 
     .logo {
       position: absolute;
       top: 0;
-      right: 0;
-      margin: 0;
+      left: 50%;
+      margin-left: -1.6rem;
+    }
+
+    &.site-nav-visible {
+      height: auto;
     }
   }
   .site-nav {
     flex: none;
     display: none;
     text-align: center;
-    margin-top: 3rem;
-    &_toggle {
+    background: $color-black;
+
+    &_toggle, &_program {
       display: block;
     }
     order: 2;
@@ -127,7 +146,6 @@
     }
   }
   .site-nav-visible {
-    height: 100% !important;
     .site-nav {
       display: block;
     }

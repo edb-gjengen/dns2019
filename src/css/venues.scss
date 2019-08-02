@@ -14,3 +14,18 @@ h2.venue-title {
   width: 36rem;
   margin: 0 auto;
 }
+
+@media (min-width: $media-l) {
+  .venue-featured-image, .venue-text {
+    display: inline-block;
+    width: 48%;
+  }
+  .venue-featured-image {
+    vertical-align: top;
+  }
+}
+
+.neuf-map {
+  max-width: $width-l;
+  margin: 2rem auto;
+}

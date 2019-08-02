@@ -21,10 +21,6 @@
 
 .address, .volunteer {
   padding: 2rem;
-
-  @media (max-width: $media-s) {
-    padding: 1rem 1rem 3rem;
-  }
 }
 
 .address {
@@ -45,6 +41,18 @@
     &:hover {
       color: $color-white;
     }
+  }
+}
+
+@media (max-width: $media-s) {
+  .front-page-info {
+    display: block;
+    > div {
+      width: 100%;
+    }
+  }
+  .address, .volunteer {
+    padding: 1rem 1rem 3rem;
   }
 }
 

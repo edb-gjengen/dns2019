@@ -55,7 +55,10 @@ export default class Navbar extends React.Component {
           <Link to="/booking/">Utleie</Link>
         </nav>
         <div className="site-nav_toggle" onClick={this.toggleNav.bind(this)}>
-          =
+          Meny &nbsp; <span class="open">&#9776;</span>
+        </div>
+        <div className="site-nav_program">
+          <Link to="/program/">Program</Link>
         </div>
       </header>
     )

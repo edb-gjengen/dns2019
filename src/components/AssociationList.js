@@ -7,13 +7,13 @@ export default class AssociationList extends React.Component {
   static renderAssociation(association) {
     return (
       <Link className="association" to={association.path} key={association.id}>
-        {association.featured_media && association.featured_media.localFile && (
-          <div className="association-image">
+        <div className="association-image">
+          {association.featured_media && association.featured_media.localFile && (
             <Img
               fluid={association.featured_media.localFile.childImageSharp.fluid}
             />
-          </div>
-        )}
+          )}
+        </div>
         <div className="association-text">
           <h2 className="association-title">{association.title}</h2>
 

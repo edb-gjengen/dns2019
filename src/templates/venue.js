@@ -29,40 +29,50 @@ export class VenueTemplate extends React.Component {
 
     return (
       <>
-        <div className="venue-hero">
-          {isSingle && <h1 className="venue-title page-title">{title}</h1>}
-          {!isSingle && (
-            <Link to={path}>
-              <h2 className="venue-title">{title}</h2>
-            </Link>
-          )}
-          {hasFeaturedMedia && (
-            <div className="venue-featured-image">
-              <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
-            </div>
-          )}
-        </div>
-        <div
-          className="venue-content wp-content"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-        <div className="venue-meta">
-          <ul>
-            {floor && <li>Etasje: {floor}</li>}
-            {capacityLegal && <li>Branntillatelse for: {capacityLegal}</li>}
-            {capacityStanding && <li>Stående: {capacityStanding}</li>}
-            {capacitySitting && <li>Sittende: {capacitySitting}</li>}
-            {usedFor && <li>Bruk: {usedFor}</li>}
-            {bar && <li>Bar: {bar}</li>}
-            {audio && <li>Lyd: {audio}</li>}
-            {lighting && <li>Lys: {lighting}</li>}
-            {audioVideo && <li>A/V: {audioVideo}</li>}
-          </ul>
+        {isSingle && (
+          <div className="venue-hero">
+            <div className="page-title-pre">Lokale</div>
+            <h1 className="venue-title page-title">{title}</h1>
+          </div>
+        )}
+        {!isSingle && (
+          <Link to={path}>
+            <h2 className="venue-title">{title}</h2>
+          </Link>
+        )}
+        {hasFeaturedMedia && (
+          <div className="venue-featured-image">
+            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+          </div>
+        )}
+        <div className="venue-text">
+          <div
+            className="venue-content wp-content"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
+          <div className="venue-meta">
+            <ul>
+              {floor && <li>Etasje: {floor}</li>}
+              {capacityLegal && <li>Branntillatelse for: {capacityLegal}</li>}
+              {capacityStanding && <li>Stående: {capacityStanding}</li>}
+              {capacitySitting && <li>Sittende: {capacitySitting}</li>}
+              {usedFor && <li>Bruk: {usedFor}</li>}
+              {bar && <li>Bar: {bar}</li>}
+              {audio && <li>Lyd: {audio}</li>}
+              {lighting && <li>Lys: {lighting}</li>}
+              {audioVideo && <li>A/V: {audioVideo}</li>}
+            </ul>
+          </div>
         </div>
         {isSingle && (
           <div className="venue-map">
             <Map />
           </div>
+        )}
+        {isSingle && (
+          <Link to="/booking/" className="button button-large">
+            <span>Se alle lokaler</span>
+          </Link>
         )}
       </>
     )

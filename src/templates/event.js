@@ -21,6 +21,14 @@ const formatPrices = (regular, student) => {
   return cc === '' ? 'Gratis' : cc
 }
 
+const formatOrganizers = organizers => {
+  return organizers.map(organizer => (
+    <span className="event-organizer">
+      <Link to={organizer.path}>{organizer.name}</Link>
+    </span>
+  ))
+}
+
 export const EventTemplate = ({
   content,
   title,
@@ -95,11 +103,7 @@ export const EventTemplate = ({
               {organizers && (
                 <div className="event-organizers">
                   <span className="event-organizers-title">Arrangeres av </span>
-                  {organizers.map(organizer => (
-                    <span className="event-organizer">
-                      <Link to={organizer.path}>{organizer.name}</Link>
-                    </span>
-                  ))}
+                  {formatOrganizers(organizers)}
                 </div>
               )}
             </div>
@@ -153,10 +157,12 @@ EventTemplate.propTypes = {
   priceStudent: PropTypes.string,
   priceRegular: PropTypes.string,
   eventTypes: PropTypes.arrayOf(PropTypes.string),
-  organizers: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    path: PropTypes.string,
-  })),
+  organizers: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      path: PropTypes.string,
+    })
+  ),
 }
 
 const Event = ({ data }) => {

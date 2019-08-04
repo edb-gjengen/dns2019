@@ -2,12 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 
-export const PageTemplate = ({ title, content }) => {
+export const PageTemplate = ({ title, content, featuredMedia }) => {
+  const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
   return (
     <section className="page">
       <h1 className="page-title">{title}</h1>
+      {hasFeaturedMedia && (
+        <div className="page-hero">
+          <div className="page-hero_image">
+            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+          </div>
+          {featuredMedia.caption && (
+            <div
+              className="page-hero_image-caption"
+              dangerouslySetInnerHTML={{ __html: featuredMedia.caption }}
+            />
+          )}
+        </div>
+      )}
       <div
         className="page-content wp-content"
         dangerouslySetInnerHTML={{ __html: content }}
@@ -19,6 +34,9 @@ export const PageTemplate = ({ title, content }) => {
 PageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
+  featuredMedia: PropTypes.shape({
+    caption: PropTypes.string,
+  }),
 }
 
 const Page = ({ data }) => {
@@ -27,7 +45,11 @@ const Page = ({ data }) => {
   return (
     <Layout>
       <Helmet title={page.title} />
-      <PageTemplate title={page.title} content={page.content} />
+      <PageTemplate
+        title={page.title}
+        content={page.content}
+        featuredMedia={page.featured_media}
+      />
     </Layout>
   )
 }
@@ -43,6 +65,12 @@ export const pageQuery = graphql`
     wordpressPage(id: { eq: $id }) {
       title
       content
+      featured_media {
+        caption
+        localFile {
+          ...FluidImage
+        }
+      }
     }
   }
 `

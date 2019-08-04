@@ -51,17 +51,17 @@ export class VenueTemplate extends React.Component {
             dangerouslySetInnerHTML={{ __html: content }}
           />
           <div className="venue-meta">
-            <ul>
-              {floor && <li>Etasje: {floor}</li>}
-              {capacityLegal && <li>Branntillatelse for: {capacityLegal}</li>}
-              {capacityStanding && <li>Stående: {capacityStanding}</li>}
-              {capacitySitting && <li>Sittende: {capacitySitting}</li>}
-              {usedFor && <li>Bruk: {usedFor}</li>}
-              {bar && <li>Bar: {bar}</li>}
-              {audio && <li>Lyd: {audio}</li>}
-              {lighting && <li>Lys: {lighting}</li>}
-              {audioVideo && <li>A/V: {audioVideo}</li>}
-            </ul>
+            <table>
+              {floor && <tr><td>Etasje</td><td>{floor}</td></tr>}
+              {capacityLegal && <tr><td>Branntillatelse for</td><td>{capacityLegal}</td></tr>}
+              {capacityStanding && <tr><td>Stående</td><td>{capacityStanding}</td></tr>}
+              {capacitySitting && <tr><td>Sittende</td><td>{capacitySitting}</td></tr>}
+              {usedFor && <tr><td>Bruk</td><td>{usedFor}</td></tr>}
+              {bar && <tr><td>Bar</td><td>{bar}</td></tr>}
+              {audio && <tr><td>Lyd</td><td>{audio}</td></tr>}
+              {lighting && <tr><td>Lys</td><td>{lighting}</td></tr>}
+              {audioVideo && <tr><td>A/V</td><td>{audioVideo}</td></tr>}
+            </table>
           </div>
         </div>
         {isSingle && (

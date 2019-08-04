@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
+import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import { VenueTemplate } from '../templates/venue'
 
@@ -9,6 +10,12 @@ export const bookingPageQuery = graphql`
     wordpressPage(slug: { eq: "booking" }) {
       title
       content
+      featured_media {
+        caption
+        localFile {
+          ...FluidImage
+        }
+      }
     }
     allWordpressWpVenues(
       filter: { show_on_booking_page: { eq: "true" } }
@@ -52,8 +59,9 @@ const VenueList = ({ venues }) => {
 
 export const BookingPage = () => {
   const data = useStaticQuery(bookingPageQuery)
-  const { title, content } = data.wordpressPage
+  const { title, content, featured_media: featuredMedia } = data.wordpressPage
   const venues = data.allWordpressWpVenues.edges
+  const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
 
   return (
     <Layout>
@@ -61,9 +69,27 @@ export const BookingPage = () => {
       <section className="booking-page">
         <h1 className="page-title">{title}</h1>
         <p className="lead">
-          Chateau Neuf har lokaler til diverse arrangementer, og alle våre lokaler er tilgjengelige for utleie, både for studenter, utdanningsinstitusjoner og andre. Vi har blant annet huset Spellemannsprisen og Dalai Lama!
+          Chateau Neuf har lokaler til diverse arrangementer, og alle våre
+          lokaler er tilgjengelige for utleie, både for studenter,
+          utdanningsinstitusjoner og andre. Vi har blant annet huset
+          Spellemannsprisen og Dalai Lama!
         </p>
-        <a className="venue-anchor" href="#venue-list">Hopp til lokalene</a>
+        <a className="venue-anchor" href="#venue-list">
+          Hopp til lokalene
+        </a>
+        {hasFeaturedMedia && (
+          <div className="page-hero">
+            <div className="page-hero_image">
+              <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+            </div>
+            {featuredMedia.caption && (
+              <div
+                className="page-hero_image-caption"
+                dangerouslySetInnerHTML={{ __html: featuredMedia.caption }}
+              />
+            )}
+          </div>
+        )}
         <div
           className="page-content wp-content"
           dangerouslySetInnerHTML={{ __html: content }}
@@ -73,7 +99,15 @@ export const BookingPage = () => {
           <h2>Se utvalgte lokaler i vår 3D-løsning</h2>
           <p>
             Med vår 3D-løsning har du muligheten til å navigere deg rundt på
-            huset! Du kan bevege deg mellom etasjer ved å trykke på tallene i lille kolonnen nederst til høyre. Dra deg rundt fra rom til rom ved å klikke dit du vil, og bruk den røde og hvite krystallen i høyre hjørne til å få opptil en 360 graders rotasjon i alle rom. Pluss- og minus-knappene i høyre hjørne kan brukes for å zoome inn eller ut. På denne måten får du en rask og god oversikt over lokalene, og får et solid innblikk i hvordan rommene ser ut. Vi har valgt at løsningen starter i øverste etasje i Storsalen - men ta gjerne en titt på lokalene i alle etasjer!
+            huset! Du kan bevege deg mellom etasjer ved å trykke på tallene i
+            lille kolonnen nederst til høyre. Dra deg rundt fra rom til rom ved
+            å klikke dit du vil, og bruk den røde og hvite krystallen i høyre
+            hjørne til å få opptil en 360 graders rotasjon i alle rom. Pluss- og
+            minus-knappene i høyre hjørne kan brukes for å zoome inn eller ut.
+            På denne måten får du en rask og god oversikt over lokalene, og får
+            et solid innblikk i hvordan rommene ser ut. Vi har valgt at
+            løsningen starter i øverste etasje i Storsalen - men ta gjerne en
+            titt på lokalene i alle etasjer!
           </p>
         </div>
         <iframe

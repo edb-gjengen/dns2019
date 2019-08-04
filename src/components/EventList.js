@@ -25,7 +25,6 @@ const eventOrganizersQuery = graphql`
 `
 const EventList = props => {
   const renderEvent = event => {
-    const { compactDate } = props
     return (
       <Link to={event.path} className="event" key={event.id}>
         <div className="event-image">
@@ -34,23 +33,14 @@ const EventList = props => {
           )}
         </div>
         <header className="event-header">
-          <span
-            className={`event-date ${compactDate && 'event-date-is-compact'}`}
-          >
+          <span className="event-date">
             <span className="event-date-weekday">
               {moment(event.start_time).format('dddd')}{' '}
             </span>
-            {!compactDate && (
-              <span className="event-date-day-month">
-                {moment(event.start_time).format('D.')}{' '}
-                {moment(event.start_time).format('MMMM')}{' '}
-              </span>
-            )}
-            {compactDate && (
-              <span className="event-date-day-month">
-                {moment(event.start_time).format('D/M')}{' '}
-              </span>
-            )}
+            <span className="event-date-day-month">
+              {moment(event.start_time).format('D.')}{' '}
+              {moment(event.start_time).format('MMMM')}{' '}
+            </span>
             {/* Only specify year if different. */}
             {!moment(event.start_time).isSame(new Date(), 'year') && (
               <span className="event-date-year">
@@ -221,7 +211,6 @@ EventList.propTypes = {
   onlyUpcoming: PropTypes.bool,
   maxEvents: PropTypes.number,
   groupBy: PropTypes.string,
-  compactDate: PropTypes.bool,
   showMore: PropTypes.bool,
   showFilter: PropTypes.bool,
   filterOrganizer: PropTypes.string,
@@ -232,7 +221,6 @@ EventList.defaultProps = {
   onlyUpcoming: true,
   maxEvents: 0,
   groupBy: null,
-  compactDate: false,
   showMore: false,
   showFilter: false,
   filterOrganizer: null,

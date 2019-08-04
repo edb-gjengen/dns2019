@@ -26,7 +26,8 @@ export const bookingPageQuery = graphql`
 
 const VenueList = ({ venues }) => {
   return (
-    <div className="venue-list">
+    <div className="venue-list" id="venue-list">
+      <h2>Våre lokaler</h2>
       {venues.map(({ node: venue }) => (
         <VenueTemplate
           key={venue.id}
@@ -59,6 +60,10 @@ export const BookingPage = () => {
       <Helmet title="Utleie" />
       <section className="booking-page">
         <h1 className="page-title">{title}</h1>
+        <p className="lead">
+          Chateau Neuf har lokaler til diverse arrangementer, og alle våre lokaler er tilgjengelige for utleie, både for studenter, utdanningsinstitusjoner og andre. Vi har blant annet huset Spellemannsprisen og Dalai Lama!
+        </p>
+        <a className="venue-anchor" href="#venue-list">Hopp til lokalene</a>
         <div
           className="page-content wp-content"
           dangerouslySetInnerHTML={{ __html: content }}
@@ -68,15 +73,7 @@ export const BookingPage = () => {
           <h2>Se utvalgte lokaler i vår 3D-løsning</h2>
           <p>
             Med vår 3D-løsning har du muligheten til å navigere deg rundt på
-            huset! Du kan bevege deg mellom etasjer ved å trykke på tallene i den
-            lille kolonnen nederst til høyre. Dra deg rundt fra rom til rom ved å
-            klikke dit du vil, og bruk den røde og hvite krystallen i høyre hjørne
-            til å få opptil en 360 graders rotasjon i alle rom. Pluss- og minus-
-            knappene i høyre hjørne kan brukes for å zoome inn eller ut. På denne
-            måten får du en rask og god oversikt over lokalene, og får et solid
-            innblikk i hvordan rommene ser ut. Vi har valgt at løsningen starter i
-            øverste etasje i Storsalen - men ta gjerne en titt på lokalene i alle
-            etasjer!
+            huset! Du kan bevege deg mellom etasjer ved å trykke på tallene i lille kolonnen nederst til høyre. Dra deg rundt fra rom til rom ved å klikke dit du vil, og bruk den røde og hvite krystallen i høyre hjørne til å få opptil en 360 graders rotasjon i alle rom. Pluss- og minus-knappene i høyre hjørne kan brukes for å zoome inn eller ut. På denne måten får du en rask og god oversikt over lokalene, og får et solid innblikk i hvordan rommene ser ut. Vi har valgt at løsningen starter i øverste etasje i Storsalen - men ta gjerne en titt på lokalene i alle etasjer!
           </p>
         </div>
         <iframe

@@ -11,13 +11,11 @@ const loadTwitter = () => {
 }
 
 const processInstagram = () => {
-    console.log('process')
   if (
     typeof instgrm !== `undefined` &&
     instgrm.Embeds &&
     typeof instgrm.Embeds.process === `function`
   ) {
-      console.log('yes')
     instgrm.Embeds.process()
   }
 }

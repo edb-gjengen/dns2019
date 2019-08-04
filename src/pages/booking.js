@@ -101,19 +101,16 @@ export const BookingPage = () => {
             Med vår 3D-løsning har du muligheten til å navigere deg rundt på
             huset! Du kan bevege deg mellom etasjer ved å trykke på tallene i
             lille kolonnen nederst til høyre. Dra deg rundt fra rom til rom ved
-            å klikke dit du vil, og bruk den røde og hvite krystallen i høyre
-            hjørne til å få opptil en 360 graders rotasjon i alle rom. Pluss- og
+            å klikke dit du vil. Den røde og hvite kompassnålen lar deg rotere bildet. Pluss- og
             minus-knappene i høyre hjørne kan brukes for å zoome inn eller ut.
-            På denne måten får du en rask og god oversikt over lokalene, og får
-            et solid innblikk i hvordan rommene ser ut. Vi har valgt at
-            løsningen starter i øverste etasje i Storsalen - men ta gjerne en
+            Du starter i foajeen i 1. etasje &ndash; men ta gjerne en
             titt på lokalene i alle etasjer!
           </p>
         </div>
         <iframe
           title="Chateau Neuf i Google Maps"
           style={{ border: 0, height: '600px', width: '100%' }}
-          src="https://www.google.com/maps/embed?pb=!4v1521198562809!6m8!1m7!1sCAoSLEFGMVFpcE81LWR3UFhhcDVSTUduaWcyWXFsbElyRGpLZThLdlBLWFFkbllm!2m2!1d59.93243773194!2d10.71237824484!3f50.83!4f1.5300000000000011!5f0.5970117501821992"
+          src="https://www.google.com/maps/embed?pb=!4v1564960100338!6m8!1m7!1sCAoSLEFGMVFpcE4tMGpFUG5hUElid1hScG55WVV4U0gzUmZRdGVHOEg0UkFKcWg5!2m2!1d59.932353882678!2d10.712740301537!3f318.4342482323312!4f-5.31237031710549!5f0.7820865974627469"
           frameBorder="0"
           allowFullScreen="allowfullscreen"
         />

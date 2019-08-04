@@ -12,6 +12,7 @@
   @media (max-width: $media-m) {
     width: 100%;
     margin: 0 0 1rem;
+    padding: 0;
   }
 
   display: flex;
@@ -74,6 +75,13 @@
 }
 
 .association-page {
+  padding-top: 2rem;
+  .page-title {
+    margin-top: 0;
+  }
+  .page-title-pre {
+    color: $color-red;
+  }
   .association-logo {
     width: 100%;
     max-width: $width-s;

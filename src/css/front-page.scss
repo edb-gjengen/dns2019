@@ -2,29 +2,55 @@
   display: flex;
   background: $color-white;
   padding: 0;
+  text-align: center;
+
   > div {
     width: 50%;
   }
 
-  h2 {
+  p {
+    margin: 0;
+
+    a {
+      color: $color-black;
+    }
+  }
+  h2, h3 {
+    text-align: center;
+  }
+
+  h2, h3, p, ul, .button {
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
     font-weight: 400;
-    font-size: 1.8rem;
+    font-size: 2.8rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     line-height: 1.1;
-  }
-
-  p {
-    margin-left: 0;
+    margin: 1rem auto;
   }
 }
 
-.address, .volunteer {
+.visit-us, .volunteer {
   padding: 2rem;
+
+  .inner {
+    margin: 0 auto;
+    max-width: $width-m;
+  }
 }
 
-.address {
+.visit-us {
   background: $color-green;
+
+  .button {
+    color: $color-green;
+    &:hover {
+      color: $color-white;
+    }
+  }
 
   label, input {
     display: block;
@@ -32,12 +58,19 @@
   }
 }
 
+.opening-hours {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .volunteer {
   background: $color-yellow;
-  .section-title {
-    font-weight: 700;
-    color: $color-white;
-    text-shadow: 0.05em 0.05em $color-black;
+
+  .button {
+    color: $color-yellow;
     &:hover {
       color: $color-white;
     }
@@ -51,7 +84,7 @@
       width: 100%;
     }
   }
-  .address, .volunteer {
+  .visit-us, .volunteer {
     padding: 1rem 1rem 3rem;
   }
 }

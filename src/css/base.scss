@@ -128,16 +128,36 @@ button, .button {
       background: $color-orange;
     }
   }
+
+  &-small {
+    display: inline-block;
+    width: auto;
+    padding: 0.3rem 1rem;
+    margin: .5rem auto;
+    color: $color-white;
+    background: $color-black;
+    border: none;
+    font-size: $font-s;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    &:hover {
+      color: $color-white;
+    }
+  }
 }
 
-.table-wrap {
-  max-width: 100%;
-  overflow: auto;
-}
 table {
   background: $color-yellow;
   margin: 1rem auto 2rem;
   line-height: 1.1;
+}
+.table-wrap {
+  max-width: 100%;
+  overflow: auto;
+
+  table {
+    margin: 0;
+  }
 }
 td, th {
   padding: 0.6rem 0.8rem;
@@ -146,7 +166,7 @@ td, th {
 
 @media (max-width: $media-m) {
   td, th {
-    padding: 0.3rem 0.4rem;
+    padding: 0.3rem 1rem;
   }
 }
 

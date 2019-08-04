@@ -44,7 +44,7 @@ export const EventTemplate = ({
           <div className="event-hero_text">
             <h1>{title}</h1>
             <div className="event-meta">
-              <div className="venue">
+              <div className="event-meta-venue">
                 {venueCustom && <span>{venueCustom}</span>}
                 {venue && venue.title !== 'Hele huset' && (
                   <span>

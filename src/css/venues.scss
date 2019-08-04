@@ -1,18 +1,63 @@
+.venue {
+  text-align: center;
+
+  ul, p {
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  ul {
+    font-size: $font-s;
+  }
+
+  p {
+    &:last-of-type {
+      margin-bottom: 1.2rem;
+    }
+  }
+}
+
+.venue-page {
+  padding-top: 2rem;
+  .page-title {
+    margin-top: 0;
+  }
+  ul, p {
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  ul {
+    font-size: $font-s;
+  }
+
+  p {
+    &:last-of-type {
+      margin-bottom: 1.2rem;
+    }
+  }
+}
+
 .venue-hero {
   max-width: $width-l;
   margin: 0 auto 2rem;
 }
 
-h2.venue-title {
-  text-transform: uppercase;
-  text-align: center;
-  margin: 1rem auto;
-  padding-top: 2rem;
+.venue-title {
+  h2 {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 1rem auto;
+    padding-top: 2rem;
+    font-size: 1.6rem;
+  }
+  text-decoration: none;
 }
 
 .venue-featured-image {
   width: 36rem;
-  margin: 0 auto;
+  max-width: calc(100% + 2rem);
+  margin: 0 -1rem 1rem;
 }
 
 @media (min-width: $media-l) {
@@ -21,7 +66,12 @@ h2.venue-title {
     width: 48%;
   }
   .venue-featured-image {
+    max-width: 100%;
     vertical-align: top;
+    margin: 0 auto 1rem;
+  }
+  .venue-title h2 {
+    margin: 1rem auto 2rem;
   }
 }
 

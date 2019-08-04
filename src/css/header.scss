@@ -148,6 +148,12 @@
   .site-nav-visible {
     .site-nav {
       display: block;
+      &:first-of-type {
+        padding-top: 2rem;
+      }
+      &:last-of-type {
+        padding-bottom: 3rem;
+      }
     }
   }
 }

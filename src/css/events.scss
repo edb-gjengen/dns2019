@@ -291,7 +291,11 @@
     margin-bottom: 0;
   }
 
-  .venue {
+  a {
+    color: $color-bloodorange;
+  }
+
+  .event-meta-venue {
     margin-bottom: 1rem;
     font-size: 2rem;
     font-style: italic;
@@ -300,6 +304,12 @@
   .event-date {
     text-transform: uppercase;
     letter-spacing: 0.1em;
+  }
+
+  .event-types {
+    a {
+      color: $color-black;
+    }
   }
 
   @media (max-width: $media-s) {
@@ -318,7 +328,8 @@
     }
     &_image {
       .gatsby-image-wrapper {
-        margin-left: auto;
+        width: calc(100% + 2rem);
+        margin: 0 -1rem;
       }
     }
     &_text {
@@ -327,7 +338,7 @@
     h1 {
       margin: 0 auto;
     }
-    .venue {
+    .event-meta-venue {
       font-size: 1rem;
     }
     .event-types ul {

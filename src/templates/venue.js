@@ -36,8 +36,8 @@ export class VenueTemplate extends React.Component {
           </div>
         )}
         {!isSingle && (
-          <Link to={path}>
-            <h2 className="venue-title">{title}</h2>
+          <Link to={path} className="venue-title">
+            <h2>{title}</h2>
           </Link>
         )}
         {hasFeaturedMedia && (

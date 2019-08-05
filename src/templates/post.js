@@ -39,9 +39,18 @@ export const BlogPostTemplate = ({
         </div>
       </div>
       {hasFeaturedMedia && (
-        <div className="post-hero_image">
-          <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
-        </div>
+        <>
+          <div className="post-hero_image">
+            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+            {featuredMedia.caption && (
+            <div
+              className="post-hero_image-caption"
+              dangerouslySetInnerHTML={{ __html: featuredMedia.caption }}
+            />
+          )}
+          </div>
+
+        </>
       )}
       <div
         className="post-content wp-content"
@@ -55,7 +64,9 @@ BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   title: PropTypes.string,
   date: PropTypes.string.isRequired,
-  featuredMedia: PropTypes.shape({}),
+  featuredMedia: PropTypes.shape({
+    caption: PropTypes.string,
+  }),
   author: PropTypes.shape({
     name: PropTypes.string,
     slug: PropTypes.string,
@@ -124,6 +135,7 @@ export const pageQuery = graphql`
         slug
       }
       featured_media {
+        caption
         localFile {
           ...FluidImage
         }

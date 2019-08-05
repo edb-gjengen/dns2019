@@ -116,9 +116,17 @@ export const EventTemplate = ({
             </div>
           </div>
           {hasFeaturedMedia && (
-            <div className="event-hero_image">
-              <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
-            </div>
+            <>
+              <div className="event-hero_image">
+                <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+              </div>
+              {/* {featuredMedia.caption && (
+                <div
+                  className="event-hero_image-caption"
+                  dangerouslySetInnerHTML={{ __html: featuredMedia.caption }}
+                />
+              )} */}
+            </>
           )}
         </div>
       </div>
@@ -150,7 +158,9 @@ export const EventTemplate = ({
 EventTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
-  featuredMedia: PropTypes.shape({}),
+  featuredMedia: PropTypes.shape({
+    caption: PropTypes.string,
+  }),
   startTime: PropTypes.string.isRequired,
   endTime: PropTypes.string,
   venue: PropTypes.shape({
@@ -225,6 +235,7 @@ export const eventQuery = graphql`
     price_member
     price_regular
     featured_media {
+      caption
       localFile {
         ...FluidImage
       }

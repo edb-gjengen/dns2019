@@ -18,7 +18,8 @@ export const BlogPostTemplate = ({
   author,
   featuredMedia,
 }) => {
-  const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
+  const hasFeaturedMedia =
+    featuredMedia && (!!featuredMedia.localFile || !!featuredMedia.url)
   return (
     <section
       className={`post-page ${
@@ -41,15 +42,21 @@ export const BlogPostTemplate = ({
       {hasFeaturedMedia && (
         <>
           <div className="post-hero_image">
-            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+            {featuredMedia.localFile.childImageSharp ? (
+              <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+            ) : (
+              <img
+                src={featuredMedia.localFile.url}
+                alt={featuredMedia.caption || ''}
+              />
+            )}
             {featuredMedia.caption && (
-            <div
-              className="post-hero_image-caption"
-              dangerouslySetInnerHTML={{ __html: featuredMedia.caption }}
-            />
-          )}
+              <div
+                className="post-hero_image-caption"
+                dangerouslySetInnerHTML={{ __html: featuredMedia.caption }}
+              />
+            )}
           </div>
-
         </>
       )}
       <div
@@ -107,6 +114,7 @@ export const pageQuery = graphql`
         ...GatsbyImageSharpFluid
       }
     }
+    url
   }
   fragment PostFields on wordpress__POST {
     id

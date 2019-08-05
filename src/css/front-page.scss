@@ -19,14 +19,14 @@
     text-align: center;
   }
 
-  h2, h3, p, ul, .button {
+  h2, h3, p, ul {
     max-width: $width-m;
     margin: 0 auto 1rem;
   }
 
   .section-title {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 2.6rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     line-height: 1.1;
@@ -46,42 +46,13 @@
 .visit-us {
   background: $color-green;
 
+  &_links {
+    margin: 0 auto;
+  }
   .button {
     color: $color-green;
     &:hover {
-      color: $color-white;
-    }
-  }
-
-  label, input {
-    display: block;
-    width: 100%;
-  }
-}
-
-.opening-hours {
-  width: 100%;
-  &_venue {
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    line-height: 1.1;
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-    font-size: $font-s;
-
-    li {
-      margin-bottom: 1rem;
-    }
-    ul {
-      display: block;
-      margin: 0 auto;
-      li {
-        width: 100%;
-        margin-bottom: 0;
-      }
+      color: white;
     }
   }
 }
@@ -92,14 +63,10 @@
   flex-direction: column;
   justify-content: center;
 
-  .section-title {
-    font-size: 2.6rem;
-  }
-
   .button {
     color: $color-yellow;
     &:hover {
-      color: $color-white;
+      color: white;
     }
   }
 }
@@ -107,6 +74,7 @@
 @media (max-width: $media-s) {
   .front-page-info {
     display: block;
+    font-size: 1rem;
     > div {
       width: 100%;
     }

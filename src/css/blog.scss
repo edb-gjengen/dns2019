@@ -90,6 +90,9 @@
     &-content {
       padding: 0 1rem;
     }
+    &:last-of-type {
+      display: block;
+    }
   }
 
   @media (min-width: $media-xl) {

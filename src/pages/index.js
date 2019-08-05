@@ -29,7 +29,6 @@ export default class IndexPage extends React.Component {
                 <a href="https://www.google.no/maps/place/Slemdalsveien+15,+0369+Oslo/data=!4m2!3m1!1s0x46416dc4ab53aa7d:0x5629681f36c1c8af?sa=X&ved=2ahUKEwjR94re3unjAhUj4aYKHRLOAuwQ8gEwAHoECBQQAQ" target="_blank" className="button button-small">Se i Google Maps</a>
               </div>
               <div className="opening-hours">
-                <h3>Åpningstider</h3>
                 <ul>
                   <li>
                     <span class="opening-hours_venue">Glassbaren</span>
@@ -55,14 +54,8 @@ export default class IndexPage extends React.Component {
                 Bli frivillig
               </Link>
               <p>
-                Vil du være med å arrangere greier på studentersamfundet? Chateau Neuf drives i stor grad av frivillige, og vi trenger alltid flere engasjerte folk! Sjekk ut de ulike <Link to="/bli-aktiv/">foreningene</Link> som holder til på huset for å finne ut hva som passer for deg. Her er noen eksempler på roller du kan innta:
+              Chateau Neuf drives i stor grad av frivillige. Vil du være med å arrangere greier på studentersamfundet? Sjekk ut de ulike <Link to="/bli-aktiv/">foreningene</Link> som holder til på huset for å finne ut hva som passer for deg.
               </p>
-              <ul>
-                <li>Økonomiansvarlig</li>
-                <li>Skuespiller</li>
-                <li>Designer</li>
-                <li>Utvikler</li>
-              </ul>
               <Link to="/bli-aktiv/" className="button button-small">
                 Les mer om å bli frivillig
               </Link>

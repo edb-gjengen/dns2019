@@ -67,6 +67,11 @@
     &-caption {
       font-size: $font-s;
     }
+
+    @media (max-width: $media-s) {
+      max-width: calc(100% + 2rem);
+      margin: 0 -1rem;
+    }
   }
 }
 

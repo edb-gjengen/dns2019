@@ -1,16 +1,16 @@
 .front-page-info {
   display: flex;
+  flex-wrap: wrap;
   background: $color-white;
   padding: 0;
   text-align: center;
+  font-size: $font-s;
 
   > div {
     width: 50%;
   }
 
   p {
-    margin: 0;
-
     a {
       color: $color-black;
     }
@@ -20,16 +20,17 @@
   }
 
   h2, h3, p, ul, .button {
-    margin-bottom: 1rem;
+    max-width: $width-m;
+    margin: 0 auto 1rem;
   }
 
   .section-title {
-    font-weight: 400;
-    font-size: 2.8rem;
+    font-weight: 700;
+    font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     line-height: 1.1;
-    margin: 1rem auto;
+    margin-bottom: 1rem;
   }
 }
 
@@ -59,15 +60,41 @@
 }
 
 .opening-hours {
+  width: 100%;
+  &_venue {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+  }
   ul {
     list-style: none;
-    margin: 0;
     padding: 0;
+    font-size: $font-s;
+
+    li {
+      margin-bottom: 1rem;
+    }
+    ul {
+      display: block;
+      margin: 0 auto;
+      li {
+        width: 100%;
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
 .volunteer {
   background: $color-yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .section-title {
+    font-size: 2.6rem;
+  }
 
   .button {
     color: $color-yellow;
@@ -83,9 +110,6 @@
     > div {
       width: 100%;
     }
-  }
-  .visit-us, .volunteer {
-    padding: 1rem 1rem 3rem;
   }
 }
 

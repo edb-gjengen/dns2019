@@ -37,6 +37,7 @@
     "start": "npm run develop",
     "clean": "rimraf .cache public",
     "build": "npm run clean && gatsby build",
+    "build-only": "gatsby build",
     "develop": "npm run clean && gatsby develop",
     "devlan": "gatsby develop -H 0.0.0.0",
     "serve": "gatsby serve",

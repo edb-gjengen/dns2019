@@ -22,11 +22,18 @@ const formatPrices = (regular, student) => {
 }
 
 const formatOrganizers = organizers => {
-  return organizers.map(organizer => (
-    <span className="event-organizer">
-      <Link to={organizer.path}>{organizer.name}</Link>
-    </span>
+  const total = organizers.length
+  const elements = organizers.map((organizer, index) => (
+    <>
+      {total > 1 && index === total - 1 && <> og </>}
+      <span className="event-organizer">
+        <Link to={organizer.path}>{organizer.name}</Link>
+      </span>
+      {total > 1 && index < total - 2 && <>, </>}
+    </>
   ))
+
+  return elements
 }
 
 export const EventTemplate = ({

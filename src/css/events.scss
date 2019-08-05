@@ -54,7 +54,7 @@
 }
 
 .event {
-  width: calc(25% - 1rem);
+  width: calc(24.98% - 1rem);
   margin: 0 0.5rem 1rem;
   position: relative;
   text-decoration: none;
@@ -125,20 +125,20 @@
   }
 
   @media (min-width: $media-xl) {
-    width: calc(20% - 1rem);
+    width: calc(19.98% - 1rem);
     &:nth-child(9),
     &:nth-child(10) {
       display: block;
     }
   }
   @media (max-width: $media-l) {
-    width: calc(33.333333% - 1rem);
+    width: calc(33.28% - 1rem);
     &:nth-child(9) {
       display: block;
     }
   }
   @media (max-width: $media-m) {
-    width: calc(50% - 1rem);
+    width: calc(49.98% - 1rem);
     &:nth-child(9),
     &:nth-child(10) {
       display: none;

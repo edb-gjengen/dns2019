@@ -59,6 +59,17 @@
   margin-bottom: -1rem;
 }
 
+.page-hero {
+  width: 100%;
+  max-width: $width-l;
+  margin: 0 auto;
+  &_image {
+    &-caption {
+      font-size: $font-s;
+    }
+  }
+}
+
 .wp-content {
   img, div, ul, p, h1, h2, h3, h4, h5, h6, span, blockquote {
     max-width: $width-m;
@@ -72,6 +83,9 @@
 
   a {
     color: $color-black;
+    &:hover {
+      color: $color-bloodorange;
+    }
   }
 
   img, div, .wp-caption {

@@ -40,16 +40,16 @@ export class VenueTemplate extends React.Component {
             <h2>{title}</h2>
           </Link>
         )}
+        <div
+          className="venue-content wp-content"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
         {hasFeaturedMedia && (
           <div className="venue-featured-image">
             <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
           </div>
         )}
         <div className="venue-text">
-          <div
-            className="venue-content wp-content"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
           <div className="venue-meta">
             <table>
               {floor && <tr><td>Etasje</td><td>{floor}</td></tr>}

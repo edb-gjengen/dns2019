@@ -29,7 +29,7 @@ export default class EventOrganizerPage extends React.Component {
         >
           <div className="event-organizer-info">
             <div
-              className="event-organizer-description wp-content"
+              className="event-organizer-description"
               dangerouslySetInnerHTML={{ __html: description }}
             />
             {association && (

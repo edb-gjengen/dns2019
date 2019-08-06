@@ -12,12 +12,29 @@ export default class PostList extends React.Component {
         <h2 className="section-title">{title}</h2>
         <div className="post-list">
           {posts.map(({ node: post }) => (
-            <Link to={post.path} className={`post ${post.featured_media && post.featured_media.localFile ? 'post--with-media' : 'post--no-media'}`} key={post.id}>
+            <Link
+              to={post.path}
+              className={`post ${
+                post.featured_media && post.featured_media.localFile
+                  ? 'post--with-media'
+                  : 'post--no-media'
+              }`}
+              key={post.id}
+            >
               {post.featured_media && post.featured_media.localFile && (
                 <div className="post-image">
-                  <Img
-                    fluid={post.featured_media.localFile.childImageSharp.fluid}
-                  />
+                  {post.featured_media.localFile.childImageSharp ? (
+                    <Img
+                      fluid={
+                        post.featured_media.localFile.childImageSharp.fluid
+                      }
+                    />
+                  ) : (
+                    <img
+                      src={post.featured_media.localFile.url}
+                      alt={post.featured_media.caption || ''}
+                    />
+                  )}
                 </div>
               )}
               <div className="post-text">

@@ -59,9 +59,12 @@ EventOrganizerPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query EventOrganizerPage($slug: String!) {
+  query EventOrganizerPage($slug: String!, $after: Date!) {
     allWordpressWpEvents(
-      filter: { event_organizers: { elemMatch: { slug: { eq: $slug } } } }
+      filter: {
+        event_organizers: { elemMatch: { slug: { eq: $slug } } }
+        start_time: { gt: $after }
+      }
       sort: { fields: date, order: DESC }
     ) {
       totalCount

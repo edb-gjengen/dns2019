@@ -23,12 +23,23 @@ export default class IndexPage extends React.Component {
         <section className="front-page-info">
           <div className="visit-us">
             <h2 className="section-title">Besøk oss</h2>
-            <p>Chateau Neuf ligger på Majorstua i Oslo, i <a href="https://www.google.no/maps/place/Slemdalsveien+15,+0369+Oslo/data=!4m2!3m1!1s0x46416dc4ab53aa7d:0x5629681f36c1c8af?sa=X&ved=2ahUKEwjR94re3unjAhUj4aYKHRLOAuwQ8gEwAHoECBQQAQ" target="_blank">Slemdalsveien 15</a>.</p>
+            <p>
+              Chateau Neuf ligger på Majorstua i Oslo, i{' '}
+              <a
+                href="https://www.google.no/maps/place/Slemdalsveien+15,+0369+Oslo/data=!4m2!3m1!1s0x46416dc4ab53aa7d:0x5629681f36c1c8af?sa=X&ved=2ahUKEwjR94re3unjAhUj4aYKHRLOAuwQ8gEwAHoECBQQAQ"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Slemdalsveien 15
+              </a>
+              .
+            </p>
             <div className="visit-us_links">
-              <Link to="/bli-aktiv/" className="button button-small">
+              <Link to="/praktisk/" className="button button-small">
                 Praktisk informasjon
-              </Link><br />
-              <Link to="/bli-aktiv/" className="button button-small">
+              </Link>
+              <br />
+              <Link to="/aapningstider/" className="button button-small">
                 Åpningstider
               </Link>
             </div>
@@ -39,7 +50,10 @@ export default class IndexPage extends React.Component {
                 Bli frivillig
               </Link>
               <p>
-              Chateau Neuf drives i stor grad av frivillige. Vil du være med å arrangere greier på studentersamfundet? Sjekk ut de ulike <Link to="/bli-aktiv/">foreningene</Link> som holder til på huset for å finne ut hva som passer for deg.
+                Chateau Neuf drives i stor grad av frivillige. Vil du være med å
+                arrangere greier på studentersamfundet? Sjekk ut de ulike{' '}
+                <Link to="/bli-aktiv/">foreningene</Link> som holder til på
+                huset for å finne ut hva som passer for deg.
               </p>
               <Link to="/bli-aktiv/" className="button button-small">
                 Les mer om å bli frivillig
@@ -65,8 +79,11 @@ IndexPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query {
-    allWordpressWpEvents(sort: { fields: start_time, order: ASC }) {
+  query IndexPage($after: Date!) {
+    allWordpressWpEvents(
+      sort: { fields: start_time, order: ASC }
+      filter: { start_time: { gt: $after } }
+    ) {
       edges {
         node {
           ...EventListFields

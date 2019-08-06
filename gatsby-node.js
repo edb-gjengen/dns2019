@@ -2,9 +2,16 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { paginate } = require('gatsby-awesome-pagination')
+const moment = require('moment')
 
 const getOnlyPublished = edges =>
   _.filter(edges, ({ node }) => node.status === 'publish')
+
+// Used to filter out older events from queries
+const eventsNotBefore = moment()
+  .startOf('day')
+  .subtract(1, 'days')
+  .toISOString()
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -275,6 +282,7 @@ exports.createPages = ({ actions, graphql }) => {
               slug: eventOrganizer.slug,
               description: eventOrganizer.description,
               association: eventOrganizer.association,
+              after: eventsNotBefore,
             },
           })
         }
@@ -439,4 +447,23 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     })
   }
+}
+
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+
+  // We need to add context to a few pages
+  const pagesWithContext = ['/', '/program/']
+  if (!pagesWithContext.includes(page.path)) {
+    return
+  }
+
+  deletePage(page)
+  createPage({
+    ...page,
+    context: {
+      ...page.context,
+      after: eventsNotBefore,
+    },
+  })
 }

@@ -34,8 +34,11 @@ EventProgram.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query {
-    allWordpressWpEvents(sort: { fields: start_time, order: ASC }) {
+  query ProgramPage($after: Date!) {
+    allWordpressWpEvents(
+      filter: { start_time: { gt: $after } }
+      sort: { fields: start_time, order: ASC }
+    ) {
       edges {
         node {
           ...EventListFields

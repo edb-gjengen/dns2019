@@ -44,6 +44,13 @@ module.exports = {
         normalizer: neufNormalizer,
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-52914-1',
+        head: false,
+      },
+    },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

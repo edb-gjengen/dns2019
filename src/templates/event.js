@@ -12,18 +12,19 @@ moment.locale('nb')
 
 const formatPrices = (regular, student) => {
   let cc = ''
-  if (regular && regular !== 0) {
-    cc += regular
+  if (regular) {
+    cc += regular !== '0' ? regular : ''
   }
-  if (student && student !== 0) {
-    cc += ` / ${student}`
+  if (student) {
+    cc += cc !== '' ? ' / ' : ''
+    cc += student !== '0' ? student : ''
   }
   return cc === '' ? 'Gratis' : cc
 }
 
 const formatOrganizers = organizers => {
   const total = organizers.length
-  const elements = organizers.map((organizer, index) => (
+  return organizers.map((organizer, index) => (
     <>
       {total > 1 && index === total - 1 && <> og </>}
       <span className="event-organizer">
@@ -32,8 +33,6 @@ const formatOrganizers = organizers => {
       {total > 1 && index < total - 2 && <>, </>}
     </>
   ))
-
-  return elements
 }
 
 export const EventTemplate = ({

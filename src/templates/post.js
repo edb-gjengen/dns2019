@@ -18,8 +18,7 @@ export const BlogPostTemplate = ({
   author,
   featuredMedia,
 }) => {
-  const hasFeaturedMedia =
-    featuredMedia && (!!featuredMedia.localFile || !!featuredMedia.url)
+  const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
   return (
     <section
       className={`post-page ${
@@ -114,7 +113,6 @@ export const pageQuery = graphql`
         ...GatsbyImageSharpFluid
       }
     }
-    url
   }
   fragment PostFields on wordpress__POST {
     id
@@ -145,6 +143,7 @@ export const pageQuery = graphql`
       featured_media {
         caption
         localFile {
+          url
           ...FluidImage
         }
       }

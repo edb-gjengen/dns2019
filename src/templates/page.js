@@ -13,7 +13,14 @@ export const PageTemplate = ({ title, content, featuredMedia }) => {
       {hasFeaturedMedia && (
         <div className="page-hero">
           <div className="page-hero_image">
-            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+            {featuredMedia.localFile.childImageSharp ? (
+              <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+            ) : (
+              <img
+                src={featuredMedia.localFile.url}
+                alt={featuredMedia.caption || ''}
+              />
+            )}
           </div>
           {featuredMedia.caption && (
             <div
@@ -68,6 +75,7 @@ export const pageQuery = graphql`
       featured_media {
         caption
         localFile {
+          url
           ...FluidImage
         }
       }

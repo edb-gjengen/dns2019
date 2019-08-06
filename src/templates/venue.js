@@ -46,21 +46,70 @@ export class VenueTemplate extends React.Component {
         />
         {hasFeaturedMedia && (
           <div className="venue-featured-image">
-            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+            {featuredMedia.localFile.childImageSharp ? (
+              <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+            ) : (
+              <img src={featuredMedia.localFile.url} alt={title} />
+            )}
           </div>
         )}
         <div className="venue-text">
           <div className="venue-meta">
             <table>
-              {floor && <tr><td>Etasje</td><td>{floor}</td></tr>}
-              {capacityLegal && <tr><td>Branntillatelse for</td><td>{capacityLegal}</td></tr>}
-              {capacityStanding && <tr><td>Stående</td><td>{capacityStanding}</td></tr>}
-              {capacitySitting && <tr><td>Sittende</td><td>{capacitySitting}</td></tr>}
-              {usedFor && <tr><td>Bruk</td><td>{usedFor}</td></tr>}
-              {bar && <tr><td>Bar</td><td>{bar}</td></tr>}
-              {audio && <tr><td>Lyd</td><td>{audio}</td></tr>}
-              {lighting && <tr><td>Lys</td><td>{lighting}</td></tr>}
-              {audioVideo && <tr><td>A/V</td><td>{audioVideo}</td></tr>}
+              {floor && (
+                <tr>
+                  <td>Etasje</td>
+                  <td>{floor}</td>
+                </tr>
+              )}
+              {capacityLegal && (
+                <tr>
+                  <td>Branntillatelse for</td>
+                  <td>{capacityLegal}</td>
+                </tr>
+              )}
+              {capacityStanding && (
+                <tr>
+                  <td>Stående</td>
+                  <td>{capacityStanding}</td>
+                </tr>
+              )}
+              {capacitySitting && (
+                <tr>
+                  <td>Sittende</td>
+                  <td>{capacitySitting}</td>
+                </tr>
+              )}
+              {usedFor && (
+                <tr>
+                  <td>Bruk</td>
+                  <td>{usedFor}</td>
+                </tr>
+              )}
+              {bar && (
+                <tr>
+                  <td>Bar</td>
+                  <td>{bar}</td>
+                </tr>
+              )}
+              {audio && (
+                <tr>
+                  <td>Lyd</td>
+                  <td>{audio}</td>
+                </tr>
+              )}
+              {lighting && (
+                <tr>
+                  <td>Lys</td>
+                  <td>{lighting}</td>
+                </tr>
+              )}
+              {audioVideo && (
+                <tr>
+                  <td>A/V</td>
+                  <td>{audioVideo}</td>
+                </tr>
+              )}
             </table>
           </div>
         </div>
@@ -176,6 +225,7 @@ export const pageQuery = graphql`
     audio_video
     featured_media {
       localFile {
+        url
         ...FluidImage
       }
     }

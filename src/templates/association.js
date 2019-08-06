@@ -18,7 +18,11 @@ export const AssociationTemplate = ({
       <h1 className="page-title">{title}</h1>
       {hasFeaturedMedia && (
         <div className="association-logo">
-          <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+          {featuredMedia.localFile.childImageSharp ? (
+            <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+          ) : (
+            <img src={featuredMedia.localFile.url} alt={title} />
+          )}
         </div>
       )}
       {homepage && (
@@ -73,6 +77,7 @@ export const associationQuery = graphql`
       association_homepage
       featured_media {
         localFile {
+          url
           ...FluidImage
         }
       }

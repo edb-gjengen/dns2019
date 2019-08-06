@@ -80,7 +80,14 @@ export const BookingPage = () => {
         {hasFeaturedMedia && (
           <div className="page-hero">
             <div className="page-hero_image">
-              <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+              {featuredMedia.localFile.childImageSharp ? (
+                <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+              ) : (
+                <img
+                  src={featuredMedia.localFile.url}
+                  alt={featuredMedia.caption || ''}
+                />
+              )}
             </div>
             {featuredMedia.caption && (
               <div
@@ -101,10 +108,10 @@ export const BookingPage = () => {
             Med vår 3D-løsning har du muligheten til å navigere deg rundt på
             huset! Du kan bevege deg mellom etasjer ved å trykke på tallene i
             lille kolonnen nederst til høyre. Dra deg rundt fra rom til rom ved
-            å klikke dit du vil. Den røde og hvite kompassnålen lar deg rotere bildet. Pluss- og
-            minus-knappene i høyre hjørne kan brukes for å zoome inn eller ut.
-            Du starter i foajeen i 1. etasje &ndash; men ta gjerne en
-            titt på lokalene i alle etasjer!
+            å klikke dit du vil. Den røde og hvite kompassnålen lar deg rotere
+            bildet. Pluss- og minus-knappene i høyre hjørne kan brukes for å
+            zoome inn eller ut. Du starter i foajeen i 1. etasje &ndash; men ta
+            gjerne en titt på lokalene i alle etasjer!
           </p>
         </div>
         <iframe

@@ -49,6 +49,7 @@ module.exports = {
       options: {
         trackingId: 'UA-52914-1',
         head: false,
+        anonymize: true,
       },
     },
     'gatsby-plugin-catch-links',

@@ -76,7 +76,7 @@
 }
 
 .wp-content {
-  img, div, ul, p, h1, h2, h3, h4, h5, h6, span, blockquote {
+  img, div, ul, p, h1, h2, h3, h4, h5, h6, span, blockquote, .wp-block-image {
     max-width: $width-m;
     margin: 0 auto;
 
@@ -113,7 +113,7 @@
     line-height: 1.1;
   }
 
-  table, .table-wrap {
+  table, .table-wrap, .wp-block-table {
     width: 100% !important;
     max-width: $width-l;
   }

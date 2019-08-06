@@ -26,7 +26,7 @@ export default class IndexPage extends React.Component {
             <p>
               Chateau Neuf ligger på Majorstua i Oslo, i{' '}
               <a
-                href="https://www.google.no/maps/place/Slemdalsveien+15,+0369+Oslo/data=!4m2!3m1!1s0x46416dc4ab53aa7d:0x5629681f36c1c8af?sa=X&ved=2ahUKEwjR94re3unjAhUj4aYKHRLOAuwQ8gEwAHoECBQQAQ"
+                href="https://www.google.no/maps/place/Chateau+Neuf+-+The+Norwegian+Students'+Society/@59.9309074,10.7108124,16.25z/data=!4m5!3m4!1s0x46416ddb5278789f:0xadda2b97f9d1cad6!8m2!3d59.932257!4d10.712493"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -52,7 +52,7 @@ export default class IndexPage extends React.Component {
               <p>
                 Chateau Neuf drives i stor grad av frivillige. Vil du være med å
                 arrangere greier på studentersamfundet? Sjekk ut de ulike{' '}
-                <Link to="/bli-aktiv/">foreningene</Link> som holder til på
+                <Link to="/foreningene/">foreningene</Link> som holder til på
                 huset for å finne ut hva som passer for deg.
               </p>
               <Link to="/bli-aktiv/" className="button button-small">

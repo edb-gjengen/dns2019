@@ -109,7 +109,7 @@ export default BlogPost
 export const pageQuery = graphql`
   fragment FluidImage on File {
     childImageSharp {
-      fluid(maxWidth: 800) {
+      fluid(maxWidth: 1200) {
         ...GatsbyImageSharpFluid
       }
     }

@@ -74,15 +74,15 @@
   }
   &_toggle, &_program {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0;
+    right: 0;
     left: auto;
     font-size: $font-s;
-    line-height: 1;
     color: $color-white;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     font-weight: 700;
+    padding: .8rem 1rem;
 
     display: none;
 
@@ -91,7 +91,7 @@
     }
   }
   &_program {
-    left: 1rem;
+    left: 0;
     right: auto;
     a {
       color: $color-white;
@@ -100,7 +100,7 @@
   }
 }
 
-@media (max-width: $media-s) {
+@media (max-width: 666px) {
   .site-header {
     display: block;
     background: $color-black;

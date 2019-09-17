@@ -1,7 +1,7 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import Meta from '../components/Meta'
 import Layout from '../components/Layout'
 import { VenueTemplate } from '../templates/venue'
 
@@ -65,7 +65,7 @@ export const BookingPage = () => {
 
   return (
     <Layout>
-      <Helmet title="Utleie" />
+      <Meta title="Utleie" />
       <section className="booking-page">
         <h1 className="page-title">{title}</h1>
         <p className="lead">

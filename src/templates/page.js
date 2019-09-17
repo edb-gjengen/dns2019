@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import Meta from '../components/Meta'
 import Layout from '../components/Layout'
 
 export const PageTemplate = ({ title, content, featuredMedia }) => {
@@ -16,11 +16,11 @@ export const PageTemplate = ({ title, content, featuredMedia }) => {
             {featuredMedia.localFile.childImageSharp ? (
               <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
             ) : (
-              <img
-                src={featuredMedia.localFile.url}
-                alt={featuredMedia.caption || ''}
-              />
-            )}
+                <img
+                  src={featuredMedia.localFile.url}
+                  alt={featuredMedia.caption || ''}
+                />
+              )}
           </div>
           {featuredMedia.caption && (
             <div
@@ -51,7 +51,10 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet title={page.title} />
+      <Meta
+        title={page.title}
+        image={page.featured_media}
+      />
       <PageTemplate
         title={page.title}
         content={page.content}

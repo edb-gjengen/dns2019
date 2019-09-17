@@ -1,6 +1,6 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+import Meta from '../components/Meta'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 
@@ -23,7 +23,7 @@ const Author = props => {
 
   return (
     <Layout>
-      <Helmet title={name} />
+      <Meta title={name} />
       <PostList posts={posts} title={title} />
     </Layout>
   )

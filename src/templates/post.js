@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import moment from 'moment'
 import 'moment/locale/nb'
+import Meta from '../components/Meta'
 import Layout from '../components/Layout'
 
 moment.locale('nb')
@@ -23,7 +23,7 @@ export const BlogPostTemplate = ({
     <section
       className={`post-page ${
         hasFeaturedMedia ? 'has-featured-media' : 'no-featured-media'
-      }`}
+        }`}
     >
       <div className="post-hero">
         <div className="post-hero-inner">
@@ -44,11 +44,11 @@ export const BlogPostTemplate = ({
             {featuredMedia.localFile.childImageSharp ? (
               <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
             ) : (
-              <img
-                src={featuredMedia.localFile.url}
-                alt={featuredMedia.caption || ''}
-              />
-            )}
+                <img
+                  src={featuredMedia.localFile.url}
+                  alt={featuredMedia.caption || ''}
+                />
+              )}
             {featuredMedia.caption && (
               <div
                 className="post-hero_image-caption"
@@ -84,7 +84,10 @@ const BlogPost = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet title={`${post.title} | Nyheter`} />
+      <Meta
+        title={`${post.title} | Nyheter`}
+        image={post.featured_media}
+      />
       <BlogPostTemplate
         content={post.content}
         categories={post.categories}

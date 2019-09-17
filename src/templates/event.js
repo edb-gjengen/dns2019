@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import moment from 'moment'
 import 'moment/locale/nb'
 
+import Meta from '../components/Meta'
 import Layout from '../components/Layout'
 
 moment.locale('nb')
@@ -120,11 +120,11 @@ export const EventTemplate = ({
                 {featuredMedia.localFile.childImageSharp ? (
                   <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
                 ) : (
-                  <img
-                    src={featuredMedia.localFile.url}
-                    alt={featuredMedia.caption || ''}
-                  />
-                )}
+                    <img
+                      src={featuredMedia.localFile.url}
+                      alt={featuredMedia.caption || ''}
+                    />
+                  )}
               </div>
               {/* {featuredMedia.caption && (
                 <div
@@ -193,7 +193,10 @@ const Event = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet title={`${event.title}`} />
+      <Meta
+        title={event.title}
+        image={event.featured_media}
+      />
       <EventTemplate
         title={event.title}
         content={event.content}

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import Meta from '../components/Meta'
 import Layout from '../components/Layout'
 
 export const AssociationTemplate = ({
@@ -21,8 +22,8 @@ export const AssociationTemplate = ({
           {featuredMedia.localFile.childImageSharp ? (
             <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
           ) : (
-            <img src={featuredMedia.localFile.url} alt={title} />
-          )}
+              <img src={featuredMedia.localFile.url} alt={title} />
+            )}
         </div>
       )}
       {homepage && (
@@ -51,6 +52,10 @@ const AssociationPage = ({ data }) => {
 
   return (
     <Layout>
+      <Meta
+        title={association.title}
+        image={association.featured_media}
+      />
       <AssociationTemplate
         title={association.title}
         content={association.content}

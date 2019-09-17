@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+import Meta from '../components/Meta'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 import Pagination from '../components/Pagination'
@@ -13,7 +13,7 @@ export default class BlogPage extends React.Component {
 
     return (
       <Layout>
-        <Helmet title="Nyheter" />
+        <Meta title="Nyheter" />
         <PostList posts={posts} title="Nyheter" />
         <Pagination pageContext={pageContext} pathPrefix="/" />
       </Layout>

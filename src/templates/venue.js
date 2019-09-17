@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import classNames from 'classnames'
+import Meta from '../components/Meta'
 import Layout from '../components/Layout'
 import Map from '../components/Map'
 
@@ -49,8 +49,8 @@ export class VenueTemplate extends React.Component {
             {featuredMedia.localFile.childImageSharp ? (
               <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
             ) : (
-              <img src={featuredMedia.localFile.url} alt={title} />
-            )}
+                <img src={featuredMedia.localFile.url} alt={title} />
+              )}
           </div>
         )}
         <div className="venue-text">
@@ -178,7 +178,10 @@ const VenuePage = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet title={venue.title} />
+      <Meta
+        title={venue.title}
+        image={venue.featured_media}
+      />
       <VenueTemplate
         isSingle
         path={venue.path}

@@ -65,7 +65,7 @@ export const pageQuery = graphql`
         event_organizers: { elemMatch: { slug: { eq: $slug } } }
         start_time: { gt: $after }
       }
-      sort: { fields: date, order: DESC }
+      sort: { fields: start_time, order: ASC }
     ) {
       totalCount
       edges {

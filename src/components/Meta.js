@@ -2,31 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-const Meta = ({ title, description, image, pathname, article }) => {
-    const imageUrl = image && image.localFile && image.localFile.url
-    const meta = {
-        title: title,
-        description: description,
-        image: imageUrl,
-        url: pathname,
-    }
+const Meta = props => {
+    const { title, description, article, pathname: url, image: imageObj } = props
+    const image = imageObj && imageObj.localFile && imageObj.localFile.url
     return (
         <Helmet
-            title={meta.title}
+            title={title}
             titleTemplate="%s | Det Norske Studentersamfund"
             defaultTitle="Det Norske Studentersamfund"
         >
-            {meta.description && <meta name="description" content={meta.description} />}
-            {meta.image && <meta name="image" content={meta.image} />}
-            {meta.url && <meta property="og:url" content={meta.url} />}
+            {description && <meta name="description" content={description} />}
+            {image && <meta name="image" content={image} />}
+            {url && <meta property="og:url" content={url} />}
             {(article ? true : null) && (
                 <meta property="og:type" content="article" />
             )}
-            {meta.title && <meta property="og:title" content={meta.title} />}
-            {meta.description && (
-                <meta property="og:description" content={meta.description} />
+            {title && <meta property="og:title" content={title} />}
+            {description && (
+                <meta property="og:description" content={description} />
             )}
-            {meta.image && <meta property="og:image" content={meta.image} />}
+            {image && <meta property="og:image" content={image} />}
         </Helmet>
     )
 }

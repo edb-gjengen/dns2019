@@ -55,6 +55,12 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://studentersamfundet.no',
+      },
+    },
     // {
     //   resolve: 'gatsby-plugin-purgecss',
     //   options: {

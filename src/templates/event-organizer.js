@@ -1,14 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
-import moment from 'moment'
-import 'moment/locale/nb'
 
 import Meta from '../components/Meta'
 import Layout from '../components/Layout'
 import EventList from '../components/EventList'
-
-moment.locale('nb')
 
 export default class EventOrganizerPage extends React.Component {
   render() {

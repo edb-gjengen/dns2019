@@ -51,6 +51,8 @@ export const EventTemplate = ({
   organizers,
 }) => {
   const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
+  /* TODO: Make API return proper UTC datetimes */
+  const start = moment(startTime).utcOffset(1)
   return (
     <section className="event-page">
       <div className="event-hero">
@@ -72,25 +74,25 @@ export const EventTemplate = ({
               </div>
               <div className="event-date">
                 <span className="event-date-weekday">
-                  {moment(startTime).format('dddd')}{' '}
+                  {start.format('dddd')}{' '}
                 </span>
                 <span className="event-date-day">
-                  {moment(startTime).format('D.')}{' '}
+                  {start.format('D.')}{' '}
                 </span>
                 <span className="event-date-month">
-                  {moment(startTime).format('MMMM')}{' '}
+                  {start.format('MMMM')}{' '}
                 </span>
                 {/* Only specify year if different. */}
-                {!moment(startTime).isSame(new Date(), 'year') && (
+                {!start.isSame(new Date(), 'year') && (
                   <span className="event-date-year">
-                    {moment(startTime).format('YYYY')}{' '}
+                    {start.format('YYYY')}{' '}
                   </span>
                 )}
               </div>
               <div className="event-time">
                 {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
-                kl. {moment(startTime).format('HH:mm')}
-                {endTime && <>&mdash;{moment(endTime).format('HH:mm')}</>}
+                kl. {start.format('HH:mm')}
+                {endTime && <>&mdash;{moment(endTime).utcOffset(1).format('HH:mm')}</>}
               </div>
               <div className="price">
                 Pris: {formatPrices(priceRegular, priceStudent)}

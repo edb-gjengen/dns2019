@@ -52,7 +52,22 @@ export const EventTemplate = ({
 }) => {
   const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
   /* TODO: Make API return proper UTC datetimes */
-  const start = moment(startTime).utcOffset(1)
+  const startTimeNaive = startTime.replace("+00:00", "")
+  const endTimeNaive = endTime && endTime.replace("+00:00", "")
+  /*
+  const dst = moment(startTimeNaive).isDST()
+  const utcOffset = dst ? 2 : 2
+  */
+  /* looks like whatever we get above is always two hours behind! maybe.
+     at least this is true *now* if dst is true or false
+     did removing the TZ info from the string help?
+  */
+  /* TODO: does this change with server time when DST toggles?
+           if so, see you in October
+  */
+  const utcOffset = 2;
+  const start = moment.utc(startTimeNaive).utcOffset(utcOffset)
+  const end = endTimeNaive && moment.utc(endTimeNaive).utcOffset(utcOffset)
   return (
     <section className="event-page">
       <div className="event-hero">
@@ -92,7 +107,7 @@ export const EventTemplate = ({
               <div className="event-time">
                 {/* TODO: make the API stop assuming event duration is 2 hours when unspecified? */}
                 kl. {start.format('HH:mm')}
-                {endTime && <>&mdash;{moment(endTime).utcOffset(1).format('HH:mm')}</>}
+                {end && <>&mdash;{end.format('HH:mm')}</>}
               </div>
               <div className="price">
                 Pris: {formatPrices(priceRegular, priceStudent)}

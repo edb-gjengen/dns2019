@@ -26,7 +26,9 @@ const eventOrganizersQuery = graphql`
 const EventList = props => {
   const renderEvent = event => {
     /* TODO: Make API return proper UTC datetimes */
-    const startTime = moment(event.start_time).utcOffset(1)
+    const startTimeNaive = event.start_time.replace("+00:00", "")
+    const utcOffset = 2;
+    const start = moment.utc(startTimeNaive).utcOffset(utcOffset)
     return (
       <Link to={event.path} className="event" key={event.id}>
         <div className="event-image">
@@ -37,23 +39,23 @@ const EventList = props => {
         <header className="event-header">
           <span className="event-date">
             <span className="event-date-weekday">
-              {startTime.format('dddd')}{' '}
+              {start.format('dddd')}{' '}
             </span>
             <span className="event-date-day-month">
-              {startTime.format('D.')}{' '}
-              {startTime.format('MMMM')}{' '}
+              {start.format('D.')}{' '}
+              {start.format('MMMM')}{' '}
             </span>
             {/* Only specify year if different. */}
-            {!startTime.isSame(new Date(), 'year') && (
+            {!start.isSame(new Date(), 'year') && (
               <span className="event-date-year">
-                {startTime.format('YYYY')}{' '}
+                {start.format('YYYY')}{' '}
               </span>
             )}
           </span>
           <h2 className="event-title">{event.title}</h2>
           <div className="event-meta">
             <span className="event-start">
-              kl. {startTime.format('HH:mm')}
+              kl. {start.format('HH:mm')}
             </span>
             {event.event_types && event.event_types.length && (
               <div className="event-types">

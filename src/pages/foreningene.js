@@ -13,7 +13,7 @@ export default class AssociationListPage extends React.Component {
     return (
       <Layout>
         <Meta title="Foreningene" />
-        <AssociationList associations={associations} title="Foreningene" />
+        <AssociationList associations={associations} title="Våre foreninger" />
       </Layout>
     )
   }

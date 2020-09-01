@@ -24,15 +24,15 @@ export default class IndexPage extends React.Component {
           <div className="visit-us">
             <h2 className="section-title">Besøk oss</h2>
             <p>
-              Chateau Neuf ligger på Majorstua i Oslo, i{' '}
+              Lyst på en kopp kaffe, eller trenger du og studiegjengen en
+              møteplass? Stikk innom Studentersamfundet på Chateau Neuf!{' '}
               <a
                 href="https://www.google.no/maps/place/Chateau+Neuf+-+The+Norwegian+Students'+Society/@59.9309074,10.7108124,16.25z/data=!4m5!3m4!1s0x46416ddb5278789f:0xadda2b97f9d1cad6!8m2!3d59.932257!4d10.712493"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Slemdalsveien 15
+                Du finner oss på Majorstua.
               </a>
-              .
             </p>
             <div className="visit-us_links">
               <Link to="/praktisk/" className="button button-small">
@@ -50,10 +50,11 @@ export default class IndexPage extends React.Component {
                 Bli frivillig
               </Link>
               <p>
-                Chateau Neuf drives i stor grad av frivillige. Vil du være med å
-                arrangere greier på studentersamfundet? Sjekk ut de ulike{' '}
-                <Link to="/foreningene/">foreningene</Link> som holder til på
-                huset for å finne ut hva som passer for deg.
+                Chateau Neuf drives i stor grad av engasjerte frivillige. Vi er
+                alltid ute etter flere studenter som vil drifte Oslo-studentenes
+                kulturhus. Sjekk ut våre{' '}
+                <Link to="/foreningene/">foreninger</Link> for å se hva som kan
+                passe deg.
               </p>
               <Link to="/bli-aktiv/" className="button button-small">
                 Les mer om å bli frivillig

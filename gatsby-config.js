@@ -60,7 +60,14 @@ module.exports = {
     },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-transformer-sharp',
+      options: {
+        // we can silence this if we know we're doing it right
+        // https://github.com/gatsbyjs/gatsby/issues/21776
+        checkSupportedExtensions: false,
+      },
+    },
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {

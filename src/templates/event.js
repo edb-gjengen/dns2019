@@ -138,7 +138,7 @@ export const EventTemplate = ({
                   <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
                 ) : (
                     <img
-                      src={featuredMedia.localFile.url}
+                      src={featuredMedia.localFile.publicURL}
                       alt={featuredMedia.caption || ''}
                     />
                   )}
@@ -263,7 +263,7 @@ export const eventQuery = graphql`
     featured_media {
       caption
       localFile {
-        url
+        publicURL
         ...FluidImage
       }
     }

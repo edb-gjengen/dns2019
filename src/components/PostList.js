@@ -31,7 +31,7 @@ export default class PostList extends React.Component {
                     />
                   ) : (
                     <img
-                      src={post.featured_media.localFile.url}
+                      src={post.featured_media.localFile.publicUrl}
                       alt={post.featured_media.caption || ''}
                     />
                   )}
@@ -95,6 +95,7 @@ export const pageQuery = graphql`
     date(formatString: "MMMM DD, YYYY")
     featured_media {
       localFile {
+        publicURL
         ...PostListImage
       }
     }

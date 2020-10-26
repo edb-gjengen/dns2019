@@ -25,38 +25,48 @@ const eventOrganizersQuery = graphql`
 `
 const EventList = props => {
   const renderEvent = event => {
+    const featuredMedia = event.featured_media
+    const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
     /* TODO: Make API return proper UTC datetimes */
-    const startTimeNaive = event.start_time.replace("+00:00", "")
-    const utcOffset = 2;
+    const startTimeNaive = event.start_time.replace('+00:00', '')
+    const utcOffset = 2
     const start = moment.utc(startTimeNaive).utcOffset(utcOffset)
     return (
       <Link to={event.path} className="event" key={event.id}>
-        <div className="event-image">
-          {event.featured_media && event.featured_media.localFile && (
-            <Img fluid={event.featured_media.localFile.childImageSharp.fluid} />
-          )}
-        </div>
+        {hasFeaturedMedia && (
+          <>
+            <div className="event-image">
+              {event.featured_media && event.featured_media.localFile && (
+                <Img
+                  fluid={event.featured_media.localFile.childImageSharp.fluid}
+                />
+              )}
+
+              {hasFeaturedMedia && featuredMedia.childImageSharp ? (
+                <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
+              ) : (
+                <img
+                  src={featuredMedia.localFile.publicURL}
+                  alt={featuredMedia.caption || ''}
+                />
+              )}
+            </div>
+          </>
+        )}
         <header className="event-header">
           <span className="event-date">
-            <span className="event-date-weekday">
-              {start.format('dddd')}{' '}
-            </span>
+            <span className="event-date-weekday">{start.format('dddd')} </span>
             <span className="event-date-day-month">
-              {start.format('D.')}{' '}
-              {start.format('MMMM')}{' '}
+              {start.format('D.')} {start.format('MMMM')}{' '}
             </span>
             {/* Only specify year if different. */}
             {!start.isSame(new Date(), 'year') && (
-              <span className="event-date-year">
-                {start.format('YYYY')}{' '}
-              </span>
+              <span className="event-date-year">{start.format('YYYY')} </span>
             )}
           </span>
           <h2 className="event-title">{event.title}</h2>
           <div className="event-meta">
-            <span className="event-start">
-              kl. {start.format('HH:mm')}
-            </span>
+            <span className="event-start">kl. {start.format('HH:mm')}</span>
             {event.event_types && event.event_types.length && (
               <div className="event-types">
                 <ul>
@@ -260,6 +270,7 @@ export const pageQuery = graphql`
     end_time
     featured_media {
       localFile {
+        publicURL
         ...FluidImage
       }
     }

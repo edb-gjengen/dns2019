@@ -8,6 +8,12 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/gatsby-config.js`,
+      },
+    },
+    {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site.

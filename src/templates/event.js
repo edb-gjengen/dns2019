@@ -7,6 +7,7 @@ import 'moment/locale/nb'
 
 import Meta from '../components/Meta'
 import Layout from '../components/Layout'
+import { fixTz } from '../utils'
 
 moment.locale('nb')
 
@@ -51,23 +52,8 @@ export const EventTemplate = ({
   organizers,
 }) => {
   const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
-  /* TODO: Make API return proper UTC datetimes */
-  const startTimeNaive = startTime.replace("+00:00", "")
-  const endTimeNaive = endTime && endTime.replace("+00:00", "")
-  /*
-  const dst = moment(startTimeNaive).isDST()
-  const utcOffset = dst ? 2 : 2
-  */
-  /* looks like whatever we get above is always two hours behind! maybe.
-     at least this is true *now* if dst is true or false
-     did removing the TZ info from the string help?
-  */
-  /* TODO: does this change with server time when DST toggles?
-           if so, see you in October
-  */
-  const utcOffset = 2;
-  const start = moment.utc(startTimeNaive).utcOffset(utcOffset)
-  const end = endTimeNaive && moment.utc(endTimeNaive).utcOffset(utcOffset)
+  const start = fixTz(startTime)
+  const end = fixTz(endTime)
   return (
     <section className="event-page">
       <div className="event-hero">
@@ -91,9 +77,7 @@ export const EventTemplate = ({
                 <span className="event-date-weekday">
                   {start.format('dddd')}{' '}
                 </span>
-                <span className="event-date-day">
-                  {start.format('D.')}{' '}
-                </span>
+                <span className="event-date-day">{start.format('D.')} </span>
                 <span className="event-date-month">
                   {start.format('MMMM')}{' '}
                 </span>
@@ -137,11 +121,11 @@ export const EventTemplate = ({
                 {featuredMedia.localFile.childImageSharp ? (
                   <Img fluid={featuredMedia.localFile.childImageSharp.fluid} />
                 ) : (
-                    <img
-                      src={featuredMedia.localFile.publicURL}
-                      alt={featuredMedia.caption || ''}
-                    />
-                  )}
+                  <img
+                    src={featuredMedia.localFile.publicURL}
+                    alt={featuredMedia.caption || ''}
+                  />
+                )}
               </div>
               {/* {featuredMedia.caption && (
                 <div
@@ -210,10 +194,7 @@ const Event = ({ data }) => {
 
   return (
     <Layout>
-      <Meta
-        title={event.title}
-        image={event.featured_media}
-      />
+      <Meta title={event.title} image={event.featured_media} />
       <EventTemplate
         title={event.title}
         content={event.content}

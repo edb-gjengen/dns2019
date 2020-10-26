@@ -8,6 +8,8 @@ import _ from 'lodash'
 import moment from 'moment'
 import 'moment/locale/nb'
 
+import { fixTz } from '../utils'
+
 moment.locale('nb')
 
 const eventOrganizersQuery = graphql`
@@ -27,10 +29,7 @@ const EventList = props => {
   const renderEvent = event => {
     const featuredMedia = event.featured_media
     const hasFeaturedMedia = featuredMedia && !!featuredMedia.localFile
-    /* TODO: Make API return proper UTC datetimes */
-    const startTimeNaive = event.start_time.replace('+00:00', '')
-    const utcOffset = 2
-    const start = moment.utc(startTimeNaive).utcOffset(utcOffset)
+    const start = fixTz(event.start_time)
     return (
       <Link to={event.path} className="event" key={event.id}>
         {hasFeaturedMedia && (
